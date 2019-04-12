@@ -317,3 +317,5 @@ a:hover { text-decoration: underline; }
 .site-footer-owner { display: block; font-weight: bold; }
 
 .site-footer-credits { color: #819198; }
+
+.page-header { background-image: url(/assets/img/uw_racecar2.JPG); background-size: 1000px 600px; height: 600px; }
