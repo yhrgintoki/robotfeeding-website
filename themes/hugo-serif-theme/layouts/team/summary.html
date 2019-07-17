@@ -9,6 +9,8 @@
     <p class="team-description">{{ .Params.Jobtitle }}</p>
     {{ if .Params.Linkedinurl }}
     <a target="_blank" href="{{ .Params.Linkedinurl }}">Linked In</a> {{ end }}
+    {{ if .Params.Websiteurl }}
+    <a target="_blank" href="{{ .Params.Websiteurl }}">Website</a> {{ end }}
   </div>
   <div class="team-content">{{ .Content }}</div>
 </div>

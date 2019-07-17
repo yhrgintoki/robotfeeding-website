@@ -6,6 +6,7 @@ image: "/team/default.png"
 jobtitle: "Employee"
 email: 'test@test.com'
 linkedinurl: 'https://www.linkedin.com/'
+websiteurl: 'https://www.linkedin.com/'
 weight: 100
 ---
 

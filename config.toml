@@ -1,4 +1,4 @@
-baseURL = "www.example.com"
+baseURL = "https://prl-mushr.github.io/"
 languageCode = "en-us"
 title = "MuSHR: The UW Open Racecar Project"
 theme = "hugo-serif-theme"
@@ -7,15 +7,15 @@ theme = "hugo-serif-theme"
   google_analytics_id=""
 
   [params.homepage_meta_tags]
-    meta_description = "Serif is a beautiful small business theme for Hugo (Static Site Generator). It contains content types for the archetypical small business website. The theme is fully responsive, blazing fast and artfully illustrated."
-    meta_og_title = "Hugo Serif Theme"
+    meta_description = "The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source robotic hardware and software platform for learning and researching AI in a the setting of autonomous vehicles and mobile robotics."
+    meta_og_title = "MuSHR: The UW Open Racecar Project"
     meta_og_type = "website"
-    meta_og_url = "https://hugo-serif.netlify.com"
-    meta_og_image = "https://raw.githubusercontent.com/JugglerX/hugo-serif-theme/master/images/tn.png"
-    meta_og_description = "Serif is a beautiful small business theme for Hugo (Static Site Generator). It contains content types for the archetypical small business website. The theme is fully responsive, blazing fast and artfully illustrated."
+    meta_og_url = "https://prl-mushr.github.io"
+    meta_og_image = "https://prl-mushr.github.io/imgs/single-car.jpg"
+    meta_og_description = "The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source robotic hardware and software platform for learning and researching AI in a the setting of autonomous vehicles and mobile robotics."
     meta_twitter_card = "summary"
-    meta_twitter_site = "@zerostaticio"
-    meta_twitter_creator = "@zerostaticio"
+    meta_twitter_site = "@MichaloveJohan"
+    meta_twitter_creator = "@MichaloveJohan"
 
 # Main Menu
 [[menu.main]]
@@ -29,7 +29,12 @@ theme = "hugo-serif-theme"
     weight = 1
 
 [[menu.main]]
-    name = "Download"
+    name = "Docs"
+    url = "https://github.com/prl-mushr/mushr"
+    weight = 2
+    
+[[menu.main]]
+    name = "Hardware"
     url = "https://github.com/prl-mushr/mushr"
     weight = 2
     
