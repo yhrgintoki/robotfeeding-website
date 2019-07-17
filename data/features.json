@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Rally Chassis",
+    "description": "Explore sensor fusion using LiDAR, an Inertial Motion Unit, Intel Realsense RGBD Cameras, and a push button.",
+    "image": "/features/noun_power_tools_1885321.svg"
+  },
+  {
+    "title": "Fully Integrated",
+    "description": "Plan routes using the latest motion planning techniques, or build your own. MuSHR has OMPL support and its own motion planner.",
+    "image": "/features/noun_the_process_1885341.svg"
+  },
+  {
+    "title": "Simulation",
+    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "image": "/features/noun_3d_modeling_1885342.svg"
+  },
+  {
+    "title": "LiDAR",
+    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "image": "/features/noun_visualization_1885332.svg"
+  },
+  {
+    "title": "IMU",
+    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "image": "/features/noun_visual effect_1885325.svg"
+  },
+  {
+    "title": "RGBD Camera",
+    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "image": "/features/noun_Video Production_1885345.svg"
+  }
+]
