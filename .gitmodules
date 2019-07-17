@@ -1,0 +1,3 @@
+[submodule "hugo-serif-theme"]
+	path = hugo-serif-theme
+	url = https://github.com/JugglerX/hugo-serif-theme.git
