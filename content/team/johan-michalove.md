@@ -5,10 +5,12 @@ draft: false
 image: 'team/jmichalove.jpg'
 jobtitle: 'Research and Development'
 email: 'michajoh@cs.washington.edu'
-linkedinurl: 'https://www.linkedin.com/'
+websiteurl: 'http://johanam.com/'
+github: 'johannesburg'
+twitter: 'MichaloveJohan'
 weight: 4
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Johan Michalove is a BS/MS student at the Allen School of the University of Washington advised by Prof. Siddhartha Srinivasa. His research focuses on uncertainty in model-predictive control and AI Ethics. 
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Johan works on designing tutorials and course material for the MuSHR platform, in addition to the design and implementation of core MuSHR packages and infrastructure. He has previously worked on the Mars Science Laboratory and M2020 Rover Missions at the NASA Jet Propulsion Laboratory, and obtained a B.S. in Computer Science and B.A. in Philosophy at the University of Washington both with Departmental Honors.

@@ -1,32 +1,32 @@
 [
   {
     "title": "Rally Chassis",
-    "description": "Explore sensor fusion using LiDAR, an Inertial Motion Unit, Intel Realsense RGBD Cameras, and a push button.",
+    "description": "A robust 1/10 scale rally car chassis provides four wheel drive, brushed DC motor, and ESC suitable for most speeds (0-30 mph).",
     "image": "/features/noun_power_tools_1885321.svg"
   },
   {
     "title": "Fully Integrated",
-    "description": "Plan routes using the latest motion planning techniques, or build your own. MuSHR has OMPL support and its own motion planner.",
+    "description": "All hardware and software components have been carefully integrated and extensively tested so you can focus on what matters.",
     "image": "/features/noun_the_process_1885341.svg"
   },
   {
     "title": "Simulation",
-    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "description": "Our ROS-based simulator let's you prototype your system without needing to turn on the robot, saving you valuable time when you do.",
     "image": "/features/noun_3d_modeling_1885342.svg"
   },
   {
     "title": "LiDAR",
-    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "description": "Integration with the YDLiDAR X4 provides a 360 degree FOV at 10hz, all in a radically economic package.",
     "image": "/features/noun_visualization_1885332.svg"
   },
   {
     "title": "IMU",
-    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "description": "Learn the principles of sensor fusion or test your latest SLAM algorithm using the Razor 9dof IMU or any other of your choice.",
     "image": "/features/noun_visual effect_1885325.svg"
   },
   {
     "title": "RGBD Camera",
-    "description": "See the principles of Control Theory come to life on real robotic hardware. From PID to iLQG, learn the ins and outs of robot control.",
+    "description": "MuSHR uses the Intel Realsense line of RGBD cameras to provide point clouds for tasks such as obstacle avoidance or object tracking.",
     "image": "/features/noun_Video Production_1885345.svg"
   }
 ]

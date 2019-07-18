@@ -11,6 +11,10 @@
     <a target="_blank" href="{{ .Params.Linkedinurl }}">Linked In</a> {{ end }}
     {{ if .Params.Websiteurl }}
     <a target="_blank" href="{{ .Params.Websiteurl }}">Website</a> {{ end }}
+    {{ if .Params.Github }}
+    <a target="_blank" href="https://github.com/{{ .Params.Github }}">Github</a> {{ end }}
+    {{ if .Params.Twitter }}
+    <a target="_blank" href="https://twitter.com/{{ .Params.Twitter }}">Twitter</a> {{ end }}
   </div>
   <div class="team-content">{{ .Content }}</div>
 </div>

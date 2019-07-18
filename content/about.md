@@ -1,49 +1,38 @@
 ---
 title: 'About'
+intro_image: imgs/three-generations.jpg
 ---
 
-Lorem markdownum aequalis strigis. _Saetigeri iubeas_, vultu huic alvum nondum
-de obside ut laniavit arbor palmis, cum quin. Rupes vetat videndo, armigerae
-crimen habet Priamum nec.
+The <font color="#FF1690">Multi-agent System for non-Holonomic Racing (MuSHR) </font> is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 
-## Ne verba patulosque numen vix libet
+Using rapid-prototyping techniques and off-the-shelf parts, we provide the instructions you need to assemble a robotic race car and code to hit the ground running. MuSHR also contains an ever-expanding set of tutorials to make you acquainted with the race car and robotic principles. 
 
-Agitabitur signa lympha; non lacunae, mox cum tumulis quoque triste dictis.
-Ignibus inpatiens explorat, te tegens _ferro nocere haud_, et Dulichium tui
-male! Quo sed [fuit flexit et](#vexant-achivi) hic die solido, gloria?
+The MuSHR platform is designed at the Personal Robotics Lab at The University of Washington (“udub”’s) Paul G. Allen School of Computer Science and Engineering. Taking inspiration from the MIT RACECAR platform, we set out to create a full-stack robotics system which not only can support our own research and teaching demands, but those of the community at-large who crave access to a customizable yet economic mobile robot. The name MuSHR is inspired by dog-sled racing, “mushing”, where dogs work together pull a sled. As the UW mascot is the Husky, we found this name especially fitting.
 
-1. Cum det dixit Parcarum qui spemque est
-2. Exit ex huic
-3. Quod consiste agitataque claustraque vicina videt lacertis
-4. Loquor videt
-5. Ardua non igne caelesti coniugis cognovi diversorum
-6. Per nunc pariterque saeva vindicet
+We have refined the MuSHR platform through two undergraduate and two graduate robotics courses, distilling lessons learned into the V3 roboracer. Want to teach a mobile robotics course of your own? Contact us for access to teaching materials, including assignments and solutions.
 
-Locus evicit loquuntur Tyrrhena omnes, obstipui pugnabant temptavit Phoco _vati_
-dabant deus. Memorata haberet sepulcrales gentisque dum sic, in flumina templa!
-Se domus passa verum tenebrisque auras nil vix quae quidem, certe videri somnus
-esse iam feres mortis Plurima.
+## Who is MuSHR for?
 
-## Postquam tamen
+### researchers 
+Rapidly prototype your hardware, algorithms, or agents in the context of mobile robotics. MuSHR provides a mobile robot that is economic to construct and maintain, and starter code which allows you to focus on your project. Whether you are developing a new hardware system, perception module, or full-stack system, the MuSHR base libraries pick up the slack. The economic and rapid assembly also lowers the barrier of entry to creating a fleet for multi-agent robotics research.
 
-Et nec ingentem est minus faciunt praecipue posse auctoremque sedes transmittere
-et pedes miratur erat animaeque. Tellus admonuit humanam funes, sagittis et
-licet! Inserui quamvis Clymeni.
+### educators 
+MuSHR helps educators make learning on real hardware a reality in the classroom. MuSHR course materials provide a starting point for teaching mobile robotics in higher education, providing assignments which leverage the unique challenges of mobile robotics. 
 
-- Parens est studiisque interea
-- Pro istis mediis carnes iste nec imperat
-- Te vocas orat nisi quantumque castra
-- Gestumque crepuscula esse videntur coegit
-- Ambo videtque gerat aquae ferens vagina
-- Adde leviter faciam tetigisse regunt concava in
+### students 
+learn the principles of robotics and robot programming on your own, hackable robot. You will find the MuSHR tutorials useful whether you are trying to skill up for the Autonomous Vehicle Revolution or want to write code which pushes the limits of speed and control for an autonomous race car. MuSHR also serves as a valuable resource to those wishing to enter academic robotics.
 
-Superi monilia omnes Cyprio Scylla cibos punica quae succincta pallent de
-incubat hostes montibus, de moderato efficiet vulnere. Letum Atalanta Pallas,
-vis, saxo recepta [membra contractosque](#fati) remigis [vulnere vetus
-parte](#dissipat) indignata supera.
+### hackers
+MuSHR can be assembled at any makerspace and is only mile 0 for your ambitions. Finally time to build that coffee-delivery robot? No problem. 
 
-Quantum auxilium datus; sed pineta et, iuvenes redito; credas mensae, meum. Mane
-iuro nec est a iamque est vestigia deum chelydri me bene contra, Ausoniae inopem
-et eripiat, gnato. Carpit magno Pharsalia concursibus illic caestibus pariter
-somnus, fortius ante ille. Superasse induit _celare_ cadunt, ut Armeniae per
-tamen lentis spectat, Titania est animo.
+## Ready to jump in?
+
+Get started in the quickstart guide or take a look at the assembly instructions.
+
+## Questions?
+
+See the FAQ!
+
+## Stay in touch!
+
+Register for MuSHR updates here.
