@@ -12469,7 +12469,7 @@ h3 {
       width: 130%; } }
   @media (min-width: 1300px) {
     .intro-image-flying {
-      right: -110px;
+      right: -120px;
       width: 120%;
       top: -40px; } }
 
@@ -12606,32 +12606,5 @@ body {
   font-size: 17px;
   line-height: 1.2;
   font-family: "Saira Semi Condensed", "DM Sans", Arial, sans-serif, -apple-system; }
-
-body:after {
-  color: #000000;
-  font-size: 12px;
-  padding: 5px;
-  font-weight: bold;
-  right: 10px;
-  position: fixed;
-  text-align: center;
-  text-transform: uppercase;
-  bottom: 10px;
-  width: 200px;
-  z-index: 9999;
-  border: solid 1px #000000;
-  content: "xs - min-width: 0"; }
-  @media (min-width: 576px) {
-    body:after {
-      content: "sm - min-width: 576px"; } }
-  @media (min-width: 768px) {
-    body:after {
-      content: "md - min-width: 768px"; } }
-  @media (min-width: 992px) {
-    body:after {
-      content: "lg - min-width: 992px"; } }
-  @media (min-width: 1300px) {
-    body:after {
-      content: "xl - min-width: 1300px"; } }
 
 /*# sourceMappingURL=style.css.map */
