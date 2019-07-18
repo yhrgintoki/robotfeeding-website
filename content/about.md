@@ -2,14 +2,15 @@
 title: 'About'
 intro_image: imgs/three-generations.jpg
 ---
-
 The <font color="#FF1690">Multi-agent System for non-Holonomic Racing (MuSHR) </font> is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 
 Using rapid-prototyping techniques and off-the-shelf parts, we provide the instructions you need to assemble a robotic race car and code to hit the ground running. MuSHR also contains an ever-expanding set of tutorials to make you acquainted with the race car and robotic principles. 
 
 The MuSHR platform is designed at the Personal Robotics Lab at The University of Washington (“udub”’s) Paul G. Allen School of Computer Science and Engineering. Taking inspiration from the MIT RACECAR platform, we set out to create a full-stack robotics system which not only can support our own research and teaching demands, but those of the community at-large. The name MuSHR is inspired by dog-sled racing, “mushing”, where dogs work together pull a sled. As the UW mascot is the Husky, we found this name especially fitting.
 
-We have refined the MuSHR platform through two undergraduate and two graduate robotics courses, distilling lessons learned into the V3 roboracer. Want to teach a mobile robotics course of your own? Contact us for access to teaching materials, including assignments and solutions.
+{{< figure src="/imgs/3gen.jpg" caption="Left to right: MIT RACECAR-inspired V1, MuSHR V2, MuSHR V3">}}
+
+We have refined the MuSHR platform through two undergraduate and two graduate robotics courses, distilling lessons learned into the V3 roboracer. Want to teach a mobile robotics course of your own? [Contact us](/contact/) for access to teaching materials, including assignments and solutions.
 
 ## Who is MuSHR for?
 
@@ -17,22 +18,28 @@ We have refined the MuSHR platform through two undergraduate and two graduate ro
 Rapidly prototype your hardware, algorithms, or agents in the context of mobile robotics. MuSHR provides a mobile robot that is economic to construct and maintain, and starter code which allows you to focus on your project. Whether you are developing a new hardware system, perception module, or full-stack system, the MuSHR base libraries pick up the slack. The economic and rapid assembly also lowers the barrier of entry to creating a fleet for multi-agent robotics research.
 
 ### educators 
-MuSHR helps educators make learning on real hardware a reality in the classroom. MuSHR course materials provide a starting point for teaching mobile robotics in higher education, providing assignments which leverage the unique challenges of mobile robotics. 
+MuSHR helps educators make learning on real hardware a reality in the classroom. MuSHR course materials provide a starting point for teaching mobile robotics in higher education by making available classroom tested assignments that leverage the unique challenges of mobile robotics. 
 
 ### students 
-learn the principles of robotics and robot programming on your own, hackable robot. You will find the MuSHR tutorials useful whether you are trying to skill up for the Autonomous Vehicle Revolution or want to write code which pushes the limits of speed and control for an autonomous race car. MuSHR also serves as a valuable resource to those wishing to enter academic robotics.
+Learn the principles of robotics and robot programming on your own, hackable robot. You will find the MuSHR tutorials useful whether you are trying to skill up for the Autonomous Vehicle Revolution or want to write code which pushes the limits of speed and control for an autonomous race car. MuSHR also serves as a valuable resource to those wishing to enter academic robotics.
 
 ### hackers
 MuSHR can be assembled at any makerspace and is only mile 0 for your ambitions. Finally time to build that coffee-delivery robot? No problem. 
 
 ## Ready to jump in?
 
-Get started in the quickstart guide or take a look at the assembly instructions.
+Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](https://github.com/prl-mushr/mushr).
 
 ## Questions?
 
-See the FAQ!
+See the [docs](/docs) and [FAQ](/tutorials/faq)!
 
 ## Stay in touch!
 
-Register for MuSHR updates here.
+Register for MuSHR updates [here](/).
+
+## Acknowledgements 
+![intel](/imgs/intel.png)
+![intel](/imgs/hri-us-logo-2018.png)
+![intel](/imgs/allen_school.png)
+
