@@ -4,11 +4,10 @@ date: 2018-11-19T10:47:58+10:00
 draft: false
 image: 'team/mrockett.png'
 jobtitle: 'Robot Wrangler'
-email: 'michajoh@cs.washington.edu'
-linkedinurl: 'https://www.linkedin.com/'
+email: 'rockettm@cs.washington.edu'
 weight: 6
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Matthew is a BS/MS student at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Siddhartha Srinivasa. He's interested in mobile robotics and multi-agent robotic systems.
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Matthew works to maintain the growing MuSHR fleet at UW. He was a TA for the course in Spring 2019, helping design assignments and iterate on the development of software for the cars. In the past he has done research with the Systems lab at UW, 

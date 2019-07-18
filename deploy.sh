@@ -6,6 +6,8 @@ echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 #hugo -t hugo-serif-theme
 
+git submodule update --init --recursive
+
 # Go To Public folder
 cd public
 # Add changes to git.
