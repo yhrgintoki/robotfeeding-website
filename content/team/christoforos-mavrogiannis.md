@@ -1,9 +1,9 @@
 ---
-title: 'Patrick Lancaster'
+title: 'Christoforos Mavrogiannis'
 date: 2018-11-19T10:47:58+10:00
 draft: false
-image: 'team/plancaster.jpg'
-jobtitle: 'Hardware Lead'
+image: 'team/cmavrogiannis.jpg'
+jobtitle: 'Postdoctoral Fellow'
 email: 'michajoh@cs.washington.edu'
 linkedinurl: 'https://www.linkedin.com/'
 weight: 3

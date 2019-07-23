@@ -12453,7 +12453,7 @@ h3 {
 
 .intro-image-flying {
   max-width: none;
-  width: 40%;
+  width: 100%;
   margin-bottom: 20px; }
   @media (min-width: 768px) {
     .intro-image-flying {
@@ -12464,7 +12464,7 @@ h3 {
       width: 160%; } }
   @media (min-width: 992px) {
     .intro-image-flying {
-      bottom: -80px;
+      bottom: 80px;
       right: -120px;
       width: 130%; } }
   @media (min-width: 1300px) {

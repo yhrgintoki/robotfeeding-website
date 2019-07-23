@@ -39,7 +39,7 @@
 }
 .intro-image-flying {
   max-width: none;
-  width: 40%;
+  width: 100%;
   margin-bottom: 20px;
   // @include media-breakpoint-up(sm) {
   //   width: 60%;
@@ -52,7 +52,7 @@
     width: 160%;
   }
   @include media-breakpoint-up(lg) {
-    bottom: -80px;
+    bottom: 80px;
     right: -120px;
     width: 130%;
   }

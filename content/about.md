@@ -6,7 +6,7 @@ The <font color="#FF1690">Multi-agent System for non-Holonomic Racing (MuSHR) </
 
 Using rapid-prototyping techniques and off-the-shelf parts, we provide the instructions you need to assemble a robotic race car and code to hit the ground running. MuSHR also contains an ever-expanding set of tutorials to make you acquainted with the race car and robotic principles. 
 
-The MuSHR platform is designed at the Personal Robotics Lab at The University of Washington (“udub”’s) Paul G. Allen School of Computer Science and Engineering. Taking inspiration from the MIT RACECAR platform, we set out to create a full-stack robotics system which not only can support our own research and teaching demands, but those of the community at-large. The name MuSHR is inspired by dog-sled racing, “mushing”, where dogs work together pull a sled. As the UW mascot is the Husky, we found this name especially fitting.
+The MuSHR platform is designed at the Personal Robotics Lab at The University of Washington (“udub”’s) Paul G. Allen School of Computer Science and Engineering. Taking inspiration from the MIT RACECAR platform, we set out to create an affordable full-stack robotics system which not only can support our own research and teaching demands, but those of the community at-large. The name MuSHR is inspired by dog-sled racing, “mushing”, where dogs (most commonly Alaskan Huskies) work together pull a sled. As the UW mascot is the Husky, we found this name especially fitting.
 
 {{< figure src="/imgs/3gen.jpg" caption="Left to right: MIT RACECAR-inspired V1, MuSHR V2, MuSHR V3">}}
 
