@@ -1,7 +1,7 @@
-.service-summary {
+.tutorial-summary {
   display: flex;
   align-items: flex-start;
-  .service-image {
+  .tutorial-image {
     flex: 0 0 100px;
     margin-right: 10px;
     img {
@@ -9,9 +9,9 @@
       height: auto;
     }
   }
-  .service-content {
+  .tutorial-content {
     flex: 1;
-    .service-title {
+    .tutorial-title {
       font-size: 26px;
     }
   }

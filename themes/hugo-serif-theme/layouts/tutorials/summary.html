@@ -1,0 +1,11 @@
+<div class="tutorial tutorial-summary">
+  <div class="tutorial-content">
+    <h2 class="tutorial-title">
+      <a href="{{ .Permalink }}">{{ .Title }}</a>
+    </h2>
+    {{ if .Params.Summary }}
+    <p>{{ .Params.Summary | truncate 120 "..." | plainify }}</p>
+    {{ else }}
+    <p>{{ .Content | truncate 120 "..." | plainify }}</p> {{ end }}
+  </div>
+</div>

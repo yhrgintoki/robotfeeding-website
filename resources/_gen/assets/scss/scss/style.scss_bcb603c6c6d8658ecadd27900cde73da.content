@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,700|DM+Serif+Display");
+@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,700,800|DM+Serif+Display&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Gugi|Saira+Semi+Condensed&display=swap");
 /*!
  * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
@@ -11552,7 +11552,7 @@ button.bg-dark:focus {
   font-weight: 400 !important; }
 
 .font-weight-bold {
-  font-weight: 700 !important; }
+  font-weight: 800 !important; }
 
 .font-weight-bolder {
   font-weight: bolder !important; }
@@ -11813,7 +11813,6 @@ video {
   padding: 0;
   border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline; }
 
 /* HTML5 display-role reset for older browsers */
@@ -12354,13 +12353,20 @@ h3 {
     .title {
       font-size: 50px; } }
 
-.content ul,
 .content ol {
   margin-top: 10px;
   margin-bottom: 20px;
-  list-style: disc; }
-  .content ul li,
+  list-style: decimal; }
   .content ol li {
+    margin-bottom: 5px;
+    margin-left: 20px;
+    color: #5c5a5a; }
+
+.content ul {
+  margin-top: 10px;
+  margin-bottom: 20px;
+  list-style: disc; }
+  .content ul li {
     margin-bottom: 5px;
     margin-left: 20px;
     color: #5c5a5a; }
@@ -12576,30 +12582,36 @@ h3 {
   .team-summary .team-content {
     flex: 1 0 100%; }
 
-.page-services-single h1.title {
+.page-tutorials-single h1.title {
   font-size: 3rem;
   font-family: "Gugi", serif, -apple-system;
   color: #1C0658; }
 
-.page-services-single .content > p:first-of-type {
+.page-tutorials-single .content > p:first-of-type {
   font-size: 1.6rem;
   line-height: 1.4;
-  margin-bottom: 40px;
-  font-weight: regular;
+  font-weight: 800;
+  margin-bottom: 10px;
   color: #686868; }
 
-.service-summary {
+.page-tutorials-single .content h4 {
+  margin-bottom: 40px; }
+
+.page-tutorials-single strong {
+  font-weight: 800; }
+
+.tutorial-summary {
   display: flex;
   align-items: flex-start; }
-  .service-summary .service-image {
+  .tutorial-summary .tutorial-image {
     flex: 0 0 100px;
     margin-right: 10px; }
-    .service-summary .service-image img {
+    .tutorial-summary .tutorial-image img {
       max-width: 100%;
       height: auto; }
-  .service-summary .service-content {
+  .tutorial-summary .tutorial-content {
     flex: 1; }
-    .service-summary .service-content .service-title {
+    .tutorial-summary .tutorial-content .tutorial-title {
       font-size: 26px; }
 
 body {

@@ -1,6 +1,15 @@
 .content {
-  ul,
   ol {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    list-style: decimal;
+    li {
+      margin-bottom: 5px;
+      margin-left: 20px;
+      color: $steel;
+    }
+  }
+  ul {
     margin-top: 10px;
     margin-bottom: 20px;
     list-style: disc;

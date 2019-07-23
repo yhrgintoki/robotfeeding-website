@@ -1,5 +1,5 @@
 // Font
-@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,700|DM+Serif+Display');
+@import url('https://fonts.googleapis.com/css?family=DM+Sans:400,700,800|DM+Serif+Display&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Gugi|Saira+Semi+Condensed&display=swap');
 
 // Bootstrap
@@ -37,9 +37,9 @@
 @import 'pages/home';
 @import 'pages/team/page-team-list';
 @import 'pages/team/team-summary';
-@import 'pages/services/page-services-list';
-@import 'pages/services/page-services-single';
-@import 'pages/services/service-summary';
+@import 'pages/tutorials/page-tutorials-list';
+@import 'pages/tutorials/page-tutorials-single';
+@import 'pages/tutorials/tutorial-summary';
 
 body {
   font-size: 17px;
