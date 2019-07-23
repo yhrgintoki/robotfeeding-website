@@ -13,4 +13,4 @@ weight: 4
 
 Johan Michalove is a BS/MS student at the Allen School of the University of Washington advised by Prof. Siddhartha Srinivasa. His research focuses on uncertainty in model-predictive control and the ethics of intelligent machines. 
 
-Johan works on designing tutorials and course material for the MuSHR platform, in addition to the design and implementation of core MuSHR packages and infrastructure. He has previously worked on the Mars Science Laboratory and M2020 Rover Missions at the NASA Jet Propulsion Laboratory, and obtained a B.S. in Computer Science and B.A. in Philosophy at the University of Washington both with Departmental Honors.
+Johan works on designing tutorials and course material for the MuSHR platform, in addition to the design and implementation of core MuSHR packages and infrastructure. He has helped support the use of the MuSHR cars in the [Winter 2019 Graduate Robotics course](https://courses.cs.washington.edu/courses/cse571/19wi/) and [Spring 2019 Undergraduate Mobile Robotics course](https://courses.cs.washington.edu/courses/cse490r/19sp/). He began building robotic RC cars in 2016 in an attempt to learn robotics.

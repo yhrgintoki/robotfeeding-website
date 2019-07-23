@@ -4,11 +4,11 @@ date: 2018-11-19T10:47:58+10:00
 draft: false
 image: 'team/plancaster.jpg'
 jobtitle: 'Hardware Lead'
-email: 'michajoh@cs.washington.edu'
-linkedinurl: 'https://www.linkedin.com/'
-weight: 3
+email: 'planc509@cs.washington.edu'
+websiteurl: 'https://homes.cs.washington.edu/~planc509/'
+weight: 5
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Patrick Lancaster is a PhD candidate at the Allen School of Computer Science and Engineering at the University of Washington advised by Prof. Joshua Smith and Prof. Siddhartha Srinivasa. His research focuses on sensing for robot manipulation. 
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Patrick designs and builds hardware prototypes for the MuSHR platform, and develops the software drivers necessary for both simulation and real-world execution of the robot. In Autumn 2018, he was the primary instructor for a Masters level course focused on autonomous navigation using the MuSHR platform.
