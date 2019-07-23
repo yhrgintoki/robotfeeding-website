@@ -27,6 +27,14 @@ This tutorial does not cover Model Predictive Control and Particle Filtering in 
 
 ## Launching the Navigation Stack
 
+Launch simultaneously, on the robot: 
+
+{{< highlight bash >}}
+$ roslaunch mushr_pf localize.launch
+$ roslaunch mushr_rhc tl.launch
+$ cd ..
+{{< / highlight >}}
+
 Et nec ingentem est minus faciunt praecipue posse auctoremque sedes transmittere
 et pedes miratur erat animaeque. Tellus admonuit humanam funes, sagittis et
 licet! Inserui quamvis Clymeni.
