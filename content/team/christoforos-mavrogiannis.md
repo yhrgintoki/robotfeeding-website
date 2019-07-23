@@ -5,7 +5,8 @@ draft: false
 image: 'team/cmavrogiannis.jpg'
 jobtitle: 'Postdoctoral Fellow'
 email: 'cmavro@cs.washington.edu'
-linkedinurl: 'https://www.chrismavrogiannis.com'
+linkedinurl: 'https://www.linkedin.com/in/mavrogiannis/'
+websiteurl: 'www.chrismavrogiannis.com'
 weight: 3
 ---
 
