@@ -67,17 +67,16 @@ The output of the high level mux gets sent to the low level mux which incorporat
 Once the highest priority command is output it goes to the vesc. The vesc smooths the command by clipping the min/max of the steering/throttle so we don't try to turn the wheels 180 degrees for example. It then provides that to the vesc driver which directly controls the motors. Something that can be confusing about this architecture is the /vesc namespace is being used for the mux (see the nodes/topic names) and some vesc code can be found in the mux. Cleanly separating the mux from the vesc is something we have fixed in new iterations of the codebase.
 
 These components are in the following locations all within `~/catkin_ws/src/mushr/` if you want to check them out for more details:
-
- - MUX:  `mushr_base/ackermann_cmd_mux`
- - VESC: `mushr_base/vesc`
-		 - This is a meta-package with multiple sub directories
-		 - `vesc` describes the metapackage
-		 - `vesc_main` contains configuration files and launch files for running the vesc
-		 - `vesc_ackermann` contains vesc odom info (not depicted in diagram)
-		 - `vesc_driver` is the last piece of the diagram connecting the physical vesc with the computer. It also contains the throttle interpolator.  
-		 - `vesc_msgs` describes the VescState message
-- Teleop: `mushr_base/mushr_base/src/joy_teleop.py`
-- Lidar: `mushr_hardware/ydlidar`
-- Button: `mushr_hardware/push_button_utils`
-- Camera: `mushr_hardware/realsense`
-- Map: `mushr_base/mushr_base/launch/includes/map_server.launch`
+  
+ - MUX:  `mushr_base/ackermann_cmd_mux`  
+ - VESC: `mushr_base/vesc`  
+	- `vesc` describes the metapackage  
+	- `vesc_main` contains configuration files and launch files for running the vesc  
+	- `vesc_ackermann` contains vesc odom info (not depicted in diagram)  
+	- `vesc_driver` is the last piece of the diagram connecting the physical vesc with the computer. It also contains the throttle interpolator.  
+	- `vesc_msgs` describes the VescState message  
+- Teleop: `mushr_base/mushr_base/src/joy_teleop.py`  
+- Lidar: `mushr_hardware/ydlidar`  
+- Button: `mushr_hardware/push_button_utils`  
+- Camera: `mushr_hardware/realsense`  
+- Map: `mushr_base/mushr_base/launch/includes/map_server.launch`  
