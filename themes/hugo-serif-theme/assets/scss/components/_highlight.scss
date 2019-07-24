@@ -17,23 +17,38 @@
  * Variables
  */
 
- $dt-gray-dark: #282a36;  // Background
+//  $dt-gray-dark: #282a36;  // Background
+//  $dt-gray-dark: #221d36;  // Background
+//  $dt-gray-dark: #1d2342;  // Background
+ $dt-gray-dark: #1b0c40;  // Background
+//  $dt-gray-dark: #160754;  // Background
  $dt-gray: #44475a;       // Current Line & Selection
  $dt-gray-light: #f8f8f2; // Foreground
  $dt-blue: #6272a4;       // Comment
- $dt-cyan: #8be9fd;
+//  $dt-cyan: #8be9fd;
+ $dt-cyan: $outrun2;
  $dt-green: #50fa7b;
  $dt-orange: #ffb86c;
- $dt-pink: #ff79c6;
- $dt-purple: #bd93f9;
+ $dt-pink: $outrun2;
+ $dt-purple: $outrun4;
  $dt-red: #ff5555;
- $dt-yellow: #f1fa8c;
+ $dt-yellow: $outrun3;
  
  /*
   * Styles
   */
+code {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+}
+
+.chroma {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 300;
+}
  
  .highlight {
+   border: $outrun1;
    border-radius: 5px;
    padding: 10px;
    background: $dt-gray-dark;
@@ -124,9 +139,7 @@
    }
  
    .kd,
-   .nb,
    .nl,
-   .nv,
    .vc,
    .vg,
    .vi,
