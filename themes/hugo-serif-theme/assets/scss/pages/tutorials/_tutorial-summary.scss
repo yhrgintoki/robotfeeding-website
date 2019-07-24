@@ -1,0 +1,18 @@
+.tutorial-summary {
+  display: flex;
+  align-items: flex-start;
+  .tutorial-image {
+    flex: 0 0 100px;
+    margin-right: 10px;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .tutorial-content {
+    flex: 1;
+    .tutorial-title {
+      font-size: 26px;
+    }
+  }
+}

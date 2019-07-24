@@ -1,0 +1,33 @@
+.social-logo {
+  display: none;
+  @include media-breakpoint-up(sm) {
+    display: block;
+    width: 40px;
+  }
+  img {
+    width: 40px;
+    height: auto;
+  }
+  a {
+    display: block;
+    width: 40px;
+    height: auto;
+  }
+}
+.logo-mobile {
+  display: block;
+  width: 40px;
+  padding: 10px 0 10px 0;
+  @include media-breakpoint-up(sm) {
+    display: none;
+  }
+  img {
+    width: 100%;
+    height: auto;
+  }
+  a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}

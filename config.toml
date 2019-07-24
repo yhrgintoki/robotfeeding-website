@@ -1,0 +1,76 @@
+baseURL = "https://prl-mushr.github.io/"
+languageCode = "en-us"
+title = "MuSHR: The UW Open Racecar Project"
+theme = "hugo-serif-theme"
+
+# Highlighting config (Pygments)
+# It is (currently) not in use, but you can do ```go in a content file if you want to.
+pygmentsCodeFences = true
+
+pygmentsOptions = ""
+# Use the Chroma stylesheet
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+pygmentsUseClassic = false
+
+[params]
+  google_analytics_id=""
+
+  [params.homepage_meta_tags]
+    meta_description = "The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source robotic hardware and software platform for learning and researching AI in a the setting of autonomous vehicles and mobile robotics."
+    meta_og_title = "MuSHR: The UW Open Racecar Project"
+    meta_og_type = "website"
+    meta_og_url = "https://prl-mushr.github.io"
+    meta_og_image = "https://prl-mushr.github.io/imgs/single-car.jpg"
+    meta_og_description = "The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source robotic hardware and software platform for learning and researching AI in a the setting of autonomous vehicles and mobile robotics."
+    meta_twitter_card = "summary"
+    meta_twitter_site = "@MichaloveJohan"
+    meta_twitter_creator = "@MichaloveJohan"
+
+# Main Menu
+[[menu.main]]
+	name = "Quickstart"
+	url = "/tutorials/quickstart/"
+    weight = 1
+    
+[[menu.main]]
+	name = "Tutorials"
+	url = "/tutorials/"
+    weight = 1
+
+[[menu.main]]
+    name = "Docs"
+    url = "https://github.com/prl-mushr/mushr"
+    weight = 2
+    
+[[menu.main]]
+    name = "Hardware"
+    url = "https://github.com/prl-mushr/mushr"
+    weight = 2
+    
+[[menu.main]]
+    name = "Team"
+    url = "/team/"
+    weight = 3
+
+[[menu.main]]
+	name = "About"
+	url = "/about/"
+	weight = 4
+
+[[menu.main]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 5
+
+
+# Footer Menu
+[[menu.footer]]
+	name = "Home"
+	url = "/"
+    weight = 1
+
+[[menu.footer]]
+	name = "Contact"
+	url = "/contact/"
+    weight = 2
