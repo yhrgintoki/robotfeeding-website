@@ -2,11 +2,12 @@
 
 echo -e "\033[0;32mDeploying updates to GitHub...\033[0m"
 
+rm -rf public
+git submodule update --init --recursive
+
 # Build the project.
 hugo # if using a theme, replace with `hugo -t <YOURTHEME>`
 #hugo -t hugo-serif-theme
-
-git submodule update --init --recursive
 
 # Go To Public folder
 cd public
