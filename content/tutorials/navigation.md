@@ -4,7 +4,7 @@ date: 2018-11-28T15:14:54+10:00
 image: "/services/default.png"
 featured: true
 draft: false
-duration: 15
+duration: 30
 difficulty: Intermediate
 summary: This tutorial will teach you how to initialize and operate MuSHRs out-of-the-box autonomous navigation stack.
 weight: 3
