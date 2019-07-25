@@ -22,7 +22,7 @@ A car that you can connect to if you wish to follow along.
 ### Hardware Overview
 This section will cover an overview of the physical racecar Below is a diagram of the physical racecar components.
 
-<img src="https://raw.githubusercontent.com/prl-mushr/mushr-website/master/static/tutorials/workflow_1/racecar_overview.png?token=ADLMJKHQAHTME6U2SBUTPCS5IJ32K" width=800px>
+<img src="https://raw.githubusercontent.com/prl-mushr/mushr-website/master/static/tutorials/workflow_1/hardware_overview.png?token=ADLMJKEYNSYG3BCGQVK2YOC5IKEWM" width=600px>
 
 * __Chasis (Redcat Racing Blackout SC 1/10) :__ The car chasis. It has adjustable suspension and non-flat tires. It is also to mount things too.
 * __Computer (Jetson Nano):__ This the computer that runs the software on the car. You can connect to the computer in 3 ways primarily: ssh through local network to static IP, connecting to car's network and using ssh, or plugging a monitor, keyboard, and mouse into the computer directly. 
@@ -30,10 +30,11 @@ This section will cover an overview of the physical racecar Below is a diagram o
 * __Servo (ZOSKAY 1X DS3218):__ A servo is another type of motor but is better at going to specific angles along its rotation than rotating continuously. The servo's job is the steer the front wheels by taking in steering angle commands. The servo is also controlled by the VESC.
 * __VESC (Turnigy SK8-ESC):__ The VESC is responsible for taking high level control commands like steering angle and velocity and converting that to power/angle commands for the motor/servo. The VESC has an associated ROS node. This node takes your ROS `ackermann_msgs/AckermannDriveStamped` message and converts that to `VescStateStamped` (power), and `Float64` (steering angle) messages. These messages are something the physical VESC can use to control the motor and servo.
 * __NiMH Battery (Redcat Racing HX-5000MH-B):__ There are 2 batteries. One to power the motor and in turn the VESC (because the motor power flows through the VESC). And a second to power the computer and sensors. A lot of issues (particularly with the VESC) can stem from one of these batteries having a low battery, so it is good to check them regularly.
+* __Power Converter (DZS Elec LM2596):__ This power converter converts the higher voltage of the battery to the necessary 5V max for the computer.
 * __RGBD Camera (Realsense D435i):__ This Intel realsense camera can publish both rgb and depth. It has a associated node so you can just subscribe to the topic to use the images! OpenCV even has a function for converting ROS `Image` messages to something OpenCV can use. Note depth cameras are different from stereo cameras (how humans do it). They both provide the same output, but depth cameras project a IR pattern and use a IR camera to see the deformation of that pattern to compute depth. Depth cameras will also sometimes use stereo in addition to make their measurements more accurate. It publishes to the `/camera` topics. This camera can also publish IMU measurments, but they currently are not being used.
 * __Laser Scanner (YDLIDAR X4):__ This 360 degree sensor works by having a 1D laser range finder spin around. With each distance reading their is a associated angle the range finder was at. It publishes an array of distance and angle measurements to the `/scan` topic.
 * __Wireless Controller (Logitech F710):__ This provides controls to the cars! It doesn't just have to be use for teleop it can be used by your programs for most anything. It publishes on the `/joy` topic.
-* __Bumber Switch:__ This is a button on the front of the car that you can use to indicate a collision. It publishes a binary signal to **/push_button_state**.
+* __Bumber Switch (Vex Bumper Switch):__ This is a button on the front of the car that you can use to indicate a collision. It publishes a binary signal to **/push_button_state**.
 * __Micro SD Card:__ Storage for the OS and any logs. What's great about this is if you want to switch cars you can simply switch SD cards.
 
 
@@ -42,15 +43,16 @@ This section will cover an overview of the physical racecar Below is a diagram o
 On the car go to your catkin workspace  
  `cd ~/catkin_ws/`
  and list the directories
- ```
+ {{< highlight bash >}}
 $ ls
 build  devel  src
- ```
+{{< / highlight >}}
  So what we have is 3 directories. `build` is where code is compiled to. `devel` has setup files for your environment. The most important thing about `devel` is that it contains `setup.**` which sets up environment variables and paths amongst other things. 
- ```
+ {{< highlight bash >}}
  robot@digger:~/catkin_ws/devel$ ls
 bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
- ```
+ {{< / highlight >}}
+
  So `setup.**` (** because you can run .bashr, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can't find a package, or that roscore isn't a command, it is because you have not sourced your `setup.**` like so
  `source ~/catkin_ws/devel/setup.bash`
 We usually prevent this by putting the above in your `~/.bashrc` a file that is run everytime you log in. 
@@ -58,7 +60,7 @@ So now if you change directories to `~/catkin_ws/src/` you will see all the ros 
 
 Alright, now that we have a high level view of our workspace let's checkout the system components. Each package (located in `src`) creates ROS nodes. This tutorial will not dive into the details of how ROS works but this [post](https://robohub.org/ros-101-intro-to-the-robot-operating-system/) gives a good overview with diagrams. Below is a simplified diagram of the system at a high level:
 
-<img src="https://raw.githubusercontent.com/prl-mushr/mushr-website/master/static/tutorials/workflow_1/racecar_overview.png?token=ADLMJKHQAHTME6U2SBUTPCS5IJ32K" width=800px>
+<img src="https://raw.githubusercontent.com/prl-mushr/mushr-website/master/static/tutorials/workflow_1/software_overview.png?token=ADLMJKDPBDCHTGZ35ZTOQFC5IKEUQ" width=800px>
 
 Let's unpack this, starting from the top. The sensor nodes take the raw input, do some processing, and  convert it to ros friendly topics. The map server converts a `.yaml` map file to a ros topic. Your controller (orange) takes in sensor topics coming in from the each sensors' ros node and the map. It then outputs some command to drive the car. That command is put into the mux which listens on multiple `/mux/ackermann_cmd_mux/input` channels and selects the highest priority. `*/input/default` is a zero throttle/steering command that is passed whenever your controller and teleop are not publishing. 
 Currently, MuSHR does not have a explicit safety controller publishing to the `*/input/safety` topic. The mux priorities can be found `mushr_base/ackermann_cmd_mux/param/mux.yaml` and they are listed in order of priority below.  
