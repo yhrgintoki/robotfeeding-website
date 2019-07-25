@@ -22,7 +22,7 @@ A car that you can connect to if you wish to follow along.
 ### Hardware Overview
 This section will cover an overview of the physical racecar Below is a diagram of the physical racecar components.
 
-<img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/hardware.jpg" width=800px>
+<img src="https://raw.githubusercontent.com/prl-mushr/mushr-website/master/static/tutorials/workflow_1/racecar_overview.png?token=ADLMJKHQAHTME6U2SBUTPCS5IJ32K" width=800px>
 
 * __Chasis (Redcat Racing Blackout SC 1/10) :__ The car chasis. It has adjustable suspension and non-flat tires. It is also to mount things too.
 * __Computer (Jetson Nano):__ This the computer that runs the software on the car. You can connect to the computer in 3 ways primarily: ssh through local network to static IP, connecting to car's network and using ssh, or plugging a monitor, keyboard, and mouse into the computer directly. 
@@ -48,7 +48,7 @@ build  devel  src
  ```
  So what we have is 3 directories. `build` is where code is compiled to. `devel` has setup files for your environment. The most important thing about `devel` is that it contains `setup.**` which sets up environment variables and paths amongst other things. 
  ```
- nvidia@louiseii:~/catkin_ws/devel$ ls
+ robot@digger:~/catkin_ws/devel$ ls
 bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
  ```
  So `setup.**` (** because you can run .bashr, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can't find a package, or that roscore isn't a command, it is because you have not sourced your `setup.**` like so
@@ -58,13 +58,16 @@ So now if you change directories to `~/catkin_ws/src/` you will see all the ros 
 
 Alright, now that we have a high level view of our workspace let's checkout the system components. Each package (located in `src`) creates ROS nodes. This tutorial will not dive into the details of how ROS works but this [post](https://robohub.org/ros-101-intro-to-the-robot-operating-system/) gives a good overview with diagrams. Below is a simplified diagram of the system at a high level:
 
-<img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/racecar_overview.png" width=800px>
+<img src="https://raw.githubusercontent.com/prl-mushr/mushr-website/master/static/tutorials/workflow_1/racecar_overview.png?token=ADLMJKHQAHTME6U2SBUTPCS5IJ32K" width=800px>
 
-Let's unpack this, starting from the top. The sensor nodes take the raw input, do some processing, and  convert it to ros friendly topics. The map server converts a `.yaml` map file to a ros topic. Your controller (orange) takes in sensor topics coming in from the each sensors' ros node and the map. It then outputs some command to drive the car. That command is put into a high level mux which listens on multiple `.../nav_*` channels and selects the highest priority (nav_0). `.../default` is a zero throttle/steering command that is passed whenever your controller is not publishing. The high level mux is sent via the `.../output` topic.
+Let's unpack this, starting from the top. The sensor nodes take the raw input, do some processing, and  convert it to ros friendly topics. The map server converts a `.yaml` map file to a ros topic. Your controller (orange) takes in sensor topics coming in from the each sensors' ros node and the map. It then outputs some command to drive the car. That command is put into the mux which listens on multiple `/mux/ackermann_cmd_mux/input` channels and selects the highest priority. `*/input/default` is a zero throttle/steering command that is passed whenever your controller and teleop are not publishing. 
+Currently, MuSHR does not have a explicit safety controller publishing to the `*/input/safety` topic. The mux priorities can be found `mushr_base/ackermann_cmd_mux/param/mux.yaml` and they are listed in order of priority below.  
+	1. Safety  
+	2. Teleop  
+	3. Navigation  
+	4. Default  
 
-The output of the high level mux gets sent to the low level mux which incorporates teleop and safety control inputs. These controls have a higher priority than your controller's nav messages. Currently, MuSHR does not have a explicit safety controller.
-
-Once the highest priority command is output it goes to the vesc. The vesc smooths the command by clipping the min/max of the steering/throttle so we don't try to turn the wheels 180 degrees for example. It then provides that to the vesc driver which directly controls the motors. Something that can be confusing about this architecture is the /vesc namespace is being used for the mux (see the nodes/topic names) and some vesc code can be found in the mux. Cleanly separating the mux from the vesc is something we have fixed in new iterations of the codebase.
+Once the highest priority command is output it goes to the vesc. The vesc smooths the command by clipping the min/max of the steering/throttle so we don't try to turn the wheels 180 degrees for example. It then provides that to the vesc driver which directly controls the motors.
 
 These components are in the following locations all within `~/catkin_ws/src/mushr/` if you want to check them out for more details:
   
