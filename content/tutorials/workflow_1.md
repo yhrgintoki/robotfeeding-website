@@ -38,24 +38,23 @@ This section will cover an overview of the physical racecar Below is a diagram o
 
 
  ### Software Components
- Now that we have a better understanding of the hardware components let's checkout the software components and see how it all ties together. Let's start by connecting to the car:  
- `ssh nvidia@172.16.77.##`
- Then go to your catkin workspace  
+ Now that we have a better understanding of the hardware components let's checkout the software components and see how it all ties together.
+On the car go to your catkin workspace  
  `cd ~/catkin_ws/`
  and list the directories
  ```
- nvidia@louiseii:~/catkin_ws$ ls
+$ ls
 build  devel  src
  ```
- So what we have is 3 directories. `build` is where code is compiled to. `devel` has setup files for your environment. The most important thing about `devel` is that it contains `setup.**`. 
+ So what we have is 3 directories. `build` is where code is compiled to. `devel` has setup files for your environment. The most important thing about `devel` is that it contains `setup.**` which sets up environment variables and paths amongst other things. 
  ```
  nvidia@louiseii:~/catkin_ws/devel$ ls
 bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
  ```
- So `setup.**` (** because you can run .bashr, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see a error that says that it can't find a package, or that roscore isn't a command, it is because you have not sourced your `setup.**` like so
+ So `setup.**` (** because you can run .bashr, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can't find a package, or that roscore isn't a command, it is because you have not sourced your `setup.**` like so
  `source ~/catkin_ws/devel/setup.bash`
 We usually prevent this by putting the above in your `~/.bashrc` a file that is run everytime you log in. 
-So now if you changed directories to `~/catkin_ws/src/` you will see all the ros packages. When you want to make new ROS software you make a package and you put it here. Why? Because when you run `catkin_make` it looks in this directory for the packages it needs to build. `catkin_make` needs to be run in the `~/catkin_ws/` directory and should be run after every update in code. Although, since python is an interpreted language, we do not have to run `catkin_make` everytime we edit code, but in C++ we would.
+So now if you change directories to `~/catkin_ws/src/` you will see all the ros packages. When you want to make new ROS software you make a package and you put it here. Why? Because when you run `catkin_make` it looks in this directory for the packages it needs to build. `catkin_make` needs to be run in the `~/catkin_ws/` directory and should be run after every update in code. Although, since python is an interpreted language, we do not have to run `catkin_make` everytime we edit code, but in C++ we would.
 
 Alright, now that we have a high level view of our workspace let's checkout the system components. Each package (located in `src`) creates ROS nodes. This tutorial will not dive into the details of how ROS works but this [post](https://robohub.org/ros-101-intro-to-the-robot-operating-system/) gives a good overview with diagrams. Below is a simplified diagram of the system at a high level:
 
@@ -67,16 +66,17 @@ The output of the high level mux gets sent to the low level mux which incorporat
 
 Once the highest priority command is output it goes to the vesc. The vesc smooths the command by clipping the min/max of the steering/throttle so we don't try to turn the wheels 180 degrees for example. It then provides that to the vesc driver which directly controls the motors. Something that can be confusing about this architecture is the /vesc namespace is being used for the mux (see the nodes/topic names) and some vesc code can be found in the mux. Cleanly separating the mux from the vesc is something we have fixed in new iterations of the codebase.
 
-These components are in the following locations if you want to check them out for more details:
-
- - MUX:  `~/catkin_ws/src/racecar_base/ackermann_cmd_mux`
- - VESC: `~/catkin_ws/src/vesc`
-		 - This is a meta-package with multiple sub directories
-		 - `.../vesc_ackermann/` contains vesc odom info (not depicted in diagram)
-		 - `.../vesc_driver/` is the last piece of the diagram connecting the physical vesc with the computer
-		 - `.../vesc_msgs/` describes the VescState message
-		 - `.../ackermann_cmd_mux/src/throttle_interpolator.py` is the throttle interpolator
-- Teleop: `~/catkin_ws/src/racecar_base/racecar/scripts/joy_teleop.py`
-- Lidar: `~/catkin_ws/src/racecar_base/ydlidar`
-- Camera: `~/catkin_ws/src/realsense`
-- Map: `~/catkin_ws/src/racecar_base/racecar/includes/common/map_server.launch`
+These components are in the following locations all within `~/catkin_ws/src/mushr/` if you want to check them out for more details:
+  
+ - MUX:  `mushr_base/ackermann_cmd_mux`  
+ - VESC: `mushr_base/vesc`  
+	- `vesc` describes the metapackage  
+	- `vesc_main` contains configuration files and launch files for running the vesc  
+	- `vesc_ackermann` contains vesc odom info (not depicted in diagram)  
+	- `vesc_driver` is the last piece of the diagram connecting the physical vesc with the computer. It also contains the throttle interpolator.  
+	- `vesc_msgs` describes the VescState message  
+- Teleop: `mushr_base/mushr_base/src/joy_teleop.py`  
+- Lidar: `mushr_hardware/ydlidar`  
+- Button: `mushr_hardware/push_button_utils`  
+- Camera: `mushr_hardware/realsense`  
+- Map: `mushr_base/mushr_base/launch/includes/map_server.launch`  
