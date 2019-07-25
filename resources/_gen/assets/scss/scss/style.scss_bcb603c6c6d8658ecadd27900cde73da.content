@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=DM+Sans:400,700,800|DM+Serif+Display&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Gugi|Saira+Semi+Condensed&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono:300,400&display=swap");
 /*!
  * Bootstrap Grid v4.3.1 (https://getbootstrap.com/)
  * Copyright 2011-2019 The Bootstrap Authors
@@ -12583,10 +12584,19 @@ h3 {
 /*
   * Styles
   */
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300; }
+
+.chroma {
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 300; }
+
 .highlight {
+  border: #36CDC4;
   border-radius: 5px;
   padding: 10px;
-  background: #282a36;
+  background: #1b0c40;
   color: #f8f8f2; }
   .highlight .hll,
   .highlight .s,
@@ -12603,7 +12613,7 @@ h3 {
   .highlight .sr,
   .highlight .s1,
   .highlight .ss {
-    color: #f1fa8c; }
+    color: #F4D676; }
   .highlight .go {
     color: #44475a; }
   .highlight .err,
@@ -12655,11 +12665,9 @@ h3 {
   .highlight .vg,
   .highlight .vi,
   .highlight .vm {
-    color: #8be9fd; }
+    color: #FF1690; }
   .highlight .kd,
-  .highlight .nb,
   .highlight .nl,
-  .highlight .nv,
   .highlight .vc,
   .highlight .vg,
   .highlight .vi,
@@ -12679,7 +12687,7 @@ h3 {
   .highlight .kr,
   .highlight .nt,
   .highlight .ow {
-    color: #ff79c6; }
+    color: #FF1690; }
   .highlight .m,
   .highlight .mb,
   .highlight .mf,
@@ -12687,7 +12695,7 @@ h3 {
   .highlight .mi,
   .highlight .mo,
   .highlight .il {
-    color: #bd93f9; }
+    color: #5C2686; }
   .highlight .gd {
     color: #ff5555; }
 
