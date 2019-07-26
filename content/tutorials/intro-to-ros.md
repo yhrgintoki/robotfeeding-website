@@ -5,7 +5,7 @@ image: "/services/default.png"
 featured: true
 draft: false
 difficulty: Beginner
-duration: 120
+duration: 60
 summary: Learn basic ROS concepts.
 weight: 2
 ---
@@ -16,11 +16,11 @@ weight: 2
 This tutorial will help you get familiar with ROS concepts in reference to the MuSHR software stack. Afterwards you should start to become comfortable with ROS [Publishers and Subscribers](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers).
 
 ### Prerequisites
-In order to successfully complete this tutorial you will need to have completed the [quickstart](/tutorials/quickstart) tutorial.
-1. Must have a working instalation of ROS. (get a link to relevant installation tools. quickstart?)
-+  Must have installed the Simulator
-+  Must have completed the quickstart in sim.
-+  Should have familiarity with `bash` and `python`.
+In order to successfully complete this tutorial you will need: 
+
+1. to have a working instalation of ROS. (get a link to relevant installation tools. quickstart?)
++  to have completed the [quickstart](/tutorials/quickstart) tutorial.
++  (*should*) have familiarity with `bash` and `python`.
 
 
 ### Notes
@@ -143,7 +143,7 @@ $ mkdir launch
 ```
 
 Create the file `launch/path_publisher.launch`, containing:
-```xml
+{{< highlight xml "linenos=table" >}}
 <launch>
     <arg name="control_topic" default="/mux/ackermann_cmd_mux/input/navigation" />
     <arg name="init_pose_topic" default="/initialpose" />
@@ -155,13 +155,65 @@ Create the file `launch/path_publisher.launch`, containing:
         <param name="plan_file" value="$(arg plan_file)" />
     </node>
 </launch>
+{{< / highlight >}}
 
+The launch tags:
+```xml
+<launch> ... </launch>
 ```
+are required preable to wrap any content in your launch files.
+
+`<arg ...>` tags allow you to pass arguments in from the command line (or from other launch files). The `default` attribute specifies a default if no argument is passed in. To change an argument at runtime from the command line use the follwing syntax:
+```bash
+$ roslaunch <package> <launch file> plan_file:='/path/to/plan.txt'
+```
+It is good practice to use argument for state that can be set at runtime so users can choose values that make sense for their applications. It is also good practice to provide sensible defaults. If there is no sensible default, you should omit the default attribute. This will require the user to specify an argument at runtime.
+
+In the third argument (line 4), the default uses a `roslaunch` command to locate a ROS package programatically. In order to keep your code portable, whenever you want to use files located in ROS packages, you can use the `$(find ...)` command to get the location of a ROS package. Then, no matter where the catkin workspace is located, `roslaunch` will populate the argument with the correct path.
+
+The `<node ...>` tags denotes a single ROS node to be launched. ROS nodes are individual processes that run on a host. There are three attributes:
+
+1. `pkg="mushr_ros_intro"`: The package to find the executable for the node.
++  `type="path_publisher.py"`: The entry file for the node. For python, you have to provide the name of the file in the `src` directory.
++  `name="path_publisher"`: The name of the node. This will be used for other nodes to reference your node. For now we will just use the same name as the executable, as this is a uniquely identifying name.
+
+Line 7-9 define parameters for the node. Parameters are accessed programatically by the node (think `rospy.get_param(...)`). This is different than an argument, which is only used by `roslaunch` to pass values into the launch file. It is often convenient to use the same names for arguments and parameters, although this is entirely up to you.
 
 ## Putting it all together
 
-Need to chmod!!!
-Launch the sim, launch rviz, launch this bad boy.
+With python files, we have to change the execution permissions so `roslaunch` can file the correct files to run.
+```bash
+$ chmod a+x src/path_publisher.py
+```
+
+"`chmod`" stands for change mode, "`a+x`" says, "let all users execute this program". **If you don't do this**, you will likely see the following message:
+
+```txt
+ERROR: cannot launch node of type [mushr_ros_intro/path_publisher.py]: can't locate node [path_publisher.py] in package [mushr_ros_intro]
+```
+So make sure to make your files executable!
+
+Once this is done, all that's left to do is launch the file and the simulator. In one terminal run the simulator:
+```bash
+$ roslaunch mushr_sim teleop.launch
+```
+
+In another, start `rviz` (a ROS tool that allows you to visualize simulated environments):
+```bash
+$ rosrun rviz rviz -d $MUSHR/mush_utils/rviz/mushr_ros_intro.rviz
+```
+This will launch rviz with a configuration that has all the right topics visualized.
+
+Now, finally, in another terminal, run the path publisher we created:
+```bash
+$ roslaunch mushr_ros_intro path_publisher.launch
+```
+
+This will start the path publisher immediately, so make sure you are watching the `rviz` screen.
+
+## Wrap-up
+This concluded the introductory tutorial. This tutorial was meant to get you hands on experience with both ROS and the MuSHR environment. This means many of the topics were glossed over in order to make the tutorial managable. If you are interested in diving deeper, have a look at the [ROS tutorials](), and then try the challenge problems below.
+
 
 ## Challenges
 1. create new paths!
