@@ -35,7 +35,7 @@ $ cd ~/catkin_ws/src
 $ catkin_create_pkg mushr_ros_intro std_msgs rospy ackermann_msgs
 ```
 
-Our package depends on `std_msgs`, `rospy`, and `ackermann_msgs`. All new ROS packages should depend on `std_msgs` and `rospy` (if you plan to use C++, then your package should also depend on `roscpp`. We include `ackermann_msgs` because it is the way we send velocities and steering angles to be applied on the car (more on this later in the tutorial).
+Our package depends on `std_msgs`, `rospy`, and `ackermann_msgs`. All new ROS packages should depend on `std_msgs` and `rospy` (if you plan to use C++, then your package should also depend on `roscpp`). We include `ackermann_msgs` because it is the way we send velocities and steering angles to be applied on the car (more on this later in the tutorial).
 
 Now we will build our empty package:
 
@@ -48,7 +48,7 @@ $ roscd mushr_ros_intro
 
 Sourcing `devel/setup.bash` sets up the ROS environment as well as sets up some useful auto-complete rules, easing the traversal of multiple ROS packages. We can see this power with the `roscd` command. Once you use the `roscd` with `mushr_ros_intro` once, you should be able to tab complete the name. *Sometimes, when you encounter packages not being found, all you need it to rerun the source command.*
 
-## Writing the node
+## A simple plan specification
 
 Now, that we have a package, we want create a source file to run our node. We will be creating a simply ROS node to read commands (velocity and steering angle) from a file line by line, and sending them to the simulator to be applied to the simulated car. Each line will denote a command to be applied for a second. The first line is a message to send as the "starting pose" of the car. The input files will be of the form:
 
@@ -60,8 +60,62 @@ Now, that we have a package, we want create a source file to run our node. We wi
 
 The first line is the initial position, of the form `x, y, theta`, where `x` and `y` are the starting coordinates in the map, and `theta` is the initial angle of the car. The following two commands tell the car how fast to go, and at what steering angle. The first to run at `2.0 meters per second`, with a steering angle of `0.09 radians`. The second, to run at `3.0 meters per second`, with a steering angle of `-0.15 radians`. We will be applying each command for 1 second. A positive steering angle corresponds to a left turn and a negative steering angle corresponds to a right turn.
 
-Below the entire code is listed. Each section will be explained in greater detail below the listing. Save this file in `src/path_publisher.py`
+Create a directory `plans` in the package:
+```bash
+$ roscd mushr_ros_intro # if you aren't in the intro package directory
+$ mkdir plans
+```
 
+Here are two plans you can use (add these two files to the directory we just created):
+
+`plans/straight_line.txt`
+```txt
+0,0,0
+2,0.0
+3,0.0
+4,0.0
+5,0.0
+6,0.0
+6,0.0
+6,0.0
+5,0.0
+4,0.0
+3,0.0
+2,0.0
+```
+
+`plans/figure_8.txt`
+```txt
+0,0,0.785
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+2.0,-0.09
+```
+
+Try and figure out what these plans will do (hint: look at the file names :)).
+
+## The code
+
+Below the entire code is listed. Each section will be explained in greater detail below the listing. Save this file in `src/path_publisher.py`
 
 {{< highlight python "linenos=table" >}}
 #!/usr/bin/env python
@@ -131,8 +185,29 @@ if __name__ == "__main__":
     # are subscribers to start publishing see publisher documentation.
     rospy.sleep(1.0)
     run_plan(pub_init_pose, pub_controls, plan)
+{{< / highlight >}}
+
+### Includes
+
+We define functions and modules we need first:
+
+{{< highlight python "linenos=table" >}}
+#!/usr/bin/env python
+
+import rospy
+from ackermann_msgs.msg import AckermannDrive, AckermannDriveStamped
+from geometry_msgs.msg import (
+    Point,
+    Pose,
+    PoseWithCovariance,
+    PoseWithCovarianceStamped,
+    Quaternion,
+)
+from tf.transformations import quaternion_from_euler
 
 {{< / highlight >}}
+
+`rospy` is the main python interface to the ROS API. [Ackermann steering](https://en.wikipedia.org/wiki/Ackermann_steering_geometry) is the geometry of our wheels, the [`ackermann_msgs`](http://wiki.ros.org/ackermann_msgs) defines a common interface to send drive commands. The imports from [`geometry_msgs`](http://wiki.ros.org/geometry_msgs) are for sending the initial pose of the car to the simulator.
 
 ## Writing the launch file
 
@@ -163,7 +238,7 @@ The launch tags:
 ```
 are required preable to wrap any content in your launch files.
 
-`<arg ...>` tags allow you to pass arguments in from the command line (or from other launch files). The `default` attribute specifies a default if no argument is passed in. To change an argument at runtime from the command line use the follwing syntax:
+The `<arg ...>` tags allow you to pass arguments in from the command line (or from other launch files). The `default` attribute specifies a default if no argument is passed in. To change an argument at runtime from the command line use the follwing syntax:
 ```bash
 $ roslaunch <package> <launch file> plan_file:='/path/to/plan.txt'
 ```
@@ -177,7 +252,7 @@ The `<node ...>` tags denotes a single ROS node to be launched. ROS nodes are in
 +  `type="path_publisher.py"`: The entry file for the node. For python, you have to provide the name of the file in the `src` directory.
 +  `name="path_publisher"`: The name of the node. This will be used for other nodes to reference your node. For now we will just use the same name as the executable, as this is a uniquely identifying name.
 
-Line 7-9 define parameters for the node. Parameters are accessed programatically by the node (think `rospy.get_param(...)`). This is different than an argument, which is only used by `roslaunch` to pass values into the launch file. It is often convenient to use the same names for arguments and parameters, although this is entirely up to you.
+Line 7-9 define parameters for the node. Parameters are accessed programatically by the node (think `rospy.get_param(...)`). This is different than an argument, which is only used by `roslaunch` to pass values into the launch file. It is often convenient to use the same names for arguments and parameters, although this is entirely up to you. To define the parameters using arguments passed into the launch file, we use another `roslaunch` macro `$(arg <arg name>)`.
 
 ## Putting it all together
 
@@ -212,32 +287,15 @@ $ roslaunch mushr_ros_intro path_publisher.launch
 This will start the path publisher immediately, so make sure you are watching the `rviz` screen.
 
 ## Wrap-up
-This concluded the introductory tutorial. This tutorial was meant to get you hands on experience with both ROS and the MuSHR environment. This means many of the topics were glossed over in order to make the tutorial managable. If you are interested in diving deeper, have a look at the [ROS tutorials](), and then try the challenge problems below.
+This concluded the introductory tutorial. This tutorial was meant to get you hands on experience with both ROS and the MuSHR environment. This means many of the topics were glossed over in order to make the tutorial managable. If you are interested in diving deeper, have a look at the [ROS tutorials](http://wiki.ros.org/ROS/Tutorials), and then try the challenge problems below.
 
 
 ## Challenges
-1. create new paths!
-+  use a different map!
-+  instead of requiring the enire file path to our plan, take then plan name as an argument, and look in the `paths` directory.
-+  adapt `path_publisher` to take a "duration" parameter as the third comma separated value.
-+  when the plan is done being executed, restart from the the begining until the node is quit
+Below are a few challenges to get you more familiar with the tutorial, MuSHR, and ROS in general:
 
-
-<!--
-Create a new package `mushr_ros_intro`, depending on `roscpp, rospy, std_msgs, ackermann_msgs` (if we don't have `ackeramnn_msgs`, have to get it via `apt install ros-melodic-ackermann-msgs`)
-+   Run the commands
-```
-$ cd ~/catkin_ws
-$ catkin_make
-$ source devel/setup.bash
-$ roscd mushr_ros_intro
-```
-The first three build all the packages and setup the environment. The final command changes the current working directory to the package we just created.
-+  Run commands
-```
-$ mkdir src
-$ mkdir launch
-```
-Explain what these two directories will contain. src source files, launch launch files to run our scripts in the ROS environment.
-+  Create a file `src/path_pub.py`. This script will read a list of commands from a file 
--->
+1. Create new paths! You can can add new paths to `$(find mushr_ros_intro)/paths/`, and pass the path into the launch file as an argument. The console window you opened `rviz` in will show "clicked points", which you can use to find `x`, `y`, and `theta` values for the inital pose.
++  Adapt `path_publisher.py` to take a "duration" parameter as the third comma separated value. This will allow a much richer set of path specifications.
++  We we launched the simulator with a sandbox square map. Use another map in the map directory, or a map you create (more on this in a different tutorial).
++  Update the argument to take a file name instead of a path, this way we won't have to specifiy the entire path (as long as the file exists in `$(find mushr_ros_intro)/paths`.
++  When the plan is done being executed, restart from the the begining until the node is killed.
++  Try and get this to run on the car. How does hard-coding in predefined velocities and steering angles work in the real world?
