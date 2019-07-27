@@ -10,8 +10,8 @@ summary: You will learn the basic components of the car and their associated sof
 weight: 3
 ---
 
-## Introduction
-This tutorial is largely informative and intended to read more like a manual. We will cover all the major software and hardware components of the car. This is part 1 of a 3 part tutorial series focusing on diving deeper into how the car works, common workflows, and troublshooting. 
+### Introduction
+This tutorial is largely informative and intended to read more like a manual. We will cover all the major software and hardware components of the car.
 
 ### Goal 
 To learn about the major software and hardware components of the car.
@@ -53,7 +53,7 @@ build  devel  src
 bin  env.sh  include  lib  setup.bash  setup.sh  _setup_util.py  setup.zsh  share
  {{< / highlight >}}
 
- So `setup.**` (** because you can run .bashr, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can't find a package, or that roscore isn't a command, it is because you have not sourced your `setup.**` like so
+ So `setup.**` (** because you can run .bashrc, .sh, or .zsh and get the same effect) sets up ROS environment variables and paths. So if you ever see an error that says that it can't find a package, or that roscore isn't a command, it is because you have not sourced your `setup.**` like so
  `source ~/catkin_ws/devel/setup.bash`
 We usually prevent this by putting the above in your `~/.bashrc` a file that is run everytime you log in. 
 So now if you change directories to `~/catkin_ws/src/` you will see all the ros packages. When you want to make new ROS software you make a package and you put it here. Why? Because when you run `catkin_make` it looks in this directory for the packages it needs to build. `catkin_make` needs to be run in the `~/catkin_ws/` directory and should be run after every update in code. Although, since python is an interpreted language, we do not have to run `catkin_make` everytime we edit code, but in C++ we would.
