@@ -189,6 +189,8 @@ if __name__ == "__main__":
 
 ### Includes
 
+# NEED TO ADD SOMETHING ABOUT PUBLISHERS AND SUBSCRIBERS BEFORE TALKING ABOUT THE CODE.
+
 We define functions and modules we need first:
 
 {{< highlight python "linenos=table" >}}
@@ -208,6 +210,82 @@ from tf.transformations import quaternion_from_euler
 {{< / highlight >}}
 
 `rospy` is the main python interface to the ROS API. [Ackermann steering](https://en.wikipedia.org/wiki/Ackermann_steering_geometry) is the geometry of our wheels, the [`ackermann_msgs`](http://wiki.ros.org/ackermann_msgs) defines a common interface to send drive commands. The imports from [`geometry_msgs`](http://wiki.ros.org/geometry_msgs) are for sending the initial pose of the car to the simulator.
+
+### Functions
+
+Below is a second of the code shown, a descrition of the code chunk.
+
+{{< highlight python "linenos=table,linenostart=15" >}}
+def run_plan(pub_init_pose, pub_controls, plan):
+    init = plan.pop(0)
+    send_init_pose(pub_init_pose, init)
+
+    for c in plan:
+        send_command(pub_controls, c)
+{{< / highlight >}}
+
+`run_plan` is the main loop of the node. Once the initialization code is complete, the main function calls this. Given a list of strings (the commands), it calls relevant functions to run the car.
+
+{{< highlight python "linenos=table,linenostart=23" >}}
+def send_init_pose(pub_init_pose, init_pose):
+    pose_data = init_pose.split(",")
+    assert len(pose_data) == 3
+
+    x, y, theta = float(pose_data[0]), float(pose_data[1]), float(pose_data[2])
+    q = Quaternion(*quaternion_from_euler(0, 0, theta))
+    point = Point(x=x, y=y)
+    pose = PoseWithCovariance(pose=Pose(position=point, orientation=q))
+    pub_init_pose.publish(PoseWithCovarianceStamped(pose=pose))
+{{< / highlight >}}
+
+`send_init_pose` takes the string representation of the intial pose and converts it into an `x`, `y`, `theta` float representation. Instead of using Euler angles to describe orientations, many ROS packages use the more expressive [Quaternions](https://en.wikipedia.org/wiki/Quaternion). The `quaternion_from_euler` package provided by the `tf.transformations` package supplies us with a utility function to go from Euler angles to quaternions.
+
+`/initialpose` takes a `PoseWithCovarianceStamped` message. In ROS, `Stamped` messages are used when the ordering of data by time is important. Due to randomness in the network, messages can be passed out of order, and in time-critical systems, it's important for the most recently *sent* message to be used. For our setting, this is not as important. `rospy` will populated the timestamp for you, so no need to do it in your code. The `PoseWithCovariance` message needs a `Pose` and `Covariance` matrix. Our simulator doesn't use the covariance matrix, so we don't need to provide it. The `Pose` is composed of an `x`, `y` point and an orientation.
+
+After constructing the message, we publish it to the `init_pose_pub` (more on this publisher later).
+
+{{< highlight python "linenos=table,linenostart=34" >}}
+def send_command(pub_controls, c):
+    cmd = c.split(",")
+    assert len(cmd) == 2
+    v, delta = float(cmd[0]), float(cmd[1])
+
+    dur = rospy.Duration(1.0)
+    rate = rospy.Rate(10)
+    start = rospy.Time.now()
+
+    drive = AckermannDrive(steering_angle=delta, speed=v)
+
+    while rospy.Time.now() - start < dur:
+        pub_controls.publish(AckermannDriveStamped(drive=drive))
+        rate.sleep()
+{{< / highlight >}}
+
+`send_command` is very similar to `send_init_pose`, with a few differences. First, we define a one second duration (Line 39). ROS durations are a convient way to make durations that can be compared and combined using math operators.
+
+The next new feature introduced is a rate (Line 40). This limits how often loops run, conserving cycles when they are not needed. The rate we defined runs a frequency of 10 Hertz; our loop can run at max 10 times a second. This is plenty fast for our application. This is neccessary as if we only send one command per second the car will "lurch" and then wait a second for the next command.
+
+{{< highlight python "linenos=table,linenostart=50" >}}
+if __name__ == "__main__":
+    rospy.init_node("path_publisher", anonymous=True, disable_signals=True)
+
+    control_topic = rospy.get_param("~control_topic", "/mux/ackermann_cmd_mux/input/navigation")
+    pub_controls = rospy.Publisher(control_topic, AckermannDriveStamped, queue_size=1)
+
+    init_pose_topic = rospy.get_param("~init_pose_topic", "/initialpose")
+    pub_init_pose = rospy.Publisher(init_pose_topic, PoseWithCovarianceStamped, queue_size=1)
+
+    plan_file = rospy.get_param("~plan_file")
+
+    with open(plan_file) as f:
+        plan = f.readlines()
+
+    # Publishers sometimes need a warm-up time, you can also wait until there
+    # are subscribers to start publishing see publisher documentation.
+    rospy.sleep(1.0)
+    run_plan(pub_init_pose, pub_controls, plan)
+{{< / highlight >}}
+
 
 ## Writing the launch file
 
