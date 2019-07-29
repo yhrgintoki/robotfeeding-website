@@ -168,7 +168,7 @@ def send_command(pub_controls, c):
 
 
 if __name__ == "__main__":
-    rospy.init_node("path_publisher", anonymous=True, disable_signals=True)
+    rospy.init_node("path_publisher")
 
     control_topic = rospy.get_param("~control_topic", "/mux/ackermann_cmd_mux/input/navigation")
     pub_controls = rospy.Publisher(control_topic, AckermannDriveStamped, queue_size=1)
@@ -187,9 +187,11 @@ if __name__ == "__main__":
     run_plan(pub_init_pose, pub_controls, plan)
 {{< / highlight >}}
 
-### Includes
+## The code, explained
 
-# NEED TO ADD SOMETHING ABOUT PUBLISHERS AND SUBSCRIBERS BEFORE TALKING ABOUT THE CODE.
+Below is a broken down explanation of the code below. The code blocks are explained out of order in the large code block to explain the concepts in a more logical way.
+
+### Includes
 
 We define functions and modules we need first:
 
@@ -210,6 +212,38 @@ from tf.transformations import quaternion_from_euler
 {{< / highlight >}}
 
 `rospy` is the main python interface to the ROS API. [Ackermann steering](https://en.wikipedia.org/wiki/Ackermann_steering_geometry) is the geometry of our wheels, the [`ackermann_msgs`](http://wiki.ros.org/ackermann_msgs) defines a common interface to send drive commands. The imports from [`geometry_msgs`](http://wiki.ros.org/geometry_msgs) are for sending the initial pose of the car to the simulator.
+
+
+### Entrypoint
+
+In python, the if statement `if __name__ == "__main__"` is a guard agains running this code if the file is inclued.
+
+{{< highlight python "linenos=table,linenostart=50" >}}
+if __name__ == "__main__":
+    rospy.init_node("path_publisher")
+
+    control_topic = rospy.get_param("~control_topic", "/mux/ackermann_cmd_mux/input/navigation")
+    pub_controls = rospy.Publisher(control_topic, AckermannDriveStamped, queue_size=1)
+
+    init_pose_topic = rospy.get_param("~init_pose_topic", "/initialpose")
+    pub_init_pose = rospy.Publisher(init_pose_topic, PoseWithCovarianceStamped, queue_size=1)
+
+    plan_file = rospy.get_param("~plan_file")
+
+    with open(plan_file) as f:
+        plan = f.readlines()
+
+    # Publishers sometimes need a warm-up time, you can also wait until there
+    # are subscribers to start publishing see publisher documentation.
+    rospy.sleep(1.0)
+    run_plan(pub_init_pose, pub_controls, plan)
+{{< / highlight >}}
+
+Line 51 has the code for initializing your node. Every node must do this to register itself into the ROS environment. You must pass a name for the node (a good practice is to use the same name as the script, but it's up to you). The next lines (L53-59) setup communication streams for this node to talk to others. `rospy.get_param(...)` talks to the [Parameter server](http://wiki.ros.org/rospy/Overview/Parameter%20Server) to get parameters we define at runtime (more below in 'Writing the launch file'). The first argument is the name of a parameter. The second is a default value. If no default is provided, the node won't start unless the parameter is defined. You should opt to provide sensible defaults when possible.
+
+The first argument has a peculiar form `~parameter_name`. There are a few ways ROS resolves names. For now, this is out of scope. If you name your parameters like this and define the parameters the same in the launch file, you should be ok. If you need more information on ROS names, see [ROS Names](http://wiki.ros.org/Names)
+
+[Publishers](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers) are part of the ROS message passing paradigm. `rospy.Publisher(...)` takes three arguments. The first is the topic name. The second is the message type. There are a wide range of predefined messages you can use, but you do have the ability to create new ROS messages if needed, although that is beyond the scope of this tutorial. The third is the queue size. This defines how many messages to buffer when waiting to send (or recieve) messages. In general, a large queue size will be useful when many messages will be sent. In our case, we are infrequently sending messages, so a queue size of one is okay.
 
 ### Functions
 
@@ -264,27 +298,6 @@ def send_command(pub_controls, c):
 `send_command` is very similar to `send_init_pose`, with a few differences. First, we define a one second duration (Line 39). ROS durations are a convient way to make durations that can be compared and combined using math operators.
 
 The next new feature introduced is a rate (Line 40). This limits how often loops run, conserving cycles when they are not needed. The rate we defined runs a frequency of 10 Hertz; our loop can run at max 10 times a second. This is plenty fast for our application. This is neccessary as if we only send one command per second the car will "lurch" and then wait a second for the next command.
-
-{{< highlight python "linenos=table,linenostart=50" >}}
-if __name__ == "__main__":
-    rospy.init_node("path_publisher", anonymous=True, disable_signals=True)
-
-    control_topic = rospy.get_param("~control_topic", "/mux/ackermann_cmd_mux/input/navigation")
-    pub_controls = rospy.Publisher(control_topic, AckermannDriveStamped, queue_size=1)
-
-    init_pose_topic = rospy.get_param("~init_pose_topic", "/initialpose")
-    pub_init_pose = rospy.Publisher(init_pose_topic, PoseWithCovarianceStamped, queue_size=1)
-
-    plan_file = rospy.get_param("~plan_file")
-
-    with open(plan_file) as f:
-        plan = f.readlines()
-
-    # Publishers sometimes need a warm-up time, you can also wait until there
-    # are subscribers to start publishing see publisher documentation.
-    rospy.sleep(1.0)
-    run_plan(pub_init_pose, pub_controls, plan)
-{{< / highlight >}}
 
 
 ## Writing the launch file
