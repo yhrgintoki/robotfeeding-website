@@ -2,6 +2,7 @@
 title: "Workflow & Troubleshooting"
 date: 2018-11-28T15:14:54+10:00
 image: "/services/default.png"
+active: true
 featured: true
 draft: false
 duration: 30
@@ -23,7 +24,7 @@ There are two common workflows, in sim and in the real world. Sim is easier beca
 To work in sim you need to have either have the docker image working or a ubuntu machine with ROS melodic that has mushr_sim, mushr, mushr_base, vesc and rviz installed. Docker container is definetly easier to setup, but if you don't like working in a container we recommend the latter. Eac has a slightly different workflow coverd below.
 
 ##### Docker Container
-If you have setup the docker container through the [quickstart](https://prl-mushr.github.io/tutorials/quickstart/) tutorial then to get the sim running simply enter `mushr_sim/docker` and run:
+If you have setup the docker container through the [quickstart](/tutorials/quickstart/) tutorial then to get the sim running simply enter `mushr_sim/docker` and run:
 {{< highlight bash >}}
 $ docker compose up -d
 {{< / highlight >}}
