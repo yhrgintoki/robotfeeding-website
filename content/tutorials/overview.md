@@ -48,7 +48,7 @@ On the car go to your catkin workspace
 
  and list the directories
 
- {{< highlight bash >}}
+{{< highlight bash >}}
 $ ls
 build  devel  src
 {{< / highlight >}}
