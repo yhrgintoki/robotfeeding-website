@@ -99,15 +99,15 @@ Real world has a similar process to simulation, but with added hardware setup an
 
 The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the vesc will blink 3 times when powered. The below image show batteries in a charged state. When charging there should be a solid red light(hold start/stop to toggle). The solid green light indicates full. 
  
-<img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/20190508_102753.jpg" width=300px></div>
+{{< figure src="/tutorials/workflow/battery.jpg" caption="Batteries in a charged state. A solid red light indicates charging; solid green light indicates full." width="600">}}
 
 Once you have comfirmed your batteries are charged, you have eliminated many of the most common issues. The next thing to do is to plug in the batteries starting with the vesc. If you want to start right into teleoperation then hold the front button till you see the lidar spin (approximately 1 minute). Once you have plugged both batteries in, you should see the vesc and the jetson nano light up. If the nano does not light up (and the battery is charged) check to make sure the barrel connector is plugged in.
 
-<img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/20190508_102503.jpg" width=300px>
+{{< figure src="/tutorials/workflow/nano_light.jpg" caption="Green light on nano indicates the computer is powered and on" width="600">}}
 
 You should also see a blue Vesc light shown below.
 
-<img src="https://gitlab.cs.washington.edu/cse490r/19sp/mushr_workflow_tutorial/raw/master/20190508_102427.jpg" width=500px>
+{{< figure src="/tutorials/workflow/vesc_light.jpg" caption="Blue light on vesc indicates vesc is on. The wheels will also straighten" width="600">}}
 
 Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to Robot AP and 
 
