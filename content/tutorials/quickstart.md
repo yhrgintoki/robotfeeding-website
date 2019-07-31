@@ -122,4 +122,29 @@ This gets you a bash shell inside the container. You will find all the sim code 
 $ docker exec -it -u 0 CONTAINER-ID bash
 {{< / highlight >}}
 
+You can also separate launching the container from launching the sim. To do that edit line 16 in `docker-compose.yml` to `entrypoint: bash`. Then run 
+
+{{< highlight bash >}}
+$ docker-compose build
+$ docker-compose up -d
+{{< / highlight >}}
+
+Then enter the container using the commands mentioned previously and source your workspace.
+
+{{< highlight bash >}}
+$ . ~/.bashrc
+{{< / highlight >}}
+
+ You can start the sim with
+
+{{< highlight bash >}}
+$ roslaunch mushr_sim teleop.launch
+{{< / highlight >}}
+
+And start rviz with
+
+{{< highlight bash >}}
+$ rviz
+{{< / highlight >}}
+
 To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)
