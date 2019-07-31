@@ -23,7 +23,7 @@ A car that you can connect to if you wish to follow along.
 ### Hardware Overview
 This section will cover an overview of the physical racecar Below is a diagram of the physical racecar components.
 
-{{< figure src="/tutorials/overview/hardware_overview.jpg" caption="This diagram shows all the components and their data/power connections" width="600">}}
+{{< figure src="/tutorials/overview/hardware_overview.png" caption="This diagram shows all the components and their data/power connections" width="600">}}
 
 * __Chasis (Redcat Racing Blackout SC 1/10) :__ The car chasis. It has adjustable suspension and non-flat tires. It is also to mount things too.
 * __Computer (Jetson Nano):__ This the computer that runs the software on the car. You can connect to the computer in 3 ways primarily: ssh through local network to static IP, connecting to car's network and using ssh, or plugging a monitor, keyboard, and mouse into the computer directly. 
@@ -61,7 +61,7 @@ So now if you change directories to `~/catkin_ws/src/` you will see all the ros 
 
 Alright, now that we have a high level view of our workspace let's checkout the system components. Each package (located in `src`) creates ROS nodes. This tutorial will not dive into the details of how ROS works but this [post](https://robohub.org/ros-101-intro-to-the-robot-operating-system/) gives a good overview with diagrams. Below is a simplified diagram of the system at a high level:
 
-{{< figure src="/tutorials/overview/software_overview" caption="The full mushr stack with each rosnode as a box and each line as a rostopic" width="600">}}
+{{< figure src="/tutorials/overview/software_overview.png" caption="The full mushr stack with each rosnode as a box and each line as a rostopic" width="600">}}
 
 Let's unpack this, starting from the top. The sensor nodes take the raw input, do some processing, and  convert it to ros friendly topics. The map server converts a `.yaml` map file to a ros topic. Your controller (orange) takes in sensor topics coming in from the each sensors' ros node and the map. It then outputs some command to drive the car. That command is put into the mux which listens on multiple `/mux/ackermann_cmd_mux/input` channels and selects the highest priority. `*/input/default` is a zero throttle/steering command that is passed whenever your controller and teleop are not publishing. 
 Currently, MuSHR does not have a explicit safety controller publishing to the `*/input/safety` topic. The mux priorities can be found `mushr_base/ackermann_cmd_mux/param/mux.yaml` and they are listed in order of priority below.  
