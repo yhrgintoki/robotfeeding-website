@@ -1,5 +1,5 @@
 ---
-title: "Basic Autonomous Navigation"
+title: "Autonomous Navigation"
 date: 2018-11-28T15:14:54+10:00
 image: "/services/default.png"
 featured: true
