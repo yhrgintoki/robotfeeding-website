@@ -12730,7 +12730,7 @@ code {
   margin-bottom: 10px;
   color: #686868; }
 
-.page-tutorials-single .content h4 {
+.page-tutorials-single .content h4:first-of-type {
   margin-bottom: 40px; }
 
 .page-tutorials-single strong {
