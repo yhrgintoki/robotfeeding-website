@@ -7,7 +7,7 @@ draft: false
 active: true
 duration: 30 
 difficulty: Beginner 
-summary: Get started with the mushr platform on your machine! 
+summary: Run the MuSHR platform on your machine! 
 weight: 1
 ---
 
@@ -21,7 +21,7 @@ To get the simulator running on your machine so that you can begin hacking immed
 A linux machine (OSX and Windows support coming soon!). If you don't run linux natively then get a linux VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
 
 ## Setup
-First we need to make sure you have a few dependencies installed. To make it easier, we have created a docker container with the mushr stack and sim running inside it. Here is what you need:
+First we need to make sure you have a few dependencies installed. To make it easier, we have created a Docker container with the mushr stack and sim running inside it. Here is what you need:
 
 - [docker](https://docs.docker.com/v17.12/install/)
 - [docker-compose](https://docs.docker.com/compose/install/)
@@ -36,13 +36,13 @@ $ sudo apt install git-all
 Once you have these, you're good to go!
 
 ## Install Sim
-Now that we have the dependencies, lets get started! Note, we are assuming you have setup docker to not need sudo with every call. You can set that up by following [these](https://docs.docker.com/install/linux/linux-postinstall/) steps. Now, open a terminal (CTRL + ALT + T) check if docker is running
+Now that we have the dependencies, lets get started! Note, we are assuming you have set up Docker to not need sudo with every call. You can set that up by following [these](https://docs.docker.com/install/linux/linux-postinstall/) steps. Now, open a terminal (CTRL + ALT + T) check if Docker is running:
 
 {{< highlight bash >}}
 $ docker run hello-world
 {{< / highlight >}}
 
-If you get a error then run
+If you get a error then run:
 
 {{< highlight bash >}}
 $ systemctl start docker
@@ -54,7 +54,7 @@ Let's clone the sim repo:
 $ git clone https://github.com/prl-mushr/mushr_sim && cd mushr_sim/docker/
 {{< / highlight >}}
 
-Alright, so you are in the docker directory of the sim. There are two configuration changes we need to make. First let's change the uid/gid of your docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command
+Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let's change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command
 
 {{< highlight bash >}}
 $ id -u $USER
@@ -84,7 +84,7 @@ The default is `nvidia-390`. If your's is not that then open `.env` and change t
 $ gedit .env
 {{< / highlight >}}
 
-That's it for setup! We're done the hard part :)
+That's it for setting up! We're done the hard part :)
 
 ## Run Sim
 To start the sim run

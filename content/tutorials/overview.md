@@ -8,7 +8,7 @@ active: true
 duration: 15
 difficulty: Intermediate
 summary: Basic components of the car and their associated software counterparts.
-weight: 1
+weight: 2
 ---
 
 ### Introduction
