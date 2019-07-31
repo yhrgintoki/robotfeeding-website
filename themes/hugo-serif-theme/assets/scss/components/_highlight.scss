@@ -42,6 +42,12 @@ code {
     font-weight: 300;
 }
 
+code, .highlight {
+   overflow: auto;
+   word-wrap: normal;
+   white-space: pre;
+}
+
 .chroma {
     font-family: 'Roboto Mono', monospace;
     font-weight: 300;
@@ -53,7 +59,7 @@ code {
    padding: 10px;
    background: $dt-gray-dark;
    color: $dt-gray-light;
- 
+
    .hll,
    .s,
    .sa,
