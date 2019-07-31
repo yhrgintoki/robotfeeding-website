@@ -4,7 +4,7 @@ date: 2018-02-22T17:01:34+07:00
 layout: contact
 ---
 
-The MuSHR team is located in the [Paul G. Allen School for Computer Science and Engineering](https://www.cs.washington.edu/about_us/) at the [University of Washington](https://www.washington.edu/) in Seattle, Washington. 
+The MuSHR team is located in the [Paul G. Allen School for Computer Science & Engineering](https://www.cs.washington.edu/about_us/) at the [University of Washington](https://www.washington.edu/) in Seattle, Washington. 
 
 We want to hear from you! Get in touch about:
 
