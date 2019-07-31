@@ -247,11 +247,11 @@ Line 51 contains the code for initializing your node. Every node must do this to
 
 The first argument has a peculiar form `~parameter_name`. There are a few ways ROS resolves names. For now, this is out of scope for this tutorial. If you name your parameters like this and define the parameters the same in the launch file, you should be ok (more on launch files in the next section). If you need more information on ROS names, see [ROS Names](http://wiki.ros.org/Names)
 
-[Publishers](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers) are part of the ROS message passing paradigm. `rospy.Publisher(...)` takes three arguments. The first is the topic name. The second is the message type. There are a wide range of predefined messages you can use, and you also have the ability to [define custom ROS messages](http://wiki.ros.org/ROS/Tutorials/DefiningCustomMessages) if needed (although that is not needed in this tutorial). The third is the queue size. This defines how many messages to buffer when waiting to send (or recieve) messages. In general, a large queue size will be useful when many messages will be sent. In our case, we are infrequently sending messages, so a queue size of one is okay.
+[Publishers](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers) are part of the ROS message passing paradigm. `rospy.Publisher(...)` takes three arguments. The first is the topic name. The second is the message type. There are a wide range of predefined messages you can use, and you also have the ability to [define custom ROS messages](http://wiki.ros.org/ROS/Tutorials/DefiningCustomMessages) if needed (although that is not needed in this tutorial). The third is the queue size. This defines how many messages to buffer when waiting to send (or recieve) messages. In general, a large queue size will be useful when many messages will be sent. In our case, we are infrequently sending messages, so a queue size of one is okay. [^4]
 
 ### Functions
 
-Below is the next part of the code shown, a descrition of the code chunk. (NOTE: What does "descrition" mean / what are you tryna communicate here?)
+Below each function is briefly explained.
 
 {{< highlight python "linenos=table,linenostart=15" >}}
 def run_plan(pub_init_pose, pub_controls, plan):
@@ -280,7 +280,7 @@ def send_init_pose(pub_init_pose, init_pose):
 
 `/initialpose` takes a `PoseWithCovarianceStamped` message. In ROS, `Stamped` messages are used when the ordering of data by time is important. Due to randomness in the network, messages can be passed out of order, and in time-critical systems, it's important for the most recently *sent* message to be used. For our setting, this is not as important. `rospy` will populate the timestamp for you, so no need to do it in your code. Typically, the `PoseWithCovariance` message requires a `Pose` and `Covariance` matrix. However our simulator doesn't use the covariance matrix, so we don't need to provide it. The `Pose` is composed of an `x`, `y` point and an orientation (which must be in quaternion form).
 
-After constructing the message, we publish it to the `init_pose_pub` (more on this publisher later). (NOTE: `init_pose_pub` is not referenced anywhere else in the doc...)
+After constructing the message, we publish it to the `pub_init_pose`, signalling to the simulator where to place the car.
 
 {{< highlight python "linenos=table,linenostart=34" >}}
 def send_command(pub_controls, c):
@@ -299,7 +299,7 @@ def send_command(pub_controls, c):
         rate.sleep()
 {{< / highlight >}}
 
-`send_command` is very similar to `send_init_pose`, with a few differences. First, we define a one second duration (Line 39). ROS durations are a convient way to make durations that can be compared and combined using math operators.
+`send_command` is very similar to `send_init_pose`, with a few differences. First, we define a one second duration (Line 39). ROS durations are a convient way to make durations that can be compared and combined using math operators (L45). Subtrating the current time and the `start` time yields a comparable duration. Once a second as elapsed, the loop will terminate.
 
 The next new feature introduced is a rate (Line 40). This limits how often loops run, conserving cycles when they are not needed. The rate we defined runs a frequency of 10 Hertz; our loop can run at max 10 times a second. This is plenty fast for our application. This is neccessary as if we only send one command per second the car will "lurch" and then wait a second for the next command.
 
@@ -402,3 +402,5 @@ Below are a few challenges to get you more familiar with the tutorial, MuSHR, an
 [^2]: In other words, you can press the `tab` key to auto-complete the package name
 
 [^3]: A node is an executable that uses ROS to communicate with other nodes. See [this article](http://wiki.ros.org/Nodes) for more details.
+
+[^4]: [Choosing a good queue size](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size)
