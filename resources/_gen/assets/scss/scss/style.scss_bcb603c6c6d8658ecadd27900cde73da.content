@@ -12588,6 +12588,11 @@ code {
   font-family: 'Roboto Mono', monospace;
   font-weight: 300; }
 
+code, .highlight {
+  overflow: auto;
+  word-wrap: normal;
+  white-space: pre; }
+
 .chroma {
   font-family: 'Roboto Mono', monospace;
   font-weight: 300; }
@@ -12717,6 +12722,13 @@ code {
       margin: 0; }
   .team-summary .team-content {
     flex: 1 0 100%; }
+
+.page-tutorials-single sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+  top: -.5em; }
 
 .page-tutorials-single h1.title {
   font-size: 3rem;

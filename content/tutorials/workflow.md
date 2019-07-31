@@ -7,7 +7,7 @@ featured: true
 draft: false
 duration: 30
 difficulty: Beginner 
-summary: This tutorial will cover techniques for devloping and troubleshooting with the cars.
+summary: Techniques for devloping and troubleshooting with the cars.
 weight: 3
 ---
 

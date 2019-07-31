@@ -7,7 +7,7 @@ draft: false
 active: true
 difficulty: Beginner
 duration: 60
-summary: Learn basic ROS concepts.
+summary: Fundamental ROS concepts using the MuSHR system.
 weight: 2
 ---
 
