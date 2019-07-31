@@ -104,15 +104,15 @@ If you need to restart or edit your code then make sure to reset the rviz topics
 #### Real World Workflow
 Operating the robot in the real world has a similar process to that of simulation, but with added hardware setup and connecting remotely. The key to a solid workflow is to make sure to separate hardware and software failures clearly which is something that we will discuss more in the next section.
 
-The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the VESC will blink 3 times when connected and powered. The below image show batteries in a charged state. When charging there should be a solid red light(hold start/stop to toggle). The solid green light indicates full. 
+The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the VESC will blink 3 times when connected and powered. The below image show batteries in a charged state. When charging there should be a solid red light (hold start/stop to toggle). The solid green light indicates full. 
 
 {{< figure src="/tutorials/workflow/battery.jpg" caption="Batteries in a charged state. A solid red light indicates charging; solid green light indicates full." width="600">}}
 
 Once you have comfirmed that your batteries are charged, you have eliminated many of the most common issues. The next thing to do is to plug in the batteries starting with the VESC. If you want to start right into teleoperation then hold the front button until you see the lidar spin (approximately 1 minute). Once you have plugged both batteries in, you should see the vesc and the Jetson Nano light up. If the Nano does not light up (and the battery is charged) check to make sure the barrel connector is plugged in.
 
-{{< figure src="/tutorials/workflow/light.jpg" caption="The Jetson Nano light when plugged in and receiving charge from batteries." width="600">}}
+{{< figure src="/tutorials/workflow/nano_light.jpg" caption="Green light on nano indicates the computer is powered and on." width="600">}}
 
-{{< figure src="/tutorials/workflow/vesc-light.jpg" caption="The blue Vesc light when connected to a charged battery." width="600">}}
+{{< figure src="/tutorials/workflow/vesc_light.jpg" caption="Blue light on vesc indicates vesc is on. The wheels will also straighten." width="600">}}
 
 Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to Robot AP and (TODO: should this say IP?, what's the end of the sentence?)
 
