@@ -4,6 +4,7 @@ date: 2018-11-28T15:14:54+10:00
 image: "/services/default.png"
 featured: true
 draft: false
+active: true
 difficulty: Beginner
 duration: 60
 summary: Learn basic ROS concepts.
