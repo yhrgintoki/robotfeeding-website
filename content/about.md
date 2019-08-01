@@ -44,6 +44,6 @@ Register for MuSHR updates [here](/).
 <img src="/imgs/hri-us-logo-2018-hd.png" style="padding-left: 25px; height: 100px;">
 <br>
 <br>
-<img src="/imgs/Allen-School-purple-RGB-lg.png" style="height: 70px;">
+<img src="/imgs/Allen-School-purple-RGB-lg.png" style="max-height: 70px;">
 
 
