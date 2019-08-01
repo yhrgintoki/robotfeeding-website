@@ -23,3 +23,18 @@
     flex: 1 0 100%;
   }
 }
+
+.inline-svg {
+  display: inline-block;
+  height: 1.35rem;
+  width: 1.35rem;
+  top: 0.15rem;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 3px;
+  text-decoration: none;
+}
+
+.icon {
+	text-decoration: none;
+}

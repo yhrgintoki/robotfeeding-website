@@ -5,7 +5,9 @@ draft: false
 image: 'team/siddh.jpg'
 jobtitle: 'Boeing Endowed Professor'
 email: 'siddh@cs.washington.edu'
+twitter: siddhss5
 websiteurl: 'https://goodrobot.ai/'
+github: siddhss5
 weight: 1
 ---
 
