@@ -5,7 +5,7 @@ draft: false
 image: 'team/sachoudhury.png'
 jobtitle: 'Postdoctoral Fellow'
 email: 'sanjibac@cs.uw.edu'
-websiteurl: 'https://www.sanjibanchoudhury.com'
+websiteurl: 'http://www.sanjibanchoudhury.com'
 weight: 2
 ---
 
