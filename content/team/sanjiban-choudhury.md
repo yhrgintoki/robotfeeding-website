@@ -2,10 +2,10 @@
 title: 'Sanjiban Choudhury'
 date: 2018-11-19T10:47:58+10:00
 draft: false
-image: 'team/sachoudhury.jpg'
+image: 'team/sachoudhury.png'
 jobtitle: 'Postdoctoral Fellow'
 email: 'sanjibac@cs.uw.edu'
-linkedinurl: 'www.sanjibanchoudhury.com'
+websiteurl: 'http://www.sanjibanchoudhury.com'
 weight: 2
 ---
 

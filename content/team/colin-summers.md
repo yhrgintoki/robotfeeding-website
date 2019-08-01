@@ -4,11 +4,11 @@ date: 2018-11-19T10:47:58+10:00
 draft: false
 image: 'team/csummers.jpg'
 jobtitle: 'Codemaster'
-email: 'michajoh@cs.washington.edu'
-linkedinurl: 'https://www.linkedin.com/'
+email: 'colinxs@cs.washington.edu'
+websiteurl: 'https://colinxsummers.com/'
 weight: 7
 ---
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+Colin Summers is a BS/MS student in the Paul G. Allen School of Computer Science & Engineering and is advised by Prof. Siddhartha Srinivasa. He is primarily interested in algorithms that enable intelligent machines to acquire general notions of intelligence in order to robustly solve complex and temporally-extended tasks in real-world settings.
 
-Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Colin works to design and implement performant control and perception algorithms that enable realtime autonomous operation of MuSHR. He also helps wrangle the growing MuSHR software ecosystem.

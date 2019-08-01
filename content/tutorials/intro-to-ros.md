@@ -7,11 +7,13 @@ draft: false
 active: true
 difficulty: Beginner
 duration: 60
-summary: Fundamental ROS concepts using MuSHR.
+summary: Fundamental Robot Operating System (ROS) concepts using MuSHR.
 weight: 2
 ---
 
 ## Introduction
+
+The [Robot Operating System (ROS)](https://en.wikipedia.org/wiki/Robot_Operating_System) is a robotics middleware framework (not actually an operating system) that is commonly used across robotics platforms. MuSHR uses ROS for several utilities, the most significant of which is communication between "nodes" which each contain seperate logical roles. To learn more about these nodes, see the [MuSHR System Overview](/tutorials/overview). Gaining a grasp of fundamental ROS concepts will help you make the most of the MuSHR system, and the [many other robots](https://robots.ros.org/) which use ROS. 
 
 ### Goal
 This tutorial will help you get familiar with ROS concepts in reference to the MuSHR software stack. Upon completion, you will be familiar with ROS [Publishers and Subscribers](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers).
@@ -400,8 +402,8 @@ Below are a few challenges to get you more familiar with the tutorial, MuSHR, an
 
 [^1]: That is, calling [`source`](https://en.wikipedia.org/wiki/Source_(command)) on a file.
 
-[^2]: In other words, you can press the `tab` key to auto-complete the package name
+[^2]: In other words, you can press the `tab` key to auto-complete the package name.
 
 [^3]: A node is an executable that uses ROS to communicate with other nodes. See [this article](http://wiki.ros.org/Nodes) for more details.
 
-[^4]: [Choosing a good queue size](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size)
+[^4]: [Choosing a good queue size.](http://wiki.ros.org/rospy/Overview/Publishers%20and%20Subscribers#Choosing_a_good_queue_size)

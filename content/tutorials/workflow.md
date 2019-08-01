@@ -17,10 +17,20 @@ To learn common workflows with the software stack to speed up development on you
 ### Requirements
 You can choose to use this tutorial as a reference or to follow along on your car to see for yourself how the various tools work.
 
-### Common Workflows
+### Table of Contents
+This tutorial consists of four core parts:
+
+1. [Common Workflows](#common-workflows) introduces you to effective strategies for setting up and using the car in simulation and the real world for the purposes of developing new algorithms and collecting data.
+2. [Troubleshooting](#troubleshooting) helps speed up the diagnostic process for when things go wrong. We give you a series of questions to help narrow down your issue.
+3. [Debugging Tools](#debugging-tools) provides a summarized reference for ROS diagnostic tools we can't do without. We share the commands we frequent and their functions.
+4. [Common Issues & How to Fix](#common-issues-how-to-fix) contains issues you're sure to encounter and proposals for fixing them.
+
+_See something that's missing or have a suggestion for improving this guide? [Contact us](/contact/) with your suggestion!_
+
+## Common Workflows
 There are two common workflows, in sim and in the real world. Sim is easier because you do not need to connect and communicate with the car over the WiFi. We recommend getting comfortable working in sim before trying to test on the car.
 
-#### Simulation Workflow
+### Simulation Workflow
 To work in sim you need to have either have the docker image working or an Ubuntu machine with ROS melodic that has `mushr_sim`, `mushr`, `mushr_base`, `vesc` and `rviz` installed. The Docker container is straight-forward to set up, but if you don't like working in a container we recommend the latter. Each has a slightly different workflow covered below.
 
 ##### Docker Container
@@ -101,7 +111,7 @@ Subscribe to all the necessary topics (and save a .rviz file!). All topics can b
 
 If you need to restart or edit your code then make sure to reset the rviz topics so you get the most up to date data. This can be done by pressing the `reset` button in the bottom left corner. When finished with your session, press `q` in the gray box. 
 
-#### Real World Workflow
+### Real World Workflow
 Operating the robot in the real world has a similar process to that of simulation, but with added hardware setup and connecting remotely. The key to a solid workflow is to make sure to separate hardware and software failures clearly which is something that we will discuss more in the next section.
 
 The first step is to make sure both batteries have sufficient charge (not dead at least). When the batteries are charged the VESC will blink 3 times when connected and powered. The below image show batteries in a charged state. When charging there should be a solid red light (hold start/stop to toggle). The solid green light indicates full. 
