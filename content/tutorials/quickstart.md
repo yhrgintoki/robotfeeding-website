@@ -107,8 +107,7 @@ $ docker ps
 Give the car an initial position by clicking `2D Pose Estimate` in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
 
 ## Going Further
-(TODO: explain why the user needs to teletype into the docker container in order to program code for the MuSHR system. This second part shows you can connect to the container, but doesn't actually have you writing any code. Why not? What's the main takeaway from this section? I think we should say something like: you will need to use these commands frequently to do our other tutorials if you continue to use the container--as all code editing will happen within the context of a docker container.)
-Driving the car around is fun, but what if you want to program it? While everything else is running, in a new terminal run:
+Driving the car around is fun, but what if you want to program it? In order to do that you must enter the container and write code like you would on a normal ROS linux system. The remaining tutorials that use the simulator assume you are in the container. To enter the container while everything else is running, run:
 
 {{< highlight bash >}}
 $ docker exec -it CONTAINER-ID bash
@@ -126,7 +125,8 @@ This gets you a bash shell inside the container. You will find all the sim code 
 $ docker exec -it -u 0 CONTAINER-ID bash
 {{< / highlight >}}
 
-(TODO: this sentence should have more context: what are the cases where people would want this?)
+By being root you can install additional software that you may want.
+
 You can also separate launching the container from launching the sim. To do that edit line 16 in `docker-compose.yml` to `entrypoint: bash`. Then run: 
 
 {{< highlight bash >}}
@@ -134,8 +134,13 @@ $ docker-compose build
 $ docker-compose up -d
 {{< / highlight >}}
 
-(TODO: i would probably show the commands explicitly again. are they supposed to ssh in as root or not?)
-Then enter the container using the commands mentioned previously and source your workspace.
+Then enter the container
+
+{{< highlight bash >}}
+$ docker exec -it CONTAINER-ID bash
+{{< / highlight >}}
+
+And source your workspace.
 
 {{< highlight bash >}}
 $ . ~/.bashrc
