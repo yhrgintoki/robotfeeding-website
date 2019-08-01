@@ -11,7 +11,8 @@ summary: Run the MuSHR platform on your machine!
 weight: 1
 ---
 
-{{< figure src="/tutorials/quickstart/quickstart_header.gif" width="800">}}
+{{< figure src="/tutorials/quickstart/quickstart_header.gif" width="800" >}}
+<br>
 
 ### Introduction
 This tutorial will get you started with MuSHR in simulation!
@@ -29,7 +30,7 @@ First we need to make sure you have a few dependencies installed. To make it eas
 - [docker-compose](https://docs.docker.com/compose/install/)
 - git
 - A github account. You can signup for one [here](https://github.com/join?source=header-home)
-- An nvidia graphics card
+- An NVIDIA graphics card
 
 {{< highlight bash >}}
 $ sudo apt install git-all
@@ -56,31 +57,31 @@ Let's clone the sim repo:
 $ git clone https://github.com/prl-mushr/mushr_sim && cd mushr_sim/docker/
 {{< / highlight >}}
 
-Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let's change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command
+Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let's change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command:
 
 {{< highlight bash >}}
 $ id -u $USER
 {{< / highlight >}}
 
-for UID and
+for UID and:
 
 {{< highlight bash >}}
 $ id -g $USER
 {{< / highlight >}}
 
-for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here
+for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here:
 
 {{< highlight bash >}}
 $ gedit Dockerfile
 {{< / highlight >}}
 
-And change line 4's UID/GID to match yours. The last configuration we need to do is make sure your nvidia driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which nvidia driver your computer has run
+And change line 4's UID/GID to match yours. The last configuration we need to do is make sure your NVIDIA driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which NVIDIA driver your computer has run:
 
 {{< highlight bash >}}
 $ ls /usr/lib/ | grep nvidia
 {{< / highlight >}}
 
-The default is `nvidia-390`. If your's is not that then open `.env` and change the number to match.
+The default is `nvidia-390`. If your's is not that then open `.env` and change the number to match:
 
 {{< highlight bash >}}
 $ gedit .env
@@ -89,61 +90,64 @@ $ gedit .env
 That's it for setting up! We're done the hard part :)
 
 ## Run Sim
-To start the sim run
+To start the sim run:
 
 {{< highlight bash >}}
 $ docker-compose up -d
 {{< / highlight >}}
 
-You should see a small gray window pop up and rviz with the car model (see below). We've just created a container that you can see if you run 
+You should see a small gray window pop up and rviz with the car model (see below). We've just created a container that you can see if you run: 
 
 {{< highlight bash >}}
 $ docker ps
 {{< / highlight >}}
 
-{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up after running `docker-compose`" width="800">}}
+{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up after running `docker-compose`." width="800">}}
 
 Give the car an initial position by clicking `2D Pose Estimate` in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
 
 ## Going Further
-So driving the car around is fun, but what if you want to program it? So while everything else is running, in a new terminal run
+(TODO: explain why the user needs to teletype into the docker container in order to program code for the MuSHR system. This second part shows you can connect to the container, but doesn't actually have you writing any code. Why not? What's the main takeaway from this section? I think we should say something like: you will need to use these commands frequently to do our other tutorials if you continue to use the container--as all code editing will happen within the context of a docker container.)
+Driving the car around is fun, but what if you want to program it? While everything else is running, in a new terminal run:
 
 {{< highlight bash >}}
 $ docker exec -it CONTAINER-ID bash
 {{< / highlight >}}
 
-You can get the `CONTAINER-ID` from 
+You can get the `CONTAINER-ID` from:
 
 {{< highlight bash >}}
 $ docker ps
 {{< / highlight >}}
 
-This gets you a bash shell inside the container. You will find all the sim code in `~/catkin_ws/src/mushr_sim`. The user developer won't have root privileges so you can't install software. To enter the container as root run
+This gets you a bash shell inside the container. You will find all the sim code in `~/catkin_ws/src/mushr_sim`. The user developer will not have root privileges, so you cannot install software. To enter the container as root run:
 
 {{< highlight bash >}}
 $ docker exec -it -u 0 CONTAINER-ID bash
 {{< / highlight >}}
 
-You can also separate launching the container from launching the sim. To do that edit line 16 in `docker-compose.yml` to `entrypoint: bash`. Then run 
+(TODO: this sentence should have more context: what are the cases where people would want this?)
+You can also separate launching the container from launching the sim. To do that edit line 16 in `docker-compose.yml` to `entrypoint: bash`. Then run: 
 
 {{< highlight bash >}}
 $ docker-compose build
 $ docker-compose up -d
 {{< / highlight >}}
 
+(TODO: i would probably show the commands explicitly again. are they supposed to ssh in as root or not?)
 Then enter the container using the commands mentioned previously and source your workspace.
 
 {{< highlight bash >}}
 $ . ~/.bashrc
 {{< / highlight >}}
 
- You can start the sim with
+ You can start the sim with:
 
 {{< highlight bash >}}
 $ roslaunch mushr_sim teleop.launch
 {{< / highlight >}}
 
-And start rviz with
+And start rviz with:
 
 {{< highlight bash >}}
 $ rviz
