@@ -1,0 +1,30 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-tutorials-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+
+{{ define "main" }}
+<div class="intro" style="padding-bottom: 210px; padding-top: 190px;">
+  <div class="container">
+    <div class="row justify-content-end">
+      <div class="col-12 col-md-7 col-lg-6 order-2 order-md-1" style="z-index: 2;">
+        {{ .Content }}
+      </div>
+      <div class="col-12 col-md-5 col-lg-6 order-1 order-md-2 position-relative">
+        <iframe style="height: 30em; z-index: 1; width: 190%;" class="intro-image-flying" src="https://homes.cs.washington.edu/~planc509/mushr_interactive/mushr_nano.html"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container pt-6 pb-md-12">
+  <div class="row">
+    {{ $tutorials := where (where .Site.RegularPages "Type" "hardware") ".Params.active" true }}
+    {{ range $tutorials.ByWeight }}
+    <div class="col-12 col-md-6 mb-2 ">{{ .Render "summary" }}</div>
+    {{ end }}
+  </div>
+</div>
+{{ end }}
+
+{{ define "footer_js" }}
+{{ end }}

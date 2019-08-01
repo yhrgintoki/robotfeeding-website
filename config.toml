@@ -45,7 +45,7 @@ pygmentsUseClassic = false
     
 [[menu.main]]
     name = "Hardware"
-    url = "https://github.com/prl-mushr/mushr"
+    url = "/hardware/"
     weight = 2
     
 [[menu.main]]
