@@ -5,6 +5,7 @@ image: "/services/default.png"
 featured: false
 draft: false
 active: true
+summary: hi i'm a crab
 weight: 3
 ---
 

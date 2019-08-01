@@ -1,14 +1,30 @@
-.model {
-  @include media-breakpoint-up(xl) {
-    right: -120px;
-    width: 190%;
-    top: -40px;
-    height: 30em; 
-    z-index: 1;
-  }
+.model-row {
   @include media-breakpoint-up(sm) {
+    padding-bottom: 260px; padding-top: 190px; 
+  }
+}
+
+.model {
+  max-width: none;
+  height: 21em;
+  @include media-breakpoint-up(sm) {
+    position: absolute;
+    top: -40px;
+    height: 21em;
+  }
+  @include media-breakpoint-up(md) {
+    position: absolute;
+    right: -100px;
     width: 200%;
     height: 30em;
+  }
+  @include media-breakpoint-up(xl) {
+    position: absolute;
+    // right: -120px;
+    width: 190%;
+    top: -160px;
+    height: 40em; 
+    z-index: 1;
   }
 }
 
