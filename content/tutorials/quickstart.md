@@ -11,8 +11,10 @@ summary: Run the MuSHR platform on your machine!
 weight: 1
 ---
 
+{{< figure src="/tutorials/quickstart/quickstart_header.gif" width="800">}}
+
 ### Introduction
-This tutorial will get you started with mushr in simulation!
+This tutorial will get you started with MuSHR in simulation!
 
 ### Goal 
 To get the simulator running on your machine so that you can begin hacking immediately!
@@ -21,7 +23,7 @@ To get the simulator running on your machine so that you can begin hacking immed
 A linux machine (OSX and Windows support coming soon!). If you don't run linux natively then get a linux VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
 
 ## Setup
-First we need to make sure you have a few dependencies installed. To make it easier, we have created a Docker container with the mushr stack and sim running inside it. Here is what you need:
+First we need to make sure you have a few dependencies installed. To make it easier, we have created a docker container with the MuSHR stack and sim running inside it. Here is what you need:
 
 - [docker](https://docs.docker.com/v17.12/install/)
 - [docker-compose](https://docs.docker.com/compose/install/)

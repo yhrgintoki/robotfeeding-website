@@ -114,14 +114,13 @@ Once you have comfirmed that your batteries are charged, you have eliminated man
 
 {{< figure src="/tutorials/workflow/vesc_light.jpg" caption="Blue light on vesc indicates vesc is on. The wheels will also straighten." width="600">}}
 
-Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to Robot AP and (TODO: should this say IP?, what's the end of the sentence?)
-
+Now it is time to connect to the computer! If you have the default network setting where the robot makes its own network then connect to "Robot AP" and ssh into the car.
 
 {{< highlight bash >}}
 $ ssh robot@10.42.0.171
 {{< / highlight >}}
 
-If you have the robot connect to a local network, then connect to that network yourself and ssh but replace the IP with the robot's static IP that you set. (TODO: can we clarify this sentence? can we discuss how to connect the car to the local network?)
+If you have the robot setup connect to a local network (see [Robot Setup Tutorial](/tutorials/robot_setup)), then connect to the local network yourself and ssh but replace the IP with the robot's static IP that you set. 
 
 If you are having trouble connecting see [Troubleshooting](#troubleshooting). We need to set up the ROS_IP and the ROS_MASTER_URI environment variables on both devices. ROS_IP tells your ROS node what IP to communicate under. Localhost will not work because it will prevent remote components from communicating with it. So use `ifconfig` in the terminal to find your IP (car and desktop) and set that number to your ROS_IP. Each device should use its own IP.
 
@@ -141,7 +140,7 @@ Now that you have set your `ROS_IP` for both the car and computer, we need to se
 $ export ROS_MASTER_URI=http://ROBOT-IP:11311
 {{< / highlight >}}
 
-"11311" is the port ROS connects to. If this isn't set your base computer will start a separate `rosmaster` and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff! (TODO: clarify what "ROS-IP" is -- is it the same as `$ROS_IP`?)
+"11311" is the port ROS connects to, and ROBOT-IP is the robot's IP address you ssh with to connect to the car. If this isn't set your base computer will start a separate `rosmaster` and if it is set incorrectly it will throw a error that it cannot find rosmaster. Now we are ready to run stuff!
 
 Ssh into the car, and run:
 
@@ -154,7 +153,7 @@ On the base:
 $ rviz
 {{< / highlight >}}
 
-rviz set up should be the same as sim (TODO: clarify this sentence?)
+rviz should be setup to listen to the same topics as the simulator 
 
 On the car:
 
@@ -169,8 +168,8 @@ On the car:
 $ roslaunch your_package your_launch.launch
 {{< / highlight >}}
 
-It is good practice to keep your package separate from teleop so that you can restart your program without killing teleop. (TODO: clarify this sentence -- in what way do they need to be seperate?)
-
+It is good practice to make a ros package for your code that is separate from the mushr_base package. That way if you need to update mushr code, your code remains unaffected. This can be done by making a [separate catkin package](http://wiki.ros.org/ROS/Tutorials/CreatingPackage).
+ 
 ## Troubleshooting
 Troubleshooting is what 80% of a roboticist's time is spent on. If we know it is inevitable, we need to design systems and use tools to narrow down a diagnosis for the problem as fast as possible. Diagnosis can usually be the hardest part because it could be hardware or software or both. In addition, a robotic system is highly interconnected so a weird behavior in one component may only manifest itself in another component down the road. This section will cover the main debugging tools you should use on the car and some common problems and fixes.
 
@@ -208,7 +207,14 @@ $ rospack find labx
 /home/nvidia/catkin_ws/src/labx
 {{< / highlight >}}
 
-It found the package! Which means you don't have a `teleop.launch` file in your labx package. (TODO: How would you fix this?)
+It found the package! Which means you don't have a `teleop.launch` file in your labx package. To fix this, you would need to go to the labx package.
+
+{{< highlight bash >}}
+$ roscd labx/launch
+{{< / highlight >}}
+
+And see if you have mispelled `teleop.launch`. If there is no file matching `teleop.launch` then you would have to make one.
+
 
 #### Is the error ROS related or pure code related?
 A helpful thing to determine is if the problem has anything to do with ROS. If the error looks like a standard python/C++ error then great, you can rule out all ROS stuff. If not, then it could be either your ROS interface (publishers/subscribers) in your code, or your launchfiles, or your ROS environment. This question is relatively easy to answer if you answer the previous questions. But the one difficulty is that ROS will add a bunch of node failure gibberish even if your code logic is the problem. So just make sure to scroll the error to the very beginning to find the core issue.
