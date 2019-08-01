@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>MuSHR Nano</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+
+    <script src="build/xeogl.js"></script>
+
+    <script src="models/OBJModel.js"></script>
+    <script src="models/STLModel.js"></script>
+    <script src="models/glTFModel.js"></script>
+
+    <link href="css/styles.css" rel="stylesheet"/>
+
+    <!--<script src="js/geometry/vectorTextGeometry.js"></script>-->
+
+<body>
+
+<div id="main"></div>
+
+<script id="source">
+
+    var scene = xeogl.getDefaultScene();
+
+	 var spinner = scene.canvas.spinner;
+	 spinner.textures = false;
+
+    // A simple animation system that supports animation of alpha and translation
+    // of Meshes within a single interpolation frame
+
+    var Animation = function (model) {
+
+        var tasks = [];
+        var dir = 0;
+        var t = 0;
+        var ok;
+
+		  var my_forward = 1;
+
+        scene.on("tick", function () {
+            if (dir === 0) {
+                return;
+            }
+            if (t < 0) {
+                t = 0;
+                dir = 0;
+            }
+            if (t > 1) {
+                t = 1;
+                dir = 0;
+            }
+            for (var i = 0, len = tasks.length; i < len; i++) {
+                tasks[i](t);
+            }
+            if (dir !== 0) {
+                t += 0.03 * dir;
+            } else {
+                if (ok) {
+                    ok();
+                }
+            }
+        });
+
+        this.xray = function (ids, alpha) {
+            for (var i = 0, len = ids.length; i < len; i++) {
+                var id = ids [i];
+                tasks.push((function () {
+                    var object = model.objects[id];
+                    var startAlpha = object.material.alpha;
+                    return function (t) {
+                        var newAlpha = startAlpha + (t * (alpha - startAlpha));
+                        object.material.alpha = newAlpha;
+                        object.material.alphaMode = (newAlpha < 1.0) ? "blend" : "opaque"; // Note: breaks alpha maps
+                    };
+                })());
+            }
+            return this;
+        };
+
+        this.translate = function (ids, xyz) {
+            for (var i = 0, len = ids.length; i < len; i++) {
+                var id = ids [i];
+                tasks.push((function () {
+                    var object = model.objects[id];
+//                    object.transform = new xeogl.Translate({
+//                        parent: object.transform
+//                    });
+                    return function (t) {
+                        object.position = [xyz[0] * t, xyz[1] * t, xyz[2] * t]
+                    };
+                })());
+            }
+            return this;
+        };	
+
+        this.play = function (_ok) {
+            dir = 1.0;
+            t = 0.0;
+            ok = _ok;
+        };
+
+        this.rewind = function () {
+            dir = -1.0;
+            t = 1.0
+        };
+
+		  this.replay = () => {
+				scene.on("tick", () => {
+					if(my_forward == 1 && forward == 0) {
+						my_forward = forward;
+						this.play();
+					}else if(my_forward == 0 && forward == 1) {
+						my_forward = forward;
+						this.rewind();
+					}
+				});
+		  };
+
+    };
+
+    function spin() {
+        scene.on("tick", function () {
+            scene.camera.orbitYaw(0.2);
+        });
+    }
+
+	 /*
+    function highlight(ids) {
+        for (var i = 0, len = ids.length; i < len; i++) {
+            var id = ids [i];
+            var object = model.objects[id];
+            object.highlighted = true;
+        }
+    }
+	 */
+
+    var createTitle = (function () {
+        var leftY = 250;
+        var rightY = 250;
+        return function (id, color, text, side, fontSize) {
+
+            var div = document.createElement("div");
+            div.id = id;
+
+            div.style["padding-top"] = "3px";
+            div.style["padding-bottom"] = "3px";
+            div.style["padding-left"] = "80px";
+            div.style["padding-right"] = "14px";
+//            div.style["border"] = "2px solid white";
+            div.style["font-size"] = fontSize ? "" + fontSize + "px" : "40px";
+            div.style["font-weight"] = "900";
+            div.style.opacity = "0.9";
+            div.style.position = "absolute";
+            if (side === "right") {
+                div.style.right = "0px";
+                div.style.top = rightY + "px";
+                div.style["border-right"] = "0";
+                rightY += 80;
+            } else {
+                div.style.left = "-20px";
+                div.style.top = leftY + "px";
+                div.style["border-left"] = "0";
+                leftY += 50 + fontSize;
+            }
+//            div.style.visibility="hidden";
+
+            div.style.background = color;
+            div.style.color = "white";
+            //  div.style["font-style"] = "italic";
+            div.style.transform = "skewX(-10deg)";
+            //div.innerHTML = "<a style='text-decoration: none; color: white' href='./examples/#importing_gltf_pbr_metallic_helmet'>" + text + "</a>";
+
+            document.getElementById("main").appendChild(div);
+
+
+        };
+    })();
+
+	/*
+    var viewFit = (function () {
+        var aabb = new Float32Array(6);
+        var cameraFlight = new xeogl.CameraFlightAnimation();
+        return function (ids) {
+            xeogl.math.collapseAABB3(aabb);
+            for (var i = 0, len = ids.length; i < len; i++) {
+                var id = ids [i];
+                var object = model.objects[id];
+                xeogl.math.expandAABB3(aabb, object.aabb);
+            }
+            cameraFlight.flyTo(aabb);
+        };
+    })();
+	*/
+    // Custom lights
+
+    scene.clearLights();
+
+    new xeogl.AmbientLight({
+        color: [1.0, 1.0, 1.0]
+    });
+    new xeogl.PointLight({
+        pos: [-40, 30, 40],
+        color: [1.0, 1.0, 1.0],
+        space: "view"
+    });
+    new xeogl.PointLight({
+        pos: [40, 20, 20],
+        color: [1.0, 1.0, 1.0],
+        space: "view"
+    });
+    new xeogl.PointLight({
+        pos: [-20, 80, -80],
+        color: [1.0, 1.0, 1.0],
+        space: "view"
+    });
+
+    // Load model
+    
+    var mushr_nano_model = new xeogl.OBJModel({
+        id: "mushr_nano",
+        src: "mushr_nano/mushr_nano.obj"
+    });
+    
+    var mushr_nano_lidar_model = new xeogl.OBJModel({
+        id: "mushr_nano_lidar",
+        src: "mushr_nano/mushr_nano_lidar.obj",
+		  position: [-0.35325, 1.077, 0]
+    });
+
+    var mushr_nano_wheel_front_left_model = new xeogl.OBJModel({
+        id: "mushr_nano_wheel_front_left",
+        src: "mushr_nano/mushr_nano_wheel_front_left.obj",
+		  position: [1.385, -0.45855, -1.15],
+		  rotation: [0.0, 180, 0]
+    });
+
+    var mushr_nano_wheel_front_right_model = new xeogl.OBJModel({
+        id: "mushr_nano_wheel_front_right",
+        src: "mushr_nano/mushr_nano_wheel_front_right.obj",
+		  position: [1.385, -0.45855, 1.15],
+		  rotation: [0.0, 180, 0]
+    });
+
+    var mushr_nano_wheel_back_left_model = new xeogl.OBJModel({
+        id: "mushr_nano_wheel_back_left",
+        src: "mushr_nano/mushr_nano_wheel_back_left.obj",
+		  position: [-1.58, -0.45855, -1.15],
+		  rotation: [0.0, 180, 0]
+    });
+
+    var mushr_nano_wheel_back_right_model = new xeogl.OBJModel({
+        id: "mushr_nano_wheel_back_right",
+        src: "mushr_nano/mushr_nano_wheel_back_right.obj",
+		  position: [-1.58, -0.45855, 1.15],
+		  rotation: [0.0, 180, 0]
+    });
+
+    // Set up camera
+
+    var camera = xeogl.getDefaultScene().camera;
+    camera.eye = [-4.98, 0.5, 0.72];
+    camera.look = [0, 0.0, 0.0];
+    camera.up = [0.26, 0.54, 0.0];
+
+    camera.orbitYaw(200);
+
+    var cameraControl = new xeogl.CameraControl();
+
+    //    createTitle("start0", "black", "xeogl", "left", 40);
+    //    createTitle("start0", "orange", "an open source", "left", 40);
+    //    createTitle("start1", "orange", "3D visualization engine", "left", 40);
+    //    createTitle("start2", "orange", "on WebGL", "left", 40);
+    //    createTitle("start2", "lightgreen", "get started!", "left", 20);
+
+    // When model loaded, build the animation
+    // and schedule it to start after a short delay
+
+   //     model.on("loaded", function () {
+   //         var objects = model.objects;
+   //         for (var id in objects) {
+   //             if (objects.hasOwnProperty(id)) {
+   //                 var object = objects[id];
+   //                 object.edges = true
+   //             }
+   //         }
+   //     });
+
+
+	var mushr_nano_animation = new Animation(mushr_nano_model);
+	var support_z_offset = 0.25;
+	var crossbar_support_z_offset = support_z_offset;
+	var crossbar_z_offset = crossbar_support_z_offset+0.1;
+	var foundation_z_offset = crossbar_z_offset+0.1;
+	var foundation_battery_z_offset = foundation_z_offset;
+	var cover_z_offset = foundation_z_offset+0.35;
+	var cover_y_offset = 0.3;
+	var cover_image_y_offset = cover_y_offset + 0.2;
+	var jetson_z_offset = cover_z_offset; 
+	var d435_z_offset = cover_z_offset+0.1;
+	var d435_x_offset = 0.3;
+	var cover_top_z_offset = jetson_z_offset + 0.2
+	var cover_number_x_offset = cover_image_y_offset-cover_y_offset;
+	var lidar_z_offset = cover_top_z_offset +0.1;
+
+
+   var restart = 30*10;
+   var forward = 1;
+   var tick_count = 0;
+	scene.on("tick", function () {
+		if(tick_count > restart) {
+			
+			tick_count = 0;
+			if(forward == 1) {
+				forward = 0;
+				//this.play();
+			} else {
+				forward = 1;
+				//this.rewind();
+			}
+			
+		}
+		tick_count = tick_count + 1;
+
+		mushr_nano_wheel_front_left_model.rotateZ(5);
+		mushr_nano_wheel_front_right_model.rotateZ(5);
+		mushr_nano_wheel_back_left_model.rotateZ(5);
+		mushr_nano_wheel_back_right_model.rotateZ(5);
+	});
+
+
+	mushr_nano_wheel_front_left_model.on("loaded", function() {
+
+		var frontLeftWheelAnimation = new Animation(mushr_nano_wheel_front_left_model);
+		
+		frontLeftWheelAnimation.translate(["mushr_nano_wheel_front_left#Racecar_Chassis_Wheel_Tire"],[0,0.0,0.5]).translate(["mushr_nano_wheel_front_left#Racecar_Chassis_Wheel_Hub"],[0,0.0,0.5]);
+      
+		frontLeftWheelAnimation.xray([
+          "mushr_nano_wheel_front_left#Racecar_Chassis_Wheel_Tire",
+	       "mushr_nano_wheel_front_left#Racecar_Chassis_Wheel_Hub"
+      ], 0.75);	
+		
+		frontLeftWheelAnimation.replay();
+
+	});
+
+	mushr_nano_wheel_back_left_model.on("loaded", function() {
+
+		var backLeftWheelAnimation = new Animation(mushr_nano_wheel_back_left_model);
+		
+		backLeftWheelAnimation.translate(["mushr_nano_wheel_back_left#Racecar_Chassis_Wheel_Tire"],[0,0.0,0.5]).translate(["mushr_nano_wheel_back_left#Racecar_Chassis_Wheel_Hub"],[0,0.0,0.5]);
+      
+		backLeftWheelAnimation.xray([
+          "mushr_nano_wheel_back_left#Racecar_Chassis_Wheel_Tire",
+	       "mushr_nano_wheel_back_left#Racecar_Chassis_Wheel_Hub"
+      ], 0.75);	
+		
+		backLeftWheelAnimation.replay();
+
+	});
+
+	mushr_nano_wheel_front_right_model.on("loaded", function() {
+
+		var frontRightWheelAnimation = new Animation(mushr_nano_wheel_front_right_model);
+		
+		frontRightWheelAnimation.translate(["mushr_nano_wheel_front_right#Racecar_Chassis_Wheel_Tire"],[0,0.0,-0.5]).translate(["mushr_nano_wheel_front_right#Racecar_Chassis_Wheel_Hub"],[0,0.0,-0.5]);
+      
+		frontRightWheelAnimation.xray([
+          "mushr_nano_wheel_front_right#Racecar_Chassis_Wheel_Tire",
+	       "mushr_nano_wheel_front_right#Racecar_Chassis_Wheel_Hub"
+      ], 0.75);	
+		
+		frontRightWheelAnimation.replay();
+
+	});
+
+	mushr_nano_wheel_back_right_model.on("loaded", function() {
+
+		var backRightWheelAnimation = new Animation(mushr_nano_wheel_back_right_model);
+		
+		backRightWheelAnimation.translate(["mushr_nano_wheel_back_right#Racecar_Chassis_Wheel_Tire"],[0,0.0,-0.5]).translate(["mushr_nano_wheel_back_right#Racecar_Chassis_Wheel_Hub"],[0,0.0,-0.5]);
+      
+		backRightWheelAnimation.xray([
+          "mushr_nano_wheel_back_right#Racecar_Chassis_Wheel_Tire",
+	       "mushr_nano_wheel_back_right#Racecar_Chassis_Wheel_Hub"
+      ], 0.75);	
+		
+		backRightWheelAnimation.replay();
+
+	});
+
+	mushr_nano_lidar_model.on("loaded", function() {
+
+		scene.on("tick", function () {
+			mushr_nano_lidar_model.objects["mushr_nano_lidar#Racecar_Ydlidar_Top"].rotateY(-10);
+		});
+
+		var lidar_animation = new Animation(mushr_nano_lidar_model);
+		
+		lidar_animation.translate(["mushr_nano_lidar#Racecar_Ydlidar_Top",
+												 "mushr_nano_lidar#Racecar_Ydlidar_Mount_Racecar_Ydlidar_Mount.001",
+												 "mushr_nano_lidar#Racecar_Ydlidar_Motor"],[0,lidar_z_offset,0.0]);
+
+		lidar_animation.replay();
+
+	});
+
+	mushr_nano_model.on("loaded", function () {
+		spin();
+
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Lower_Left_Foundation_Support",
+									    		  "mushr_nano#Racecar_Lower_Right_Foundation_Support",
+			 									  "mushr_nano#Racecar_Servo_Cage",
+									 	   	  "mushr_nano#Racecar_Upper_Left_Foundation_Support"],
+												 [0,support_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Crossbar_Upper_Support",
+									    		  "mushr_nano#Racecar_Crossbar_Bottom_Support"],
+												 [0,crossbar_support_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Crossbar_Body"],
+												 [0,crossbar_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Front_Foundation",
+									    		  "mushr_nano#Racecar_Back_Foundation"],
+												 [0,foundation_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Battery_Foundation_Right",
+									    		  "mushr_nano#Racecar_Battery_Foundation_Left",
+												  "mushr_nano#Racecar_Battery_Foundation_Right_Sticker",
+									    		  "mushr_nano#Racecar_Battery_Foundation_Left_Sticker"],
+												 [0,foundation_battery_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Jetson_Nano"],
+												 [0,jetson_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Front_Cover"],
+												 [0,cover_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Front_Cover_Center_Number"],
+												 [cover_number_x_offset,cover_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Back_Cover_Top"],
+												 [0.0,cover_top_z_offset,0.0]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Back_Cover_Right_Side"],
+												 [0,cover_z_offset,cover_y_offset]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Back_Cover_Left_Side"],
+												 [0,cover_z_offset,-cover_y_offset]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Back_Cover_Right_Image"],
+												 [0,cover_z_offset,cover_image_y_offset]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Back_Cover_Left_Image"],
+												 [0,cover_z_offset,-cover_image_y_offset]);
+		mushr_nano_animation.translate(["mushr_nano#Racecar_D435",
+												  "mushr_nano#Racecar_D435_Screen"],
+												 [d435_x_offset,d435_z_offset,0.0]);
+/*
+		mushr_nano_animation.translate(["mushr_nano#Racecar_Ydlidar_Mount",
+												  "mushr_nano#Racecar_Ydlidar_Motor"],
+												 [0.0,lidar_z_offset,0.0]);
+*/
+		mushr_nano_animation.xray([
+          "mushr_nano#Racecar_Front_Foundation",
+	       "mushr_nano#Racecar_Lower_Left_Foundation_Support",
+			 "mushr_nano#Racecar_Lower_Right_Foundation_Support",
+			 "mushr_nano#Racecar_Servo_Cage",
+	   	 "mushr_nano#Racecar_Upper_Left_Foundation_Support",
+			 "mushr_nano#Racecar_Back_Foundation",
+			 "mushr_nano#Racecar_Front_Cover",
+			 "mushr_nano#Racecar_Back_Cover_Left_Side",
+			 "mushr_nano#Racecar_Back_Cover_Right_Side",
+			 "mushr_nano#Racecar_Back_Cover_Top",
+			 "mushr_nano#Racecar_Crossbar_Upper_Support",
+			 "mushr_nano#Racecar_Crossbar_Bottom_Support",
+			 "mushr_nano#Racecar_Front_Cover_Center_Number",
+			 "mushr_nano#Racecar_Back_Cover_Right_Image",
+			 "mushr_nano#Racecar_Back_Cover_Left_Image"
+
+      ], 0.75);
+
+		mushr_nano_animation.replay();
+
+	});
+    
+</script>
+</body>
+</html>

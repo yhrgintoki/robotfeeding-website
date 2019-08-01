@@ -12723,6 +12723,32 @@ code, .highlight {
   .team-summary .team-content {
     flex: 1 0 100%; }
 
+.inline-svg {
+  display: inline-block;
+  height: 1.35rem;
+  width: 1.35rem;
+  top: 0.15rem;
+  position: relative;
+  margin-right: 5px;
+  margin-top: 3px;
+  text-decoration: none; }
+
+.icon {
+  text-decoration: none; }
+
+@media (min-width: 1300px) {
+  .model {
+    right: -120px;
+    width: 190%;
+    top: -40px;
+    height: 30em;
+    z-index: 1; } }
+
+@media (min-width: 576px) {
+  .model {
+    width: 200%;
+    height: 30em; } }
+
 .page-tutorials-single sup {
   font-size: 75%;
   line-height: 0;
