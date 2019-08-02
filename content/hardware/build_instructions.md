@@ -661,7 +661,7 @@ In this section, we will write a system image with pre-installed MuSHR software 
 
 **Steps**
 
-1. Download and decompress the MuSHR system image from *[here](https://drive.google.com/open?id=1KgW5MtAw83IgkHb4FP6z9KN8QxQ0kwkb)*.
+1. Download and decompress the MuSHR system image from *[here](https://drive.google.com/file/d/1dfc087oRpbzCUI_biKhoxOIy88eFN1Y-/view?usp=sharing)*.
 
 2. Flash the MuSHR image onto the SD card following the instructions *[here](https://developer.nvidia.com/embedded/learn/get-started-jetson-nano-devkit#write)*.
 
