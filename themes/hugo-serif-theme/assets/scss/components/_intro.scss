@@ -6,10 +6,14 @@
   padding-bottom: 60px;
   overflow: hidden;
   @include media-breakpoint-up(md) {
-    padding-top: 160px;
+    padding-top: 50px;
     padding-bottom: 100px;
   }
   @include media-breakpoint-up(lg) {
+    padding-top: 160px;
+    // padding-bottom: 160px;
+  }
+  @include media-breakpoint-up(xl) {
     padding-top: 160px;
     padding-bottom: 160px;
   }
@@ -41,22 +45,24 @@
   max-width: none;
   width: 100%;
   margin-bottom: 20px;
-  // @include media-breakpoint-up(sm) {
-  //   width: 60%;
-  // }
+  @include media-breakpoint-up(sm) {
+    max-width: none;
+  }
   @include media-breakpoint-up(md) {
-    margin-bottom: 0;
-    position: absolute;
-    bottom: 40px;
-    right: -140px;
-    width: 160%;
+    // margin-bottom: 0;
+    // position: absolute;
+    // top: 0px;
+    // right: -60px;
+    width: 100%;
   }
   @include media-breakpoint-up(lg) {
-    bottom: 80px;
-    right: -120px;
-    width: 130%;
+    top: 20px;
+    position: relative;
+    right: 40px;
+    width: 110%;
   }
   @include media-breakpoint-up(xl) {
+    position: absolute;
     right: -120px;
     width: 120%;
     top: -40px;
