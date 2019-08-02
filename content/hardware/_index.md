@@ -3,6 +3,6 @@ title: 'Hardware'
 intro_image: imgs/single-car.jpg
 ---
 
-# Learn to use MuSHR's capabilities
+# Explore MuSHR's physical components
 
-Tutorials for mastering MuSHR, from getting acquainted with the system, to mastery.
+Instructions for building the MuSHR Racecar, and specification of the hardware system.
