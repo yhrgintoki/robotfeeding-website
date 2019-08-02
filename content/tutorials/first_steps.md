@@ -64,6 +64,16 @@ And replace any goose with your new hostname. Save & exit. Reboot the car, to se
 $ sudo reboot
 {{< / highlight >}}
 
+## Update Repos
+Because mushr is always updating, you may have outdated code on your image. To fix this just enter `~/catkin_ws/src/mushr` and pull via vcstool.
+
+{{< highlight bash >}}
+$ cd ~/catkin_ws/src/mushr && vcs pull -n
+{{< / highlight >}}
+
+Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually
+
+
 ## Configure Visualization
 On your laptop with rviz make sure to set your `default.rviz` to ours found in `mushr/mushr_utils/default.rviz`.
 
