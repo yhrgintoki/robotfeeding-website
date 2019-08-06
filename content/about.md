@@ -28,7 +28,7 @@ MuSHR can be assembled at any makerspace and is only mile 0 for your ambitions. 
 
 ## Ready to jump in?
 
-Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](https://github.com/prl-mushr/mushr).
+Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](/hardware/build_instructions).
 
 ## Questions?
 
@@ -44,6 +44,6 @@ Register for MuSHR updates [here](/).
 <img src="/imgs/hri-us-logo-2018-hd.png" style="padding-left: 25px; height: 100px;">
 <br>
 <br>
-<img src="/imgs/Allen-School-purple-RGB-lg.png" style="height: 70px;">
+<img src="/imgs/Allen-School-purple-RGB-lg.png" style="max-height: 70px;">
 
 

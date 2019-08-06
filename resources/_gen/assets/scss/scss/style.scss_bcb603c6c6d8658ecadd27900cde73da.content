@@ -12067,7 +12067,7 @@ h3 {
 
 .logo-mobile {
   display: block;
-  width: 40px;
+  width: 110px;
   padding: 10px 0 10px 0; }
   @media (min-width: 576px) {
     .logo-mobile {
@@ -12431,9 +12431,12 @@ h3 {
   overflow: hidden; }
   @media (min-width: 768px) {
     .intro {
-      padding-top: 160px;
+      padding-top: 50px;
       padding-bottom: 100px; } }
   @media (min-width: 992px) {
+    .intro {
+      padding-top: 160px; } }
+  @media (min-width: 1300px) {
     .intro {
       padding-top: 160px;
       padding-bottom: 160px; } }
@@ -12462,20 +12465,21 @@ h3 {
   max-width: none;
   width: 100%;
   margin-bottom: 20px; }
+  @media (min-width: 576px) {
+    .intro-image-flying {
+      max-width: none; } }
   @media (min-width: 768px) {
     .intro-image-flying {
-      margin-bottom: 0;
-      position: absolute;
-      bottom: 40px;
-      right: -140px;
-      width: 160%; } }
+      width: 100%; } }
   @media (min-width: 992px) {
     .intro-image-flying {
-      bottom: 80px;
-      right: -120px;
-      width: 130%; } }
+      top: 20px;
+      position: relative;
+      right: 40px;
+      width: 110%; } }
   @media (min-width: 1300px) {
     .intro-image-flying {
+      position: absolute;
       right: -120px;
       width: 120%;
       top: -40px; } }
@@ -12736,18 +12740,33 @@ code, .highlight {
 .icon {
   text-decoration: none; }
 
-@media (min-width: 1300px) {
-  .model {
-    right: -120px;
-    width: 190%;
-    top: -40px;
-    height: 30em;
-    z-index: 1; } }
 
 @media (min-width: 576px) {
-  .model {
-    width: 200%;
-    height: 30em; } }
+  .model-row {
+    padding-bottom: 260px;
+    padding-top: 190px; } }
+
+.model {
+  max-width: none;
+  height: 21em; }
+  @media (min-width: 576px) {
+    .model {
+      position: absolute;
+      top: -40px;
+      height: 21em; } }
+  @media (min-width: 768px) {
+    .model {
+      position: absolute;
+      right: -100px;
+      width: 200%;
+      height: 30em; } }
+  @media (min-width: 1300px) {
+    .model {
+      position: absolute;
+      width: 190%;
+      top: -160px;
+      height: 40em;
+      z-index: 1; } }
 
 .page-tutorials-single sup {
   font-size: 75%;

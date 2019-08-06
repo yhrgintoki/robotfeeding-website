@@ -4,8 +4,9 @@ date: 2018-11-19T10:47:58+10:00
 draft: false
 image: 'team/fsadeghi.jpg'
 jobtitle: 'Postdoctoral Fellow'
-email: 'cmavro@cs.washington.edu'
-websiteurl: ' https://homes.cs.washington.edu/~fsadeghi'
+email: 'fsadeghi@cs.washington.edu'
+websiteurl: 'https://homes.cs.washington.edu/~fsadeghi/'
+twitter: 'fereshteh_sa'
 weight: 3
 ---
 

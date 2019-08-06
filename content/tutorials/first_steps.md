@@ -2,7 +2,7 @@
 title: "Your Racecar's First ''Steps''"
 date: 2018-11-28T15:14:54+10:00
 image: "/services/default.png"
-featured: true
+featured: false
 draft: false
 active: true
 duration: 15 - 30
@@ -63,6 +63,16 @@ And replace any goose with your new hostname. Save & exit. Reboot the car, to se
 {{< highlight bash >}}
 $ sudo reboot
 {{< / highlight >}}
+
+## Update Repos
+Because mushr is always updating, you may have outdated code on your image. To fix this just enter `~/catkin_ws/src/mushr` and pull via vcstool.
+
+{{< highlight bash >}}
+$ cd ~/catkin_ws/src/mushr && vcs pull -n
+{{< / highlight >}}
+
+Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually
+
 
 ## Configure Visualization
 On your laptop with rviz make sure to set your `default.rviz` to ours found in `mushr/mushr_utils/default.rviz`.
