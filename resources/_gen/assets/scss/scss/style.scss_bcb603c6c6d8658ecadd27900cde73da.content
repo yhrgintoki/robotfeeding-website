@@ -12740,7 +12740,6 @@ code, .highlight {
 .icon {
   text-decoration: none; }
 
-
 @media (min-width: 576px) {
   .model-row {
     padding-bottom: 260px;
