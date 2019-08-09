@@ -73,47 +73,6 @@ $ cd ~/catkin_ws/src/mushr && vcs pull -n
 
 Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually
 
-
-## Configure Visualization
-On your laptop with rviz make sure to set your `default.rviz` to ours found in `mushr/mushr_utils/default.rviz`.
-
-{{< highlight bash >}}
-$ cp ~/catkin_ws/src/mushr/mushr_utils/default.rviz ~/.rviz/
-{{< / highlight >}}
-
-Set the `ROS_IP` to your IP. Your IP can be found with `ifconfig`.
-
-{{< highlight bash >}}
-$ ifconfig
-{{< / highlight >}}
-
-Set `ROS_IP` with:
-
-{{< highlight bash >}}
-$ export ROS_IP=YOUR-IP
-{{< / highlight >}}
-
-Set the `ROS_MASTER_URI` to the IP of the car.
-
-{{< highlight bash >}}
-$ export ROS_MASTER_URI=http://CAR-IP:11311
-{{< / highlight >}}
-
-You are configured! Wait till teleop is running to launch rviz
-
-{{< highlight bash >}}
-$ rviz
-{{< / highlight >}}
-
-If you get errors make sure the following are correct:  
-
-- Teleop is running  
-- Your laptop is connnected properly  
-{{< highlight bash >}}
-$ rostopic list
-{{< / highlight >}}
-This should output a bunch of topics. If not, check your `ROS_MASTER_URI` and `ROS_IP` to ensure they are correct.
-
 ## Launch Teleop the Easy Way
 Turn on the car and vesc by plugging their batteries in. Hold down the front button as the car is starting. After a minute or so the lidar should start spinning indicating teleop is running.
 
@@ -124,14 +83,15 @@ This is better for debugging your code. Turn on the car and vesc by plugging the
 $ roscore
 {{< / highlight >}}
 
-In a new window, launch teleop.
+In a new window, ssh into the car, then launch teleop.
 
 {{< highlight bash >}}
 $ roslaunch mushr_base teleop.launch
 {{< / highlight >}}
 
-You should see the lidar spinning and be able to steer with the controller. 
+You should see the lidar spinning and be able to steer with the controller, by holding down the left bumper, which acts as a safety, and moving the joysticks to accelerate and steer, as shown in the diagram below. 
 
+{{< figure src="/tutorials/first_steps/teleop_controls.png" caption="" width="350">}}
 ## Setup Wi-Fi (Optional)
 If you want to install additional software on the car, or be able to use the internet on your laptop while connected to the car then you will want to set the car up with a static IP instead of it's own network. To do this, you will need to plug a monitor, keyboard, and mouse into the car. The keyboard/mouse can go in any of the USB ports, Wi-Fi setup does not require the sensors to be connected.
 
@@ -203,7 +163,7 @@ $ ifconfig
 
 ### Logging In
 
-Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it.
+Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it with the static IP you set earlier, in our case `172.16.77.Z`.
 
 {{< highlight bash >}}
 $ ssh robot@172.16.77.Z`
