@@ -1,4 +1,4 @@
-baseURL = "https://prl-mushr.github.io/"
+baseURL = "https://mushr.io/"
 languageCode = "en-us"
 title = "MuSHR: The UW Open Racecar Project"
 theme = "hugo-serif-theme"

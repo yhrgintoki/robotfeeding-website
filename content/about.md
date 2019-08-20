@@ -28,7 +28,7 @@ MuSHR can be assembled at any makerspace and is only mile 0 for your ambitions. 
 
 ## Ready to jump in?
 
-Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](https://github.com/prl-mushr/mushr).
+Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](/hardware/build_instructions).
 
 ## Questions?
 
