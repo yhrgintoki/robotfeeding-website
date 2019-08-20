@@ -34,7 +34,9 @@ First we need to make sure you have a few dependencies installed. All commands a
 {{< highlight bash >}}
 $ sudo apt install git-all
 {{< / highlight >}}
-- A github account. You can signup for one [here](https://github.com/join?source=header-home)
+
+- A github account. You can signup for one [here](https://github.com/join?source=header-home)  
+- [vcstool](https://github.com/dirk-thomas/vcstool.git)
 
 
 Once you have these, you're good to go!
@@ -52,17 +54,15 @@ Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory
 $ cd ~/catkin_ws/src
 {{< / highlight >}}
 
-And clone the following:
+Download [repos.yaml](/tutorials/quickstart/repos.yaml) into `~/catkin_ws/src`.
+
+And clone the necessary repos using vcstool:
 
 {{< highlight bash >}}
-$ git clone https://github.com/prl-mushr/mushr_sim
-$ git clone https://github.com/prl-mushr/mushr
-$ git clone https://github.com/prl-mushr/mushr_base ~/catkin_ws/src/mushr/mushr_base/mushr_base
-$ git clone https://github.com/prl-mushr/vesc ~/catkin_ws/src/mushr/mushr_base/vesc
-$ git clone https://github.com/IntelRealSense/realsense-ros.git ~/catkin_ws/src/mushr/mushr_hardware/realsense
+$ vcs import < repos.yaml
 {{< / highlight >}}
 
-And finally, we need the realsense2_description directory only.
+We need the realsense2_description directory only.
 
 {{< highlight bash >}}
 $ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/catkin_ws/src/mushr/mushr_hardware/realsense2_description
@@ -70,6 +70,13 @@ $ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/cat
 
 {{< highlight bash >}}
 $ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense
+{{< / highlight >}}
+
+We need to also install rangelibc
+{{< highlight bash >}}
+$ cd ~/catkin_ws/src/range_libc/pywrapper
+$ python setup.py install
+$ cd ~/catkin_ws/src && rm -rf range_libc
 {{< / highlight >}}
 
 We will now run `catkin_make` to setup all the packages
@@ -104,7 +111,7 @@ $ rviz
 
 You should see a small gray window pop up and rviz with the car model (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
 
-{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up after running `docker-compose`." width="800">}}
+{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up" width="800">}}
 
 Give the car an initial position by clicking `2D Pose Estimate` in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
 
