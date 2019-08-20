@@ -21,141 +21,92 @@ This tutorial will get you started with MuSHR in simulation!
 To get the simulator running on your machine so that you can begin hacking immediately!
 
 ### Requirements
-A linux machine (OSX and Windows support coming soon!). If you don't run linux natively then get a linux VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
+A Ubuntu Linux machine. If you don't run linux natively then get a Ubuntu VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
 
 ## Setup
-First we need to make sure you have a few dependencies installed. To make it easier, we have created a docker container with the MuSHR stack and sim running inside it. Here is what you need:
+First we need to make sure you have a few dependencies installed. All commands are to be executed in a terminal (CTRL + ALT + T). Here is what you need:  
 
-- [docker](https://docs.docker.com/v17.12/install/)
-- [docker-compose](https://docs.docker.com/compose/install/)
-- git
-- A github account. You can signup for one [here](https://github.com/join?source=header-home)
-- An NVIDIA graphics card
+- [ROS Melodic Desktop Full](http://wiki.ros.org/melodic/Installation)  
+*You could also try installing ROS on another supported platform, but as of right now this tutorial has not been tested on non-Ubuntu machines.*
+- A [catkin_ws](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
+- git  
 
 {{< highlight bash >}}
 $ sudo apt install git-all
 {{< / highlight >}}
+- A github account. You can signup for one [here](https://github.com/join?source=header-home)
+
 
 Once you have these, you're good to go!
 
 ## Install Sim
-Now that we have the dependencies, lets get started! Note, we are assuming you have set up Docker to not need sudo with every call. You can set that up by following [these](https://docs.docker.com/install/linux/linux-postinstall/) steps. Now, open a terminal (CTRL + ALT + T) check if Docker is running:
+Now that we have the dependencies, lets get started! We'll start by making sure we have all the necessary ROS packages.
 
 {{< highlight bash >}}
-$ docker run hello-world
+$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher 
 {{< / highlight >}}
 
-If you get a error then run:
+Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory.
 
 {{< highlight bash >}}
-$ systemctl start docker
+$ cd ~/catkin_ws/src
 {{< / highlight >}}
 
-Let's clone the sim repo:
+And clone the following:
 
 {{< highlight bash >}}
-$ git clone https://github.com/prl-mushr/mushr_sim && cd mushr_sim/docker/
+$ git clone https://github.com/prl-mushr/mushr_sim
+$ git clone https://github.com/prl-mushr/mushr
+$ git clone https://github.com/prl-mushr/mushr_base ~/catkin_ws/src/mushr/mushr_base/mushr_base
+$ git clone https://github.com/prl-mushr/vesc ~/catkin_ws/src/mushr/mushr_base/vesc
+$ git clone https://github.com/IntelRealSense/realsense-ros.git ~/catkin_ws/src/mushr/mushr_hardware/realsense
 {{< / highlight >}}
 
-Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let's change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command:
+And finally, we need the realsense2_description directory only.
 
 {{< highlight bash >}}
-$ id -u $USER
+$ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/catkin_ws/src/mushr/mushr_hardware/realsense2_description
 {{< / highlight >}}
-
-for UID and:
 
 {{< highlight bash >}}
-$ id -g $USER
+$ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense
 {{< / highlight >}}
 
-for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here:
-
+We will now run `catkin_make` to setup all the packages
 {{< highlight bash >}}
-$ gedit Dockerfile
+$ cd ~/catkin_ws && catkin_make
 {{< / highlight >}}
 
-And change line 4's UID/GID to match yours. The last configuration we need to do is make sure your NVIDIA driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which NVIDIA driver your computer has run:
-
+To make sure our environment is setup we run:
 {{< highlight bash >}}
-$ ls /usr/lib/ | grep nvidia
+$ . ~/catkin_ws/devel/setup.bash
 {{< / highlight >}}
 
-The default is `nvidia-390`. If your's is not that then open `.env` and change the number to match:
-
+Finally, move the `.rviz` file to `~/.rviz` to get our default setup!
 {{< highlight bash >}}
-$ gedit .env
+$ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/
 {{< / highlight >}}
 
-That's it for setting up! We're done the hard part :)
+That's it! Time to run it.
 
 ## Run Sim
 To start the sim run:
 
 {{< highlight bash >}}
-$ docker-compose up -d
+$ roslaunch mushr_sim teleop.launch
 {{< / highlight >}}
 
-You should see a small gray window pop up and rviz with the car model (see below). We've just created a container that you can see if you run: 
+And launch rviz:
 
 {{< highlight bash >}}
-$ docker ps
+$ rviz
 {{< / highlight >}}
+
+You should see a small gray window pop up and rviz with the car model (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
 
 {{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up after running `docker-compose`." width="800">}}
 
 Give the car an initial position by clicking `2D Pose Estimate` in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
 
 ## Going Further
-Driving the car around is fun, but what if you want to program it? In order to do that you must enter the container and write code like you would on a normal ROS linux system. The remaining tutorials that use the simulator assume you are in the container. To enter the container while everything else is running, run:
-
-{{< highlight bash >}}
-$ docker exec -it CONTAINER-ID bash
-{{< / highlight >}}
-
-You can get the `CONTAINER-ID` from:
-
-{{< highlight bash >}}
-$ docker ps
-{{< / highlight >}}
-
-This gets you a bash shell inside the container. You will find all the sim code in `~/catkin_ws/src/mushr_sim`. The user developer will not have root privileges, so you cannot install software. To enter the container as root run:
-
-{{< highlight bash >}}
-$ docker exec -it -u 0 CONTAINER-ID bash
-{{< / highlight >}}
-
-By being root you can install additional software that you may want.
-
-You can also separate launching the container from launching the sim. To do that edit line 16 in `docker-compose.yml` to `entrypoint: bash`. Then run: 
-
-{{< highlight bash >}}
-$ docker-compose build
-$ docker-compose up -d
-{{< / highlight >}}
-
-Then enter the container
-
-{{< highlight bash >}}
-$ docker exec -it CONTAINER-ID bash
-{{< / highlight >}}
-
-And source your workspace.
-
-{{< highlight bash >}}
-$ . ~/.bashrc
-{{< / highlight >}}
-
- You can start the sim with:
-
-{{< highlight bash >}}
-$ roslaunch mushr_sim teleop.launch
-{{< / highlight >}}
-
-And start rviz with:
-
-{{< highlight bash >}}
-$ rviz
-{{< / highlight >}}
-
 To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)
