@@ -26,7 +26,7 @@ A Ubuntu Linux machine. If you don't run linux natively then get a Ubuntu VM: [O
 ## Setup
 First we need to make sure you have a few dependencies installed. All commands are to be executed in a terminal (CTRL + ALT + T). Here is what you need:  
 
-- [ROS Melodic Desktop Full](http://wiki.ros.org/melodic/Installation)  
+- [ROS Melodic Desktop Full](http://wiki.ros.org/melodic/Installation)  or [ROS Kinetic](http://wiki.ros.org/kinetic/Installation)  
 *You could also try installing ROS on another supported platform, but as of right now this tutorial has not been tested on non-Ubuntu machines.*
 - A [catkin_ws](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
 - git  
@@ -44,8 +44,14 @@ Once you have these, you're good to go!
 ## Install Sim
 Now that we have the dependencies, lets get started! We'll start by making sure we have all the necessary ROS packages.
 
+**Melodic**
 {{< highlight bash >}}
 $ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher 
+{{< / highlight >}}
+
+**Kinetic**
+{{< highlight bash >}}
+$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher 
 {{< / highlight >}}
 
 Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory.
@@ -66,9 +72,6 @@ We need the realsense2_description directory only.
 
 {{< highlight bash >}}
 $ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/catkin_ws/src/mushr/mushr_hardware/realsense2_description
-{{< / highlight >}}
-
-{{< highlight bash >}}
 $ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense
 {{< / highlight >}}
 
@@ -86,8 +89,12 @@ $ cd ~/catkin_ws && catkin_make
 
 To make sure our environment is setup we run:
 {{< highlight bash >}}
-$ . ~/catkin_ws/devel/setup.bash
+$ echo 'source /opt/ros/{melodic,kinetic}/setup.bash' > ~/.bashrc
+$ echo 'source ~/catkin_ws/devel/setup.bash' > ~/.bashrc
+$ . ~/.bashrc
 {{< / highlight >}}
+
+These commands will now run with every new terminal session.
 
 Finally, move the `.rviz` file to `~/.rviz` to get our default setup!
 {{< highlight bash >}}
@@ -103,17 +110,21 @@ To start the sim run:
 $ roslaunch mushr_sim teleop.launch
 {{< / highlight >}}
 
-And launch rviz:
+
+{{< figure src="/tutorials/quickstart/teleop_window.png" caption="Teleop window that should appear after starting the sim" width="200">}}
+
+And in another terminal window launch rviz:
 
 {{< highlight bash >}}
 $ rviz
 {{< / highlight >}}
 
-You should see a small gray window pop up and rviz with the car model (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
+The rviz window with the car model should appear (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
 
 {{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up" width="800">}}
 
-Give the car an initial position by clicking `2D Pose Estimate` in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
+Give the car an initial position by clicking {{< figure src="/tutorials/quickstart/2d_pose_estimate.png" width="200">}} in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
+
 
 ## Going Further
 To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)
