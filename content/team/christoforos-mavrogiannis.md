@@ -6,9 +6,11 @@ image: 'team/cmavrogiannis.jpg'
 jobtitle: 'Postdoctoral Fellow'
 email: 'cmavro@cs.washington.edu'
 websiteurl: 'https://humanafterall.ai/'
+github: 'cmavrogiannis'
+twitter: 'mavrojean'
 weight: 3
 ---
 
-Christoforos (Chris) Mavrogiannis is a postdoctoral research associate in the Paul G. Allen School of Computer Science & Engineering at the University of Washington, working with Prof. Siddhartha Srinivasa and the Personal Robotics Lab. He is broadly interested in the algorithmic foundations of robotics, with a particular emphasis on the design of efficient, safe and robust motion planning algorithms for robot navigation, multi-robot manipulation and human-robot interaction applications. He is passionate about enabling robots to integrate seamlessly in human environments. 
+Christoforos (Chris) Mavrogiannis is a postdoctoral research associate in the Paul G. Allen School of Computer Science & Engineering at the University of Washington, working with Prof. Siddhartha Srinivasa and the Personal Robotics Lab. Chris received his Ph.D. from Cornell University, where he worked on the design of motion planning algorithms for social robot navigation in crowded human environments. His current research interests include consensus problems for multi-robot navigation, and human-robot collaboration applications. Chris is passionate about enabling robots to integrate seamlessly in human environments. 
 
-Chris earned his M.S. and Ph.D. degrees from Cornell University, under the supervision of Prof. Ross A. Knepper. Prior to that, he received a diploma in Mechanical Engineering from the National Technical University of Athens.
+Chris is leading MuSHR's efforts on the development of multi-agent coordination algorithms. He is particularly interested in the design of planning algorithms that will enable cars to safely navigate next to each other and perform complex manipulation tasks. Chris will be using MuSHR as an instructor of the Mobile Robots course in the winter of 2020.
