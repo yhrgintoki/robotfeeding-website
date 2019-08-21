@@ -28,15 +28,15 @@ MuSHR can be assembled at any makerspace and is only mile 0 for your ambitions. 
 
 ## Ready to jump in?
 
-Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](/hardware/build_instructions).
+Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](/hardware/build_instructions). Consider applying to the [MuSHR donation program](/contact/#the-mushr-donation-program).
 
 ## Questions?
 
-See the [docs](/docs) and [FAQ](/tutorials/faq)!
+See the [docs](https://github.com/prl-mushr/mushr#component-documentation) and [FAQ](https://github.com/prl-mushr/mushr#faq)!
 
 ## Stay in touch!
 
-Register for MuSHR updates [here](/).
+Register for MuSHR updates [here](https://tinyletter.com/mushr).
 
 ## Acknowledgements 
 <img src="/imgs/pr_logo.900x900.jpg" style="height: 100px;">
