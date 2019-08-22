@@ -29,7 +29,7 @@ First we need to make sure you have a few dependencies installed. All commands a
 - [ROS Melodic Desktop Full](http://wiki.ros.org/melodic/Installation)  or [ROS Kinetic](http://wiki.ros.org/kinetic/Installation)  
 *You could also try installing ROS on another supported platform, but as of right now this tutorial has not been tested on non-Ubuntu machines.*
 - A [catkin_ws](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
-- git  
+- git:
 
 {{< highlight bash >}}
 $ sudo apt install git-all
@@ -44,17 +44,17 @@ Once you have these, you're good to go!
 ## Install Sim
 Now that we have the dependencies, lets get started! We'll start by making sure we have all the necessary ROS packages.
 
-**Melodic**
+**Melodic:**
 {{< highlight bash >}}
 $ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher 
 {{< / highlight >}}
 
-**Kinetic**
+**Kinetic:**
 {{< highlight bash >}}
 $ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher 
 {{< / highlight >}}
 
-Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory.
+Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory:
 
 {{< highlight bash >}}
 $ cd ~/catkin_ws/src
@@ -68,21 +68,21 @@ And clone the necessary repos using vcstool:
 $ vcs import < repos.yaml
 {{< / highlight >}}
 
-We need the realsense2_description directory only.
+We need the realsense2_description directory only:
 
 {{< highlight bash >}}
 $ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/catkin_ws/src/mushr/mushr_hardware/realsense2_description
 $ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense
 {{< / highlight >}}
 
-We need to also install rangelibc
+We need to also install rangelibc:
 {{< highlight bash >}}
 $ cd ~/catkin_ws/src/range_libc/pywrapper
 $ python setup.py install
 $ cd ~/catkin_ws/src && rm -rf range_libc
 {{< / highlight >}}
 
-We will now run `catkin_make` to setup all the packages
+We will now run `catkin_make` to setup all the packages:
 {{< highlight bash >}}
 $ cd ~/catkin_ws && catkin_make
 {{< / highlight >}}
@@ -96,7 +96,7 @@ $ . ~/.bashrc
 
 These commands will now run with every new terminal session.
 
-Finally, move the `.rviz` file to `~/.rviz` to get our default setup!
+Finally, move the `.rviz` file to `~/.rviz` to get our default setup:
 {{< highlight bash >}}
 $ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/
 {{< / highlight >}}
@@ -123,7 +123,7 @@ The rviz window with the car model should appear (see below). Rviz is useful for
 
 {{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up" width="800">}}
 
-Give the car an initial position by clicking {{< figure src="/tutorials/quickstart/2d_pose_estimate.png" width="200">}} in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
+Give the car an initial position by clicking {{< figure src="/tutorials/quickstart/2d_pose_estimate.png" width="150">}} in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
 
 
 ## Going Further
