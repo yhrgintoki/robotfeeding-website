@@ -38,6 +38,21 @@ See the [docs](https://github.com/prl-mushr/mushr#component-documentation) and [
 
 Register for MuSHR updates [here](https://tinyletter.com/mushr).
 
+## Citation
+If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite *[MuSHR: A Low-Cost,
+Open-Source Robotic Racecar for Education and Research
+](https://arxiv.org/abs/1908.08031)*:
+```
+@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+```
+<br>
+
 ## Acknowledgements 
 <img src="/imgs/pr_logo.900x900.jpg" style="height: 100px;">
 <img src="/imgs/intel-logo.png" style="padding-left: 20px; height: 100px;">
