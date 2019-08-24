@@ -35,14 +35,14 @@ First we need to make sure you have a few dependencies installed. All commands a
 $ sudo apt install git-all
 {{< / highlight >}}
 
-- A github account. You can signup for one [here](https://github.com/join?source=header-home)  
+- A github account. You can sign up for one [here](https://github.com/join?source=header-home). 
 - [vcstool](https://github.com/dirk-thomas/vcstool.git)
 
 
 Once you have these, you're good to go!
 
 ## Install Sim
-Now that we have the dependencies, lets get started! We'll start by making sure we have all the necessary ROS packages.
+Now that we have the dependencies, lets get started! We'll start by making sure we have all the necessary ROS packages. Select **one** of the following, based off the version of ROS you installed.
 
 **Melodic:**
 {{< highlight bash >}}
@@ -111,7 +111,7 @@ $ roslaunch mushr_sim teleop.launch
 {{< / highlight >}}
 
 
-{{< figure src="/tutorials/quickstart/teleop_window.png" caption="Teleop window that should appear after starting the sim" width="200">}}
+{{< figure src="/tutorials/quickstart/teleop_window.png" caption="This is the teleop window that should appear after starting the sim. \"Teleop\" is short for \"teleoperation\", which loosely means to remotely operate the vehicle, or robot. " width="200">}}
 
 And in another terminal window launch rviz:
 
@@ -119,12 +119,12 @@ And in another terminal window launch rviz:
 $ rviz
 {{< / highlight >}}
 
-The rviz window with the car model should appear (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
+The rviz window with the car model should appear (see below). Rviz is useful for visualizing what the car is thinking and seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
 
-{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up" width="800">}}
+{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="This is an image of the rviz window that should pop up." width="800">}}
 
-Give the car an initial position by clicking {{< figure src="/tutorials/quickstart/2d_pose_estimate.png" width="150">}} in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
+Give the car an initial position by clicking  ![rviz 2d pose estimate button](/tutorials/quickstart/2d_pose_estimate.png) in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
 
 
 ## Going Further
-To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)
+To learn about programming the car, continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros).
