@@ -14,7 +14,7 @@ pygmentsCodefencesGuessSyntax = true
 pygmentsUseClassic = false
 
 [params]
-  google_analytics_id=""
+  google_analytics_id="UA-146151202-1"
 
   [params.homepage_meta_tags]
     meta_description = "The Multi-agent System for non-Holonomic Racing (MuSHR) is an open-source robotic hardware and software platform for learning and researching AI in a the setting of autonomous vehicles and mobile robotics."
@@ -29,48 +29,71 @@ pygmentsUseClassic = false
 
 # Main Menu
 [[menu.main]]
+    identifier = "quickstart"
 	name = "Quickstart"
 	url = "/tutorials/quickstart/"
     weight = 1
     
 [[menu.main]]
+    identifier = "tutorials"
 	name = "Tutorials"
 	url = "/tutorials/"
     weight = 1
 
 [[menu.main]]
     name = "Docs"
-    url = "https://github.com/prl-mushr/mushr"
+    url = "https://github.com/prl-mushr/mushr#component-documentation"
     weight = 2
     
 [[menu.main]]
+    identifier = "hardware"
     name = "Hardware"
     url = "/hardware/"
     weight = 2
     
 [[menu.main]]
+    identifier = "team"
     name = "Team"
     url = "/team/"
     weight = 3
 
 [[menu.main]]
+    identifier = "about"
 	name = "About"
 	url = "/about/"
 	weight = 4
 
 [[menu.main]]
-    name = "Contact"
-    url = "/contact/"
+    identifier = "forum"
+    name = "Forum"
+    url = "/forum/"
     weight = 5
 
+[[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 6
 
 # Footer Menu
 [[menu.footer]]
 	name = "Home"
 	url = "/"
     weight = 1
+    
+[[menu.footer]]
+    identifier = "forum"
+	name = "Forum"
+	url = "/forum/"
+    weight = 2
 
 [[menu.footer]]
+    identifier = "contact"
 	name = "Contact"
 	url = "/contact/"
-    weight = 2
+    weight = 3
+    
+[[menu.footer]]
+	name = "Newsletter"
+	url = "https://tinyletter.com/mushr"
+    weight = 4
