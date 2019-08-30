@@ -1,7 +1,7 @@
 repositories:
   mushr_sim:
     type: git
-    url: git@github.com:prl-mushr/mushr.git
+    url: git@github.com:prl-mushr/mushr_sim.git
     version: master
   mushr:
     type: git
