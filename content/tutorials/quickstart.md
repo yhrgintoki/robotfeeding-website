@@ -35,6 +35,12 @@ First we need to make sure you have a few dependencies installed. All commands a
 $ sudo apt install git-all
 {{< / highlight >}}
 
+- tkinter:
+
+{{< highlight bash >}}
+$ sudo apt install python-tk
+{{< / highlight >}}
+
 - A github account. You can sign up for one [here](https://github.com/join?source=header-home).
 - [vcstool](https://github.com/dirk-thomas/vcstool.git)
 
@@ -75,10 +81,17 @@ $ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/cat
 $ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense
 {{< / highlight >}}
 
-We need to also install rangelibc:
+We need to also install rangelibc. First, if you don't have Cython installed, install it now:
+
+{{< highlight bash >}}
+$ sudo pip install Cython 
+{{< / highlight >}}
+
+Now that Cython's installed, you can install rangelibc:
+
 {{< highlight bash >}}
 $ cd ~/catkin_ws/src/range_libc/pywrapper
-$ python setup.py install
+$ sudo python setup.py install
 $ cd ~/catkin_ws/src && rm -rf range_libc
 {{< / highlight >}}
 
