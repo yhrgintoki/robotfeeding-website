@@ -46,12 +46,12 @@ Now that we have the dependencies, lets get started! We'll start by making sure 
 
 **Melodic:**
 {{< highlight bash >}}
-$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher 
+$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher ros-melodic-xacro
 {{< / highlight >}}
 
 **Kinetic:**
 {{< highlight bash >}}
-$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher 
+$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher ros-kinetic-xacro
 {{< / highlight >}}
 
 Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory:
@@ -87,16 +87,31 @@ We will now run `catkin_make` to setup all the packages:
 $ cd ~/catkin_ws && catkin_make
 {{< / highlight >}}
 
+### Setting up our environment
+
 To make sure our environment is setup we run:
+
+*If you are using a shell other than bash, be sure to put these "source" commands in the analagous file for your shell.*
+
+#### Kinetic (Ubuntu 16.04)
+
 {{< highlight bash >}}
-$ echo 'source /opt/ros/{melodic,kinetic}/setup.bash' > ~/.bashrc
-$ echo 'source ~/catkin_ws/devel/setup.bash' > ~/.bashrc
+$ echo 'source /opt/ros/kinetic/setup.bash' >> ~/.bashrc
+$ echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc
 $ . ~/.bashrc
 {{< / highlight >}}
 
-These commands will now run with every new terminal session.
+#### Melodic (Ubuntu 18.04)
 
-Finally, move the `.rviz` file to `~/.rviz` to get our default setup:
+{{< highlight bash >}}
+$ echo 'source /opt/ros/melodic/setup.bash' >> ~/.bashrc
+$ echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc
+$ . ~/.bashrc
+{{< / highlight >}}
+
+Putting these lines in the `~/.bashrc` guarantee they run on the startup of a new shell.
+
+Finally, move the "Outrun" themed `.rviz` file to `~/.rviz` to get our default setup:
 {{< highlight bash >}}
 $ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/
 {{< / highlight >}}
