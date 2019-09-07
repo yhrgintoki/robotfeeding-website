@@ -18,7 +18,8 @@ This tutorial will get your car up and running teleoperation.
 To get you driving your car around in teleop.
 
 ### Requirements
-  - Complete the [hardware]() setup with your car
+  - Complete the [hardware](/hardware/build_instructions) setup with your car
+  - Complete the [quickstart](/tutorials/quickstart) tutorial. (Required for rviz)
   - A desktop/laptop computer that can ssh into the car. 
   - Monitor (Wi-Fi Setup Only)
   - HDMI/Display Cable (Wi-Fi Setup Only)
@@ -65,13 +66,53 @@ $ sudo reboot
 {{< / highlight >}}
 
 ## Update Repos
-Because mushr is always updating, you may have outdated code on your image. To fix this just enter `~/catkin_ws/src/mushr` and pull via vcstool.
+Because mushr is always updating, you may have outdated code on your image. To fix this just enter `~/catkin_ws/src/mushr` and pull via vcstool. For this to work, you need to give your car access to the internet. The easiest way to do this is by plugging an ethernet cable from an ethernet port on your home router to the car.
 
 {{< highlight bash >}}
 $ cd ~/catkin_ws/src/mushr && vcs pull -n
 {{< / highlight >}}
 
 Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually
+
+## Configure Visualization
+Visualization is important for seeing what your car is thinking at any given moment. On your laptop with rviz make sure to set your `default.rviz` to ours found in `mushr/mushr_utils/rviz/default.rviz`.
+
+{{< highlight bash >}}
+$ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/
+{{< / highlight >}}
+
+Set the `ROS_IP` to your IP. Your IP can be found in a variety of ways: [linux](https://www.howtogeek.com/howto/17012/how-to-find-your-ip-address-in-ubuntu/), [mac](http://osxdaily.com/2010/08/08/lan-ip-address-mac/), [windows](https://kb.netgear.com/20878/Finding-your-IP-address-without-using-the-command-prompt).
+
+{{< highlight bash >}}
+$ ifconfig
+{{< / highlight >}}
+
+Set `ROS_IP` with:
+
+{{< highlight bash >}}
+$ export ROS_IP=YOUR-IP
+{{< / highlight >}}
+
+Set the `ROS_MASTER_URI` to the IP of the car.
+
+{{< highlight bash >}}
+$ export ROS_MASTER_URI=http://10.42.0.1:11311
+{{< / highlight >}}
+
+You are configured! Wait till teleop is running to launch rviz on your laptop
+
+{{< highlight bash >}}
+$ rviz
+{{< / highlight >}}
+
+If you get errors make sure the following are correct:  
+
+- Teleop is running  
+- Your laptop is connnected properly  
+{{< highlight bash >}}
+$ rostopic list
+{{< / highlight >}}
+This should output a bunch of topics. If not, check your `ROS_MASTER_URI` and `ROS_IP` to ensure they are correct.
 
 ## Launch Teleop the Easy Way
 Turn on the car and vesc by plugging their batteries in. Hold down the front button as the car is starting. After a minute or so the lidar should start spinning indicating teleop is running.
@@ -168,3 +209,6 @@ Once the Nano has fully booted, it will connect to the existing network at the s
 {{< highlight bash >}}
 $ ssh robot@172.16.77.Z`
 {{< / highlight >}}
+
+## Next Steps
+To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)

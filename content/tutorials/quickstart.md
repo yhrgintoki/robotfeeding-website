@@ -158,4 +158,5 @@ And start rviz with:
 $ rviz
 {{< / highlight >}}
 
+## Next Steps
 To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)
