@@ -21,6 +21,7 @@ To get you driving your car around in teleop.
   - Complete the [hardware](/hardware/build_instructions) setup with your car
   - Complete the [quickstart](/tutorials/quickstart) tutorial. (Required for rviz)
   - A desktop/laptop computer that can ssh into the car. 
+  - Ethernet Cable
   - Monitor (Wi-Fi Setup Only)
   - HDMI/Display Cable (Wi-Fi Setup Only)
   - USB Keyboard/Mouse (Wi-Fi Setup Only) 
@@ -66,7 +67,7 @@ $ sudo reboot
 {{< / highlight >}}
 
 ## Update Repos
-Because mushr is always updating, you may have outdated code on your image. To fix this just enter `~/catkin_ws/src/mushr` and pull via vcstool. For this to work, you need to give your car access to the internet. The easiest way to do this is by plugging an ethernet cable from an ethernet port on your home router to the car.
+Because mushr is always updating, you may have outdated code on your image. To fix this just enter `~/catkin_ws/src/mushr` and pull via vcstool. For this to work, you need to give your car access to the internet. The easiest way to do this is by plugging an ethernet cable from an ethernet port on your home router to the car. If you don't have an ethernet cable, you can plug in a monitor, mouse, and keyboard into the Jetson Nano and connect the car to a wifi network.
 
 {{< highlight bash >}}
 $ cd ~/catkin_ws/src/mushr && vcs pull -n
@@ -75,17 +76,13 @@ $ cd ~/catkin_ws/src/mushr && vcs pull -n
 Note: If you edited mushr source code, this will be overwritten. You can instead pull repos individually
 
 ## Configure Visualization
-Visualization is important for seeing what your car is thinking at any given moment. On your laptop with rviz make sure to set your `default.rviz` to ours found in `mushr/mushr_utils/rviz/default.rviz`.
+Visualization is important for seeing what your car is thinking such as which trajectory it will follow or its current position in the map. On your laptop with rviz make sure to set your `default.rviz` to ours found in `mushr/mushr_utils/rviz/default.rviz`.
 
 {{< highlight bash >}}
 $ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/
 {{< / highlight >}}
 
-Set the `ROS_IP` to your IP. Your IP can be found in a variety of ways: [linux](https://www.howtogeek.com/howto/17012/how-to-find-your-ip-address-in-ubuntu/), [mac](http://osxdaily.com/2010/08/08/lan-ip-address-mac/), [windows](https://kb.netgear.com/20878/Finding-your-IP-address-without-using-the-command-prompt).
-
-{{< highlight bash >}}
-$ ifconfig
-{{< / highlight >}}
+Set the `ROS_IP` to your IP. Your IP can be found in a variety of ways: [Linux](https://www.howtogeek.com/howto/17012/how-to-find-your-ip-address-in-ubuntu/), [Mac](http://osxdaily.com/2010/08/08/lan-ip-address-mac/), [Windows](https://kb.netgear.com/20878/Finding-your-IP-address-without-using-the-command-prompt).
 
 Set `ROS_IP` with:
 
@@ -99,7 +96,7 @@ Set the `ROS_MASTER_URI` to the IP of the car.
 $ export ROS_MASTER_URI=http://10.42.0.1:11311
 {{< / highlight >}}
 
-You are configured! Wait till teleop is running to launch rviz on your laptop
+You are configured! Wait till teleop is running to launch `rviz` on your laptop.
 
 {{< highlight bash >}}
 $ rviz
@@ -124,13 +121,19 @@ This is better for debugging your code. Turn on the car and vesc by plugging the
 $ roscore
 {{< / highlight >}}
 
-In a new window, ssh into the car, then launch teleop.
+In a new window, ssh into the car.
+
+{{< highlight bash >}}
+$ ssh robot@10.42.0.1 -X
+{{< / highlight >}}
+
+And launch teleop.
 
 {{< highlight bash >}}
 $ roslaunch mushr_base teleop.launch
 {{< / highlight >}}
 
-You should see the lidar spinning and be able to steer with the controller, by holding down the left bumper, which acts as a safety, and moving the joysticks to accelerate and steer, as shown in the diagram below. 
+You should see the lidar spinning and be able to steer with the controller. While holding down the left bumper, use the left joystick to throttle, and the right joystick to turn. See diagram below.
 
 {{< figure src="/tutorials/first_steps/teleop_controls.png" caption="" width="350">}}
 ## Setup Wi-Fi (Optional)
@@ -204,7 +207,7 @@ $ ifconfig
 
 ### Logging In
 
-Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it with the static IP you set earlier, in our case `172.16.77.Z`.
+Once the Nano has fully booted, it will connect to the existing network at the specified static ip. You should then be able to ssh into it with the static IP you set earlier.
 
 {{< highlight bash >}}
 $ ssh robot@172.16.77.Z`
