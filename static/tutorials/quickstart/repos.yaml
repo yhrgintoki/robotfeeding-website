@@ -22,4 +22,4 @@ repositories:
   range_libc:
     type: git
     url: git@github.com:kctess5/range_libc.git
-    version: master
+    version: deploy
