@@ -30,7 +30,7 @@
  $dt-green: #50fa7b;
  $dt-orange: #ffb86c;
  $dt-pink: $outrun2;
- $dt-purple: $outrun4;
+ $dt-purple: lighten($outrun4, 35%);
  $dt-red: #ff5555;
  $dt-yellow: $outrun3;
  
