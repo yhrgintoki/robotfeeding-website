@@ -1,6 +1,5 @@
 ---
 title: 'About'
-intro_image: imgs/three-generations.jpg
 ---
 The <font color="#FF1690">Multi-agent System for non-Holonomic Racing (MuSHR) </font> is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 
@@ -60,5 +59,3 @@ Open-Source Robotic Racecar for Education and Research
 <br>
 <br>
 <img src="/imgs/Allen-School-purple-RGB-lg.png" style="max-height: 70px;">
-
-

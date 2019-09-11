@@ -52,28 +52,34 @@ pygmentsUseClassic = false
     weight = 2
     
 [[menu.main]]
+    identifier = "press"
+	name = "Press"
+	url = "/press/"
+	weight = 3
+    
+[[menu.main]]
     identifier = "team"
     name = "Team"
     url = "/team/"
-    weight = 3
+    weight = 4
 
 [[menu.main]]
     identifier = "about"
 	name = "About"
 	url = "/about/"
-	weight = 4
+	weight = 5
 
 [[menu.main]]
     identifier = "forum"
     name = "Forum"
     url = "/forum/"
-    weight = 5
+    weight = 7
 
 [[menu.main]]
     identifier = "contact"
     name = "Contact"
     url = "/contact/"
-    weight = 6
+    weight = 8
 
 # Footer Menu
 [[menu.footer]]

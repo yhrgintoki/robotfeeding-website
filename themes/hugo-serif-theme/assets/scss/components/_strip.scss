@@ -19,6 +19,9 @@
 .strip-primary-gradient {
   background-image: linear-gradient(to right, $primary, $secondary);
 }
+.strip-white-gradient-top-bottom {
+  background-image: linear-gradient(to bottom, white, $secondary);
+}
 .strip-primary-gradient-top-bottom {
   background-image: linear-gradient(to bottom, $primary, $secondary);
 }
