@@ -8,6 +8,7 @@
 @import 'bootstrap/bootstrap-grid';
 @import 'variables';
 @import 'bootstrap/mixins';
+@import 'bootstrap/tables';
 @import 'bootstrap/utilities';
 
 // Libraries
@@ -34,6 +35,7 @@
 @import 'components/whitebox';
 @import 'components/feature';
 @import 'components/highlight';
+@import 'components/citation';
 
 // Pages
 @import 'pages/home';

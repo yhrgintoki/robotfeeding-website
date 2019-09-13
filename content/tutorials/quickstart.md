@@ -5,9 +5,9 @@ image: "/services/default.png"
 featured: true
 draft: false
 active: true
-duration: 30 
-difficulty: Beginner 
-summary: Run the MuSHR platform on your machine! 
+duration: 30
+difficulty: Beginner
+summary: Run the MuSHR platform on your machine!
 weight: 1
 ---
 
@@ -21,142 +21,147 @@ This tutorial will get you started with MuSHR in simulation!
 To get the simulator running on your machine so that you can begin hacking immediately!
 
 ### Requirements
-A linux machine (OSX and Windows support coming soon!). If you don't run linux natively then get a linux VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
+A Ubuntu Linux machine. If you don't run linux natively then get a Ubuntu VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
 
 ## Setup
-First we need to make sure you have a few dependencies installed. To make it easier, we have created a docker container with the MuSHR stack and sim running inside it. Here is what you need:
+First we need to make sure you have a few dependencies installed. All commands are to be executed in a terminal (CTRL + ALT + T). Here is what you need:
 
-- [docker](https://docs.docker.com/v17.12/install/)
-- [docker-compose](https://docs.docker.com/compose/install/)
-- git
-- A github account. You can signup for one [here](https://github.com/join?source=header-home)
-- An NVIDIA graphics card
+- [ROS Melodic Desktop Full](http://wiki.ros.org/melodic/Installation) (for Ubuntu 18.04) or [ROS Kinetic](http://wiki.ros.org/kinetic/Installation) (for Ubuntu 16.04)
+*You could also try installing ROS on another supported platform, but as of right now this tutorial has not been tested on non-Ubuntu machines.*
+- A [catkin_ws](http://wiki.ros.org/catkin/Tutorials/create_a_workspace)
+- git:
 
 {{< highlight bash >}}
 $ sudo apt install git-all
 {{< / highlight >}}
 
+- tkinter:
+
+{{< highlight bash >}}
+$ sudo apt install python-tk
+{{< / highlight >}}
+
+- A github account. You can sign up for one [here](https://github.com/join?source=header-home).
+- [vcstool](https://github.com/dirk-thomas/vcstool.git)
+
+
 Once you have these, you're good to go!
 
 ## Install Sim
-Now that we have the dependencies, lets get started! Note, we are assuming you have set up Docker to not need sudo with every call. You can set that up by following [these](https://docs.docker.com/install/linux/linux-postinstall/) steps. Now, open a terminal (CTRL + ALT + T) check if Docker is running:
+Now that we have the dependencies, lets get started! We'll start by making sure we have all the necessary ROS packages. Select **one** of the following, based off the version of ROS you installed.
 
+**Melodic:**
 {{< highlight bash >}}
-$ docker run hello-world
+$ sudo apt install -y ros-melodic-ackermann-msgs ros-melodic-map-server ros-melodic-serial ros-melodic-urg-node ros-melodic-robot-state-publisher ros-melodic-xacro
 {{< / highlight >}}
 
-If you get a error then run:
-
+**Kinetic:**
 {{< highlight bash >}}
-$ systemctl start docker
+$ sudo apt install -y ros-kinetic-ackermann-msgs ros-kinetic-map-server ros-kinetic-serial ros-kinetic-urg-node ros-kinetic-robot-state-publisher ros-kinetic-xacro
 {{< / highlight >}}
 
-Let's clone the sim repo:
+Now, let's clone the necessary repos. First go to your `catkin_ws/src` directory:
 
 {{< highlight bash >}}
-$ git clone https://github.com/prl-mushr/mushr_sim && cd mushr_sim/docker/
+$ cd ~/catkin_ws/src
 {{< / highlight >}}
 
-Alright, so you are in the Docker directory of the sim. There are two configuration changes we need to make. First let's change the uid/gid of your Docker user to match the current user. This is required for GUI apps like rviz to connect. Check your UID/GID with the following command:
+Download [repos.yaml](/tutorials/quickstart/repos.yaml) into `~/catkin_ws/src`.
+
+And clone the necessary repos using vcstool:
 
 {{< highlight bash >}}
-$ id -u $USER
+$ vcs import < repos.yaml
 {{< / highlight >}}
 
-for UID and:
+We need the realsense2_description directory only:
 
 {{< highlight bash >}}
-$ id -g $USER
+$ mv ~/catkin_ws/src/mushr/mushr_hardware/realsense/realsense2_description ~/catkin_ws/src/mushr/mushr_hardware/realsense2_description
+$ rm -rf ~/catkin_ws/src/mushr/mushr_hardware/realsense
 {{< / highlight >}}
 
-for GID. They usually are the same. Now that you know these values use your favorite text editor to change line 4 in Dockerfile. We will use gedit here:
+We need to also install rangelibc. First, if you don't have Cython installed, install it now:
 
 {{< highlight bash >}}
-$ gedit Dockerfile
+$ sudo pip install Cython 
 {{< / highlight >}}
 
-And change line 4's UID/GID to match yours. The last configuration we need to do is make sure your NVIDIA driver matches the one the sim is looking for. This is required because OpenGL is needed for rviz. To see which NVIDIA driver your computer has run:
+Now that Cython's installed, you can install rangelibc:
 
 {{< highlight bash >}}
-$ ls /usr/lib/ | grep nvidia
+$ cd ~/catkin_ws/src/range_libc/pywrapper
+$ sudo python setup.py install
+$ cd ~/catkin_ws/src && rm -rf range_libc
 {{< / highlight >}}
 
-The default is `nvidia-390`. If your's is not that then open `.env` and change the number to match:
-
+We will now run `catkin_make` to setup all the packages:
 {{< highlight bash >}}
-$ gedit .env
+$ cd ~/catkin_ws && catkin_make
 {{< / highlight >}}
 
-That's it for setting up! We're done the hard part :)
+### Setting up our environment
 
-## Run Sim
-To start the sim run:
+To make sure our environment is setup we run:
 
-{{< highlight bash >}}
-$ docker-compose up -d
-{{< / highlight >}}
+*If you are using a shell other than bash, be sure to put these "source" commands in the analagous file for your shell.*
 
-You should see a small gray window pop up and rviz with the car model (see below). We've just created a container that you can see if you run: 
+#### Kinetic (Ubuntu 16.04)
 
 {{< highlight bash >}}
-$ docker ps
-{{< / highlight >}}
-
-{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="The rviz window that should pop up after running `docker-compose`." width="800">}}
-
-Give the car an initial position by clicking `2D Pose Estimate` in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WSAD keys to drive the car around!
-
-## Going Further
-Driving the car around is fun, but what if you want to program it? In order to do that you must enter the container and write code like you would on a normal ROS linux system. The remaining tutorials that use the simulator assume you are in the container. To enter the container while everything else is running, run:
-
-{{< highlight bash >}}
-$ docker exec -it CONTAINER-ID bash
-{{< / highlight >}}
-
-You can get the `CONTAINER-ID` from:
-
-{{< highlight bash >}}
-$ docker ps
-{{< / highlight >}}
-
-This gets you a bash shell inside the container. You will find all the sim code in `~/catkin_ws/src/mushr_sim`. The user developer will not have root privileges, so you cannot install software. To enter the container as root run:
-
-{{< highlight bash >}}
-$ docker exec -it -u 0 CONTAINER-ID bash
-{{< / highlight >}}
-
-By being root you can install additional software that you may want.
-
-You can also separate launching the container from launching the sim. To do that edit line 16 in `docker-compose.yml` to `entrypoint: bash`. Then run: 
-
-{{< highlight bash >}}
-$ docker-compose build
-$ docker-compose up -d
-{{< / highlight >}}
-
-Then enter the container
-
-{{< highlight bash >}}
-$ docker exec -it CONTAINER-ID bash
-{{< / highlight >}}
-
-And source your workspace.
-
-{{< highlight bash >}}
+$ echo 'source /opt/ros/kinetic/setup.bash' >> ~/.bashrc
+$ echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc
 $ . ~/.bashrc
 {{< / highlight >}}
 
- You can start the sim with:
+#### Melodic (Ubuntu 18.04)
+
+{{< highlight bash >}}
+$ echo 'source /opt/ros/melodic/setup.bash' >> ~/.bashrc
+$ echo 'source ~/catkin_ws/devel/setup.bash' >> ~/.bashrc
+$ . ~/.bashrc
+{{< / highlight >}}
+
+Putting these lines in the `~/.bashrc` guarantee they run on the startup of a new shell.
+
+Finally, move the "Outrun" themed `.rviz` file to `~/.rviz` to get our default setup:
+{{< highlight bash >}}
+$ cp ~/catkin_ws/src/mushr/mushr_utils/rviz/default.rviz ~/.rviz/
+{{< / highlight >}}
+
+That's it! Time to run it.
+
+## Running the Simulator
+To start the sim run:
 
 {{< highlight bash >}}
 $ roslaunch mushr_sim teleop.launch
 {{< / highlight >}}
 
-And start rviz with:
+{{< figure src="/tutorials/quickstart/teleop_window.png" caption="Teleop window that should appear after starting the sim" width="200">}}
+
+And in another terminal window launch rviz:
 
 {{< highlight bash >}}
 $ rviz
 {{< / highlight >}}
 
-## Next Steps
-To learn about programming the car continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros)
+The rviz window with the car model should appear (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
+
+{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="This is an image of the rviz window that should pop up." width="800">}}
+
+### Setting an Initial Position
+
+Give the car an initial position by clicking
+{{< figure src="/tutorials/quickstart/2d_pose_estimate.png" width="150">}}
+
+in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WASD keys to drive the car around! You can set the position at any time to reset the pose.
+
+### Navigating rviz
+
+The main pane will show a map of the Paul G. Allen Basement at the University of Washington. The ligher areas are hallways and rooms the simulated car can drive around. The darker areas are walls.
+
+Clicking and dragging will change the perspective of `rviz`, while `Shift + Click` and draging will move the map around.
+
+## Going Further
+To learn about programming the car, continue to the [Intro to ROS Tutorial](/tutorials/intro-to-ros).

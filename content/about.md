@@ -1,6 +1,5 @@
 ---
 title: 'About'
-intro_image: imgs/three-generations.jpg
 ---
 The <font color="#FF1690">Multi-agent System for non-Holonomic Racing (MuSHR) </font> is an open-source, full-stack robotics platform designed to advance robotics research and education by making a fully integrated robotic race car available in an easy-to-assemble and economic package.
 
@@ -28,15 +27,30 @@ MuSHR can be assembled at any makerspace and is only mile 0 for your ambitions. 
 
 ## Ready to jump in?
 
-Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](/hardware/build_instructions).
+Get started in the [quickstart guide](/tutorials/quickstart) or take a look at the [assembly instructions](/hardware/build_instructions). Consider applying to the [MuSHR donation program](/contact/#the-mushr-donation-program).
 
 ## Questions?
 
-See the [docs](/docs) and [FAQ](/tutorials/faq)!
+See the [docs](https://github.com/prl-mushr/mushr#component-documentation) and [FAQ](https://github.com/prl-mushr/mushr#faq)!
 
 ## Stay in touch!
 
-Register for MuSHR updates [here](/).
+Register for MuSHR updates [here](https://tinyletter.com/mushr).
+
+## Citation
+If you plan to use any part of the the MuSHR platform, including tutorials, codebase, or hardware instructions for a project or paper, please cite *[MuSHR: A Low-Cost,
+Open-Source Robotic Racecar for Education and Research
+](https://arxiv.org/abs/1908.08031)*:
+```
+@article{srinivasa2019mushr,
+ title={{M}u{SHR}: {A} Low-Cost, Open-Source Robotic Racecar for Education and Research},
+ author={Srinivasa, Siddhartha S. and Lancaster, Patrick and Michalove, Johan and Schmittle, Matt and Summers, Colin and Rockett, Matthew and Smith, Joshua R. and Chouhury, Sanjiban and Mavrogiannis, Christoforos and Sadeghi, Fereshteh},
+ journal={CoRR},
+ volume={abs/1908.08031},
+ year={2019}
+}
+```
+<br>
 
 ## Acknowledgements 
 <img src="/imgs/pr_logo.900x900.jpg" style="height: 100px;">
@@ -45,5 +59,3 @@ Register for MuSHR updates [here](/).
 <br>
 <br>
 <img src="/imgs/Allen-School-purple-RGB-lg.png" style="max-height: 70px;">
-
-
