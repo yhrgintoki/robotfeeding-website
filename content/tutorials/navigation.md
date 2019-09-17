@@ -19,7 +19,7 @@ This tutorial will teach you to set up and operating MuSHR's baseline autonomous
 
 ### Requirements
 
-If you intend to run this tutorial on the real car,  complete the Mapping Tutorial first. We will also assume you have built your car with the LiDaR. We recommend access to a secondary linux computer for viewing the visualizations of the localization module, as well as for initializing the particle filter.
+If you intend to run this tutorial on the real car, construct a map of the environment in which you'll be building the car. Our team recommends using [gmapping](https://wiki.ros.org/slam_gmapping) or [cartographer](https://google-cartographer-ros.readthedocs.io/en/latest/) We will also assume you have built your car with the LiDaR. We recommend access to a secondary linux computer for viewing the visualizations of the localization module, as well as for initializing the particle filter.
 
 ## Navigation Stack Overview
 
