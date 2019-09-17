@@ -12766,7 +12766,7 @@ h3 {
   background-image: linear-gradient(to right, #1C0658, #5C2686); }
 
 .strip-white-gradient-top-bottom {
-  background-image: linear-gradient(to bottom, white, #5C2686); }
+  background-image: linear-gradient(to bottom, #f4f5fb, white); }
 
 .strip-primary-gradient-top-bottom {
   background-image: linear-gradient(to bottom, #1C0658, #5C2686); }
@@ -12976,6 +12976,9 @@ code, .highlight {
 
 .citation-row a {
   color: #F4D676; }
+
+.teaching-row h1 {
+  color: #1C0658; }
 
 .team-summary {
   display: flex;

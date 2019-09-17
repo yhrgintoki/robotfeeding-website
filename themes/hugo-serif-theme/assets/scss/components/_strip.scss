@@ -20,7 +20,7 @@
   background-image: linear-gradient(to right, $primary, $secondary);
 }
 .strip-white-gradient-top-bottom {
-  background-image: linear-gradient(to bottom, white, $secondary);
+  background-image: linear-gradient(to bottom, #f4f5fb, white);
 }
 .strip-primary-gradient-top-bottom {
   background-image: linear-gradient(to bottom, $primary, $secondary);
