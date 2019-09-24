@@ -23,7 +23,7 @@ To get the simulator running on your machine so that you can begin hacking immed
 ### Requirements
 A Ubuntu Linux machine. If you don't run linux natively then get a Ubuntu VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
 
-Window Subsystem for Linux (WSL): There has also been success getting the quickstart to run using WSL. When running `rivz` you'll need to disable native `opengl`. There will be a note (**Note for WSL**) in the section running `rviz`.
+Window Subsystem for Linux (WSL): There has also been success getting the quickstart to run using WSL. When running `rivz` you'll need to disable native `opengl`. There will be a note ([**Note for WSL**](#wsl-users-note)) in the section running `rviz`.
 
 ## Setup
 First we need to make sure you have a few dependencies installed. All commands are to be executed in a terminal (CTRL + ALT + T). Here is what you need:
@@ -148,7 +148,7 @@ And in another terminal window launch rviz:
 $ rviz
 {{< / highlight >}}
 
-**WSL Users Note:** In order for Open GL to find a display you'll need to do an extra step to get `rviz` to work. See [Install VcXsrv](https://janbernloehr.de/2017/06/10/ros-windows#install-vcxsrv) to get it working.
+<span id="wsl-users-note">**WSL Users Note:**</span> In order for Open GL to find a display you'll need to do an extra step to get `rviz` to work. See [Install VcXsrv](https://janbernloehr.de/2017/06/10/ros-windows#install-vcxsrv) to get it working.
 
 The `rviz` window with the car model should appear (see below). `Rviz` is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but `rviz` can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
 
