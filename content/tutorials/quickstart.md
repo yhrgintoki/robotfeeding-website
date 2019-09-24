@@ -23,6 +23,8 @@ To get the simulator running on your machine so that you can begin hacking immed
 ### Requirements
 A Ubuntu Linux machine. If you don't run linux natively then get a Ubuntu VM: [OSX](https://www.instructables.com/id/How-to-Create-an-Ubuntu-Virtual-Machine-with-Virtu/), [Windows](https://itsfoss.com/install-linux-in-virtualbox/).
 
+Window Subsystem for Linux (WSL): There has also been success getting the quickstart to run using WSL. When running `rivz` you'll need to disable native `opengl`. There will be a note (**Note for WSL**) in the section running `rviz`.
+
 ## Setup
 First we need to make sure you have a few dependencies installed. All commands are to be executed in a terminal (CTRL + ALT + T). Here is what you need:
 
@@ -146,16 +148,18 @@ And in another terminal window launch rviz:
 $ rviz
 {{< / highlight >}}
 
-The rviz window with the car model should appear (see below). Rviz is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but rviz can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
+**WSL Users Note:** In order for Open GL to find a display you'll need to do an extra step to get `rviz` to work. See [Install VcXsrv](https://janbernloehr.de/2017/06/10/ros-windows#install-vcxsrv) to get it working.
 
-{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="This is an image of the rviz window that should pop up." width="800">}}
+The `rviz` window with the car model should appear (see below). `Rviz` is useful for visualizing what the car is thinking/seeing. Currently it is set to visualize the car, map, and laserscan but `rviz` can be used for much [more](http://wiki.ros.org/rviz/Tutorials).
+
+{{< figure src="/tutorials/quickstart/rviz_docker.png" caption="This is an image of the `rviz` window that should pop up." width="800">}}
 
 ### Setting an Initial Position
 
 Give the car an initial position by clicking
 {{< figure src="/tutorials/quickstart/2d_pose_estimate.png" width="150">}}
 
-in rviz and clicking and dragging in the main window. Now you can click on the small gray window and use the WASD keys to drive the car around! You can set the position at any time to reset the pose.
+in `rviz` and clicking and dragging in the main window. Now you can click on the small gray window and use the WASD keys to drive the car around! You can set the position at any time to reset the pose.
 
 ### Navigating rviz
 
