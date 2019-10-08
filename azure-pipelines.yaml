@@ -15,7 +15,7 @@ stages:
     steps:
     - checkout: self
       displayName: 'Checkout repository including submodules'
-      submodules: true  # true so Hugo theme submodule is checked out
+      submodules: false # true  # true so Hugo theme submodule is checked out
     - task: HugoTask@1
       displayName: 'Generate Hugo site'
       inputs:
