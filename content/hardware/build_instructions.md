@@ -10,7 +10,7 @@ summary: Build your own MuSHR Racecar!
 weight: 2
 ---
 
-This Wiki provides instructions for building the MuSHR Racecar. For each section, we recommend reading through each of the section's steps before attempting it. You can watch the MuSHR Racecar being built [here](https://www.youtube.com/watch?v=NP7qljzG3RU&list=PLU9BrzGX4PH2DHZzxOg2gEkLMXhpkS7fV).
+This page provides instructions for building the MuSHR Racecar. For each section, we recommend reading through each of the section's steps before attempting it. You can watch the MuSHR Racecar being built [here](https://www.youtube.com/watch?v=NP7qljzG3RU&list=PLU9BrzGX4PH2DHZzxOg2gEkLMXhpkS7fV).
 
 ___
 ## Table of Contents
@@ -45,7 +45,7 @@ The bill of materials  below describes the necesssary materials for building the
 
 **3D Printed Parts**
 
-The upper portion of the MuSHR Racecar's frame is 3D printed. All of the parts that must be printed are provided as .stl files [here](https://github.com/prl-mushr/mushr_cad/tree/master/v3/stl).
+The upper portion of the MuSHR Racecar's frame is 3D printed. All of the parts that must be printed are provided as .stl files [here](https://github.com/prl-mushr/mushr_cad/tree/master/v3/stl). If you would like to modify the logo on the sides of the robot, follow [these instructions](/hardware/logo_modification) to generate new .stl files.
 
 ___
 ## VESC Preparation 
