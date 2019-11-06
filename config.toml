@@ -1,6 +1,6 @@
 baseURL = "https://mushr.io/"
 languageCode = "en-us"
-title = "MuSHR: The UW Open Racecar Project"
+title = "Food Manipulation"
 theme = "hugo-serif-theme"
 
 # Highlighting config (Pygments)
@@ -28,58 +28,77 @@ pygmentsUseClassic = false
     meta_twitter_creator = "@MichaloveJohan"
 
 # Main Menu
-[[menu.main]]
-    identifier = "quickstart"
-	name = "Quickstart"
-	url = "/tutorials/quickstart/"
-    weight = 1
-    
+   
 [[menu.main]]
     identifier = "tutorials"
-	name = "Tutorials"
-	url = "/tutorials/"
+	  name = "Tutorials(?)"
+	  url = "/tutorials/"
     weight = 1
 
 [[menu.main]]
-    name = "Docs"
+    name = "Docs(?)"
     url = "https://github.com/prl-mushr/mushr#component-documentation"
     weight = 2
     
 [[menu.main]]
     identifier = "hardware"
-    name = "Hardware"
+    name = "Hardware(?)"
     url = "/hardware/"
     weight = 2
     
 [[menu.main]]
     identifier = "press"
-	name = "Press"
-	url = "/press/"
-	weight = 3
+	  name = "Press(?)"
+	  url = "/press/"
+	  weight = 3
     
 [[menu.main]]
     identifier = "team"
-    name = "Team"
+    name = "Team(?)"
     url = "/team/"
     weight = 4
 
 [[menu.main]]
     identifier = "about"
-	name = "About"
-	url = "/about/"
-	weight = 5
+	  name = "About(?)"
+	  url = "/about/"
+	  weight = 5
 
 [[menu.main]]
     identifier = "forum"
-    name = "Forum"
+    name = "Forum(?)"
     url = "/forum/"
     weight = 7
 
 [[menu.main]]
     identifier = "contact"
-    name = "Contact"
+    name = "Contact(?)"
     url = "/contact/"
     weight = 8
+
+[[menu.main]]
+    identifier = "publications"
+    name = "Publications"
+    url = "/publications/"
+    weight = 9
+
+[[menu.main]]
+    identifier = "demos"
+    name = "Demos"
+    url = "/demos/"
+    weight = 10
+
+[[menu.main]]
+    identifier = "datasets"
+    name = "Datasets"
+    url = "/datasets/"
+    weight = 11
+
+[[menu.main]]
+    identifier = "videos"
+    name = "Videos"
+    url = "/videos/"
+    weight = 12
 
 # Footer Menu
 [[menu.footer]]
@@ -89,17 +108,17 @@ pygmentsUseClassic = false
     
 [[menu.footer]]
     identifier = "forum"
-	name = "Forum"
+	name = "Forum(?)"
 	url = "/forum/"
     weight = 2
 
 [[menu.footer]]
     identifier = "contact"
-	name = "Contact"
+	name = "Contact(?)"
 	url = "/contact/"
     weight = 3
     
 [[menu.footer]]
-	name = "Newsletter"
+	name = "Newsletter(?)"
 	url = "https://tinyletter.com/mushr"
     weight = 4
