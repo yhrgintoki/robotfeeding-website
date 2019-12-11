@@ -1,10 +1,8 @@
 ---
-title: 'Home'
-intro_image: imgs/multi-cars-wheels.jpg
+title: 'Robot-assited Feeding'
+intro_image: /imgs/ada.jpg 
 ---
 
-# An Accessible Platform for Mobile, Multi-Agent Robotics(?).
+# Food Manipulation
 
-## Need to think out a short description and some picutres, may need to change the layout too
-
-## The <font color="#66CCFF">Multi-agent System for non-Holonomic Racing (MuSHR) </font> is an open-source robotic hardware and software platform for learning and researching AI in a the setting of autonomous vehicles and mobile robotics.
+## Eating is an activity of daily living (ADL) and losing the ability to self-feed can be devastating. Through this project, we are developing algorithms and technologies towards a robotic system that can autonomously feed people with upper-extremity mobility impairments
