@@ -3,5 +3,5 @@
 	url = https://github.com/JugglerX/hugo-serif-theme.git
 [submodule "public"]
 	path = public
-	url = git@github.com:prl-mushr/prl-mushr.github.io.git
+	url = git@github.com:yhrgintoki/yhrgintoki.github.io.git
 	branch = master

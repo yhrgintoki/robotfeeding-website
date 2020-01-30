@@ -9,13 +9,12 @@ T. Bhattacharjee, D. Gallenberger, D. Dubois, L. L'Écuyer-Lapiere, Y. Kim, A. M
 _Conference on Neural Information Processing Systems_, 2018  
 <i class="fas fa-medal"></i><font color="FFA500">__Best Demo Award Winner__</font>
 
-<iframe width="800" height="450" style="margin-bottom:25px" src="https://www.youtube.com/embed/t2eO4CD-0WY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <head>
     <script src="https://kit.fontawesome.com/b4fc805455.js" crossorigin="anonymous"></script>
 </head>
 
-# Events
+# Outreach
 
 * <font color = black size = 4>__TTI/Vanguard Visit and Demo__</font>
  * <font size = 3>March 2, 2020</font>
@@ -28,7 +27,6 @@ _Conference on Neural Information Processing Systems_, 2018
 * <font color = black size = 4>__Computing Open House 2019__</font>
  * <font size = 3>December 7, 2019</font>
  * <font size = 3>UW: Gates Center</font>
- * <font size = 3 color="4169E1">[Photos](https://photos.google.com/share/AF1QipPrIdEJE3xSqA-KDCprF4u5K7H5q7_a7pnHnAZPBTAnWXBmm0wB3wm7YMichA4J5w?key=aE9ZcGZqS2VOaUpycjdlOFJBRUdqamtIWHkzdUN3)</font>
 &nbsp;
 * <font color = black size = 4>__Clive Thompson Video Shoot__</font>
  * <font size = 3>October 23, 2019</font>
@@ -50,12 +48,6 @@ _Conference on Neural Information Processing Systems_, 2018
 * <font color = black size = 4>__Puget Sound Business Journal Demo__</font>
  * <font size = 3>April 25, 2019; Published May 3, 2019</font>
  * <font size = 3>UW: Robotics Lab</font>
- * <font size = 3 color="4169E1">[UW team develops AI-powered robotic arm to help people eat](https://www.bizjournals.com/seattle/news/2019/05/03/university-of-washington-team-develops-robotic-arm.html)</font>
-&nbsp;
-* <font color = black size = 4>__Columns Magazine__</font>
- * <font size = 3>March 28, 2019</font>
- * <font size = 3>UW: Robotics Lab</font>
- * <font size = 3 color="4169E1">[Photos](https://photos.google.com/share/AF1QipO-orfuiamvDekv0Ea3f6LyyGOpoAlajcp-C2jyJXJZNS5yHoZC_jFvOcCyQsOpqg?key=SnpmVGozR3B5Q0VfdVBJVzVjNlp3ZjFvaS1CZnFn)</font>
 &nbsp;
 * <font color = black size = 4>__NeurIPS 2018 Demonstration__</font>
  * <font size = 3>December 5, 2018</font>
@@ -67,3 +59,5 @@ _Conference on Neural Information Processing Systems_, 2018
 * <font color = black size = 4>__CSE Woman’s Day Demo__</font>
  * <font size = 3>April 6, 2018</font>
  * <font size = 3>UW: Robotics Lab</font>
+
+{{<figure src="/imgs/demo1.png">}} {{<figure src="/imgs/demo2.png">}}

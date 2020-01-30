@@ -4,6 +4,10 @@ date: 2019-11-03T16:59:00+07:00
 layout: publications
 ---
 
+[<font color="4169E1">__Is More Autonomy Always Better? Exploring Preferences of Users with Mobility Impairments in Robot-assisted Feeding.__</font>](https://personalrobotics.cs.washington.edu/publications/bhattacharjee2020userpref.pdf)  
+T. Bhattacharjee, E.K. Gordon, R. Scalise, M.E. Cabrera, A. Caspi, M. Cakmak, and S.S. Srinivasa.  
+_In ACM/IEEE International Conference on Human-Robot Interaction_, 2020.
+
 [<font color="4169E1">__Towards Robotic Feeding: Role of Haptics in Fork-based Food Manipulation.__</font>](https://personalrobotics.cs.washington.edu/publications/bhattacharjee2019haptic.pdf)  
 T. Bhattacharjee, G. Lee, H. Song, and S.S. Srinivasa.  
 _IEEE Robotics and Automation Letters_, 2019.

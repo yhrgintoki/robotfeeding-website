@@ -1,4 +1,4 @@
-baseURL = "https://mushr.io/"
+baseURL = "https://yhrgintoki.github.io/"
 languageCode = "en-us"
 title = "Food Manipulation"
 theme = "hugo-serif-theme"
@@ -56,7 +56,7 @@ pygmentsUseClassic = false
 [[menu.main]]
     identifier = "hardware"
     name = "Open Hardware"
-    url = "https://medium.com/@20mesc/wireless-perception-f0b408f634e0"
+    url = "/hardware/"
     weight = 5
 
 [[menu.main]]

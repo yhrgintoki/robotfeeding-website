@@ -2,12 +2,28 @@
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
+    {{ if .HasChildren}}
+    <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
+      <a href="#">
+        {{ .Pre }}
+        <span>{{ .Name }}</span>
+      </a>
+    <li>
+    <ul class="sub-menu">
+      {{ range .Children}}
+        <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+    {{ else }}
     <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
       <a href="{{.URL}}">
         {{ .Pre }}
         <span>{{ .Name }}</span>
       </a>
     </li>
+    {{end}}
     {{end}}
   </ul>
 </div>

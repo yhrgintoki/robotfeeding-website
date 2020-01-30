@@ -6,6 +6,14 @@ layout: videos
 
 <br />
 
+## Evaluating an Assistive-Feeding Robot with Users with Mobility Limitations
+
+In this work, we explore user preferences for different modes of autonomy for robot-assisted feeding given perceived error risks and also analyze the effect of input modalities on technology acceptance.  
+Specifically, we tested: Speed(Fast vs. Slow), Interface (Web-based vs. Voice-based), Environment (Social vs. Individual), Level of Autonomy: (Full vs. Partial vs. Low)
+
+<iframe width="800" height="450" style="margin-bottom:25px" src="https://www.youtube.com/embed/mLDyIWNGsy0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<br />
 
 ## Online Learning for Food Manipulation
 

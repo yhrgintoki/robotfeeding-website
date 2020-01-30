@@ -7,7 +7,9 @@
   <div class="container">
     <div class="row justify-content-start">
       <div class="col-12 col-md-12 col-lg-6 order-2 order-lg-1">
+        <div class="content">
         {{ .Content }}
+      </div>
       </div>
       {{ if .Params.intro_image }}
       <div class="col-12 col-md-12 col-lg-6 order-1 order-lg-2 position-relative">
@@ -20,8 +22,9 @@
 
 <div class="container pt-6 pb-md-12">
   <div class="row">
-    {{ range .Pages.ByWeight }}
-    <div class="col-12 col-md-6 mb-2 ">{{ .Render " " }}</div>
+    {{ $tutorials := where (where .Site.RegularPages "Type" "hardware") ".Params.active" true }}
+    {{ range $tutorials.ByWeight }}
+    <div class="col-12 col-md-6 mb-2 ">{{ .Render "summary" }}</div>
     {{ end }}
   </div>
 </div>
