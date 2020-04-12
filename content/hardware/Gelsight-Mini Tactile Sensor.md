@@ -5,7 +5,7 @@ active: true
 summary: Vision-based tactile sensors
 weight: 2
 ---
-<font color = black>__Introduction__</font>
+<font color = black>**Introduction**</font>
 
 Vision-based tactile sensors that employ cameras to capture high-resolution tactile information ofa soft elastomer pad area. These types of sensors [1]–[5] have seen a rise in popularity and development as they have demonstrated utility in manipulation, identification, and inspection tasks.
 
@@ -30,75 +30,75 @@ Source: https://github.com/geiman-uw/fingergelsight
 
 ## Supplies
 
-* <font size = 4, color = black>__Chemicals__</font>
- * Ease Release 200
- * Silicones, Inc. XP-565
- * Yellow Print-On Silicone Ink
- * Print-On Silicone Ink diluent
- * ?mm Transparent acrylic
- * Gray Print-On Silicone Ink
- * Acrylic glue
+* <font size = 4, color = black>**Chemicals**</font>
+  * Ease Release 200
+  * Silicones, Inc. XP-565
+  * Yellow Print-On Silicone Ink
+  * Print-On Silicone Ink diluent
+  * ?mm Transparent acrylic
+  * Gray Print-On Silicone Ink
+  * Acrylic glue
 
 {{< figure src="/imgs/hardware3.png">}}
 
-* <font size = 4, color = black>__Accessories__</font>
- * Glass Petri dishes (plastic ones will melt)
- * Pour boats
- * Popsicle mixing sticks
- * Pipets
- * Needle-tip bottle
+* <font size = 4, color = black>**Accessories**</font>
+  * Glass Petri dishes (plastic ones will melt)
+  * Pour boats
+  * Popsicle mixing sticks
+  * Pipets
+  * Needle-tip bottle
 
 {{< figure src="/imgs/hardware4.png">}}
 
-* <font size = 4, color = black>__Equipment required__</font>
- * Fume hood (if available)
- * Vacuum chamber
- * Toaster oven
- * 3D printer
- * Clear PLA 3D printer filament
- * Laser cutter
+- <font size = 4, color = black>**Equipment required**</font>
+  - Fume hood (if available)
+  - Vacuum chamber
+  - Toaster oven
+  - 3D printer
+  - Clear PLA 3D printer filament
+  - Laser cutter
 
 {{< figure src="/imgs/hardware5.png">}}
 
-* <font size = 4, color = black>__Electronics__</font>
- * Wide-Angle Camera
- * 2 Adafruit LED Sequins
- * Wires
- * USB Cable
+* <font size = 4, color = black>**Electronics**</font>
+  * Wide-Angle Camera
+  * 2 Adafruit LED Sequins
+  * Wires
+  * USB Cable
 
 ## Core Procedure
 
 You may find it most efficient to make 4-8 cores at a time with this procedure.
 
 * __Prepare silicone__
- * Pour silicones, 10:1 base to activator by mass, in a pour boat. Use popsicle sticks to portion viscous materials like silicone base and inks, and pipets to portion less viscous materials like activator and dilutent. 
- * Mix using a popsicle stick. Never use the same pipet or popsicle stick for different materials.
+  * Pour silicones, 10:1 base to activator by mass, in a pour boat. Use popsicle sticks to portion viscous materials like silicone base and inks, and pipets to portion less viscous materials like activator and dilutent. 
+  * Mix using a popsicle stick. Never use the same pipet or popsicle stick for different materials.
 
 Note: PLA parts shrink when exposed to heat. If you plan to modify the core, make your part approximately 5% bigger than the intended final size in order to account for this.
 
 * __Cast silicone__
- * Spray petri dish with rubbing alcohol and wipe with Kimwipes to remove dust and debris. 
- * Spray petri dish with Ease Release 200. 
- * Mix 17-18g XP-565, then pour 15g into dish. Amount may vary depending on desired thickness and petri dish size.
- * Vacuum until no bubbles remain. Several release and vacuum cycles helps to accelerate process.
- * Heat petri dish on warm (175 °F) in toaster oven for 10 min to cure silicone.
+  * Spray petri dish with rubbing alcohol and wipe with Kimwipes to remove dust and debris. 
+  * Spray petri dish with Ease Release 200. 
+  * Mix 17-18g XP-565, then pour 15g into dish. Amount may vary depending on desired thickness and petri dish size.
+  * Vacuum until no bubbles remain. Several release and vacuum cycles helps to accelerate process.
+  * Heat petri dish on warm (175 °F) in toaster oven for 10 min to cure silicone.
 
 {{< figure src="/imgs/hardware6.png">}}{{< figure src="/imgs/hardware7.png">}}
 
 Mixing silicone introduces air bubbles (left) which are removed by placing in vacuum chamber
 
 * __Add yellow layer__
- * Starting with a 1g of yellow Silicone Ink, mix in a 1:10:60 activator:ink:diluent ratio. The resulting mixture should be approximately the consistency of chocolate milk. 
- * Pour in a thin even layer over the XP-565 petri dish. The layer should be as thin as possible, so you will not use all of the yellow silicone. Heat the dish on warm for 15 min to cure.
+  * Starting with a 1g of yellow Silicone Ink, mix in a 1:10:60 activator:ink:diluent ratio. The resulting mixture should be approximately the consistency of chocolate milk. 
+  * Pour in a thin even layer over the XP-565 petri dish. The layer should be as thin as possible, so you will not use all of the yellow silicone. Heat the dish on warm for 15 min to cure.
 
 * __3D printer__
- * All production files can be found in finger\_gelsight\_production.
- * Print gelsight\_shell.stl and gelsight\_piece.stl in opaque PLA. 
- * Print gelsight\_corefilled\_103.stl open side up in clear PLA with 0.2mm layer height, raft, and no support. 
+  * All production files can be found in finger\_gelsight\_production.
+  * Print gelsight\_shell.stl and gelsight\_piece.stl in opaque PLA. 
+  * Print gelsight\_corefilled\_103.stl open side up in clear PLA with 0.2mm layer height, raft, and no support. 
 
 * __Laser Cutter__
- * From acrylic, laser cut gelsight\_corefilled\_acrylic.stl with vector set to 8s 100p 100f.
- * Remove silicone with yellow layer from petri dish and place yellow-side up in laser cutter. Laser cut gelsight\_gelpattern\_5x14.ai with raster set to 11s 4p 50f and vector set to 5s 75p 50f.
+  * From acrylic, laser cut gelsight\_corefilled\_acrylic.stl with vector set to 8s 100p 100f.
+  * Remove silicone with yellow layer from petri dish and place yellow-side up in laser cutter. Laser cut gelsight\_gelpattern\_5x14.ai with raster set to 11s 4p 50f and vector set to 5s 75p 50f.
 
 * __Cast transparent core silicone__: Mix enough XP-565 to fill the prepared cores, and vacuum in pour boat until most bubbles are gone.
 

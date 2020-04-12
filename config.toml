@@ -1,6 +1,6 @@
 baseURL = "https://yhrgintoki.github.io/"
 languageCode = "en-us"
-title = "Food Manipulation"
+title = "Robot Assisted Feeding"
 theme = "hugo-serif-theme"
 
 # Highlighting config (Pygments)
@@ -28,12 +28,6 @@ pygmentsUseClassic = false
     meta_twitter_creator = "@MichaloveJohan"
 
 # Main Menu
-   
-[[menu.main]]
-    identifier = "overview"
-	  name = "Overview"
-	  url = "/overview/"
-	  weight = 1
 
 [[menu.main]]
     identifier = "publications"
@@ -60,25 +54,40 @@ pygmentsUseClassic = false
     weight = 5
 
 [[menu.main]]
+    parent = "hardware"
+    name = "Tactile Sensor"
+    url = "/hardware/Gelsight-Mini Tactile Sensor/"
+    weight = 5
+
+[[menu.main]]
+    parent = "hardware"
+    name = "Wireless Perception Module"
+    url = "/hardware/Wireless Perception Module/"
+    weight = 5
+[[menu.main]]
     identifier = "videos"
     name = "Videos"
     url = "/videos/"
     weight = 6
 
 [[menu.main]]
-    identifier = "others"
-    name = "Other groups"
-    url = "/others/"
+    name = "People"
+    url = "https://personalrobotics.cs.washington.edu/people/"
     weight = 7
 
 [[menu.main]]
     identifier = "press"
-	  name = "Press"
-	  url = "/press/"
-	  weight = 8
+    name = "Press"
+    url = "/press/"
+    weight = 8
 
 # Footer Menu
 [[menu.footer]]
-	  name = "Home"
-	  url = "/"
+    name = "Home"
+    url = "/"
     weight = 1
+
+[markup]
+[markup.goldmark]
+[markup.goldmark.renderer]
+unsafe = true

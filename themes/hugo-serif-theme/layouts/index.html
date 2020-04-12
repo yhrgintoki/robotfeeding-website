@@ -1,4 +1,4 @@
-{{ define "title" }}Food Manipulation{{ end}}
+{{ define "title" }}Robot Assisted Feeding{{ end}}
 {{ define "header_css" }}{{ end }}
 {{ define "body_classes" }}page-home{{ end }}
 {{ define "header_classes" }}header-transparent{{ end }}
@@ -21,13 +21,14 @@
      <div class="row justify-content-start">
       <div class="col-12 col-md-12 col-lg-6 order-2 order-lg-1">
         {{.Content}}
-        <a class="button button-primary" href="{{ .Site.BaseURL }}overview">Overview</a>
       <!--<div class="col-12 col-md-12 col-lg-6 order-1 order-lg-2 position-relative">
         <img class="intro-image-flying rounded" src="{{ .Params.intro_image | relURL }}" />
       </div>-->
       </div>
       <div class="col-lg-6 order-lg-2">
-        <img src="{{ .Params.intro_image | relURL }}" />
+        <div style="position:relative;padding-bottom:56.25%;">
+        <iframe width="100%" height="100%" style="width:100%;height:100%;position:absolute;left:0px;top:0px;" src="https://www.youtube.com/embed/t2eO4CD-0WY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       </div>
     </div>
   </div>

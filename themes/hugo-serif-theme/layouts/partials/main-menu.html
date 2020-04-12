@@ -3,19 +3,20 @@
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
     {{ if .HasChildren}}
-    <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}">
-      <a href="#">
-        {{ .Pre }}
+    <div class = "dropdown">
+    <button class="dropbtn">
+      <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}"></li>
         <span>{{ .Name }}</span>
-      </a>
-    <li>
-    <ul class="sub-menu">
+      <li>
+    </button>
+    <ul class="dropdown-content">
       {{ range .Children}}
         <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
           <a href="{{ .URL }}">{{ .Name }}</a>
         </li>
       {{ end }}
     </ul>
+    </div>
     {{ else }}
     <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
       <a href="{{.URL}}">
