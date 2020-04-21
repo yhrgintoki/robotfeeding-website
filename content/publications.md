@@ -8,6 +8,10 @@ layout: publications
 T. Bhattacharjee, E.K. Gordon, R. Scalise, M.E. Cabrera, A. Caspi, M. Cakmak, and S.S. Srinivasa.  
 _In ACM/IEEE International Conference on Human-Robot Interaction_, 2020.
 
+[<font color="4169E1"><b>Adaptive Robot-Assisted Feeding: An Online Learning Framework for Acquiring Previously-Unseen Food Items.</b></font>](https://arxiv.org/abs/1908.07088)  
+E.K. Gordon, X. Meng, T. Bhattacharjee, M. Barnes, and S. S. Srinivasa.  
+_Under Review_, 2020.
+
 [<font color="4169E1"><b>Towards Robotic Feeding: Role of Haptics in Fork-based Food Manipulation.</b></font>](https://personalrobotics.cs.washington.edu/publications/bhattacharjee2019haptic.pdf)  
 T. Bhattacharjee, G. Lee, H. Song, and S.S. Srinivasa.  
 _IEEE Robotics and Automation Letters_, 2019.
@@ -29,9 +33,7 @@ _International ACM SIGACCESS Conference on Computers and Accessibility_, 2019.
 R. Feng, Y. Kim, G. Lee, E.K. Gordon, M. Schmittle, S. Kumar, T. Bhattacharjee, and S.S. Srinivasa.  
 _International Symposium on Robotics Research_, 2019.
 
-[<font color="4169E1"><b>Adaptive Robot-Assisted Feeding: An Online Learning Framework for Acquiring Previously-Unseen Food Items.</b></font>](https://arxiv.org/abs/1908.07088)  
-E.K. Gordon, X. Meng, T. Bhattacharjee, M. Barnes, and S. S. Srinivasa.  
-_Under Review_, 2019.
+
 
 <head>
     <script src="https://kit.fontawesome.com/b4fc805455.js" crossorigin="anonymous"></script>

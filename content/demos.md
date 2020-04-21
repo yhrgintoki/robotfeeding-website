@@ -60,3 +60,4 @@ _Conference on Neural Information Processing Systems_, 2018
   * <font size = 3>UW: Robotics Lab</font>
 
 {{<figure src="/imgs/demo1.png">}} {{<figure src="/imgs/demo2.png">}}
+{{<figure src="/imgs/demo3.jpg">}}{{<figure src="/imgs/demo4.jpg">}}
