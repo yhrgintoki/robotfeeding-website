@@ -1,0 +1,14 @@
+.dropdown {
+    position: relative;
+	display: inline-block;
+	&:hover {
+		.dropdown-content {
+			display: block;
+		}
+		.dropbtn {
+            background-color: white;
+            text-decoration: underline;
+		}
+	}
+  }
+  

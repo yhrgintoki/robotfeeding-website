@@ -2,12 +2,29 @@
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
+    {{ if .HasChildren}}
+    <div class = "dropdown">
+    <button class="dropbtn">
+      <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.HasMenuCurrent "main" . }}active{{ end }}"></li>
+        <span>{{ .Name }}</span>
+      <li>
+    </button>
+    <ul class="dropdown-content">
+      {{ range .Children}}
+        <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }}active{{ end }}">
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+    </div>
+    {{ else }}
     <li class="menu-item-{{ .Name | lower }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}">
       <a href="{{.URL}}">
         {{ .Pre }}
         <span>{{ .Name }}</span>
       </a>
     </li>
+    {{end}}
     {{end}}
   </ul>
 </div>

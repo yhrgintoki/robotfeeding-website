@@ -5,7 +5,7 @@
     width: 120px;
   }
   img {
-    width: 100%;
+    width: 40%;
     height: auto;
   }
   a {
@@ -16,7 +16,7 @@
 }
 .logo-mobile {
   display: block;
-  width: 110px;
+  width: 50px;
   padding: 10px 0 10px 0;
   @include media-breakpoint-up(sm) {
     display: none;

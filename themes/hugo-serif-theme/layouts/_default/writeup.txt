@@ -1,0 +1,12 @@
+Question
+1. Which genre of the game is most popular?
+2. Which company has the most high-quality game?
+3. Which factor affects the total worldwide sale of the game?
+
+My analysis starts with a brief overview of the whole dataset, I find that the data of some unpopular games are not complete such as missing ESRM rate or critic/user rating score. As a result, all subsequent views include a filter to remove null values and the rating score which the number of critics/users to give the score is unless than 10.
+To begin with, I established a plot to display the number of games published per year and found some data with the year after 2017. Since this dataset is from 2016, I remove these data in further views as well.
+Then I check the total global sales in different genres and found the action genre is the highest. However, this might because the total number of action games published is big and its quality might be bad. Then I checked the average global sales per genre and found platform games are the highest, which implies high quality. Then I checked the trend of global sales per genre.
+For the company, I displayed the top 30 companies that publish the most games and the average of global sales of each game to show the quality of games in that company. I found that Nintendo published many games and also has an extremely high average global sales. Then I pull the most popular top 30 games and found 18 of them are from Nintendo. I also check the trend of global sales per company and found Nintendo published many well-sold games from 1984 till now.
+For the factor that affected the global sale of the game, I check the relationship between rating score and global sale and found lots of Nintendo games are so well-sold that far away from the trend line and their ESRM rating are E. I guess it is because many players are not traditional game player and they bought the game just because everyone in the family can play and recognize it as the bond of the family.
+
+

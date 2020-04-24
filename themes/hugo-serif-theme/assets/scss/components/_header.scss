@@ -2,7 +2,6 @@
   color: $primary;
   background-color: #ffffff;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   // box-shadow: 0 1px 15px rgba(128, 128, 129, 0.2);
   z-index: 10;
@@ -11,7 +10,6 @@
   border-bottom: 1px solid $ghost;
   .container {
     display: flex;
-    justify-content: space-between;
     align-items: center;
   }
 }

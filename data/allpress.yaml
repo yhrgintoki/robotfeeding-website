@@ -1,20 +1,100 @@
-- title: "Allen School Releases Robotic Race Car Platform to Drive Advances in AI Research, Education"
-  source: Communications of the ACM
-  date: August 29, 2019
-  link: https://cacm.acm.org/news/239150-allen-school-releases-robotic-race-car-platform-to-drive-advances-in-ai-research-education/fulltext
-- title: "A Low-Cost, Open-Source Robotic Racecar for Education and Research"
-  source: AI³ | Theory, Practice, Business
-  date: August 27, 2019
-  link: https://medium.com/ai³-theory-practice-business/a-low-cost-open-source-robotic-racecar-for-education-and-research-91a896557f25
-- title: "Is it a bird? Is it a plane? No, it’s a MuSHR robocar!"
-  source: Import AI
-  date: August 26, 2019
-  link: https://jack-clark.net/2019/08/26/import-ai-161-want-a-cheap-robocar-try-mushr-waymo-releases-a-massive-self-driving-car-dataset-and-please-dont-put-weapons-on-your-drone-says-the-faa/
-- title: "Robotic race car platform from Univ. of Washington designed to speed research around A.I."
+- title: "One of the best interactive design of the year"
+  source: Fastcompany
+  date: December 24, 2019
+  link: https://www.fastcompany.com/90436589/the-9-best-interactive-designs-of-the-year
+- title: "UW developing robotic arm that can feed the disabled"
+  source: KIRO 7
+  date: November 23, 2019
+  link: https://www.kiro7.com/news/local/uw-developing-robotic-arm-that-can-feed-the-disabled/928743646/?mkt_tok=eyJpIjoiWlRBMlptVmtOR0V3TkdFMSIsInQiOiI0aGxxTEprZE1lOEhBU1NkME45VTc1TVk1WnphRVphM2NwSzZEXC9rOUxDSVd1bnlWaEE4MnlMQUpkUit6eGhoaGFFTUpiYklyVG9ROSt6YUFIRWt4bDk3a0F0MitXa2R2MmpuY2FpWWYxVGZlNFpCQ1NXMXBVNjhENGRBUUROTUIifQ%3D%3D
+- title: "Seattle's Taskar Center is innovating tech to improve the lives of people with disabilities"
+  source: King 5
+  date: October 3, 2019
+  link: https://www.king5.com/article/entertainment/television/programs/new-day-northwest/taskar-center-for-accessible-technology-anat-caspi/281-99996f9f-46d4-43c0-8668-a694ffb0b61c?mkt_tok=eyJpIjoiWmprMk1qTmhNRGMzT0RZMCIsInQiOiIrd0FId1U4dVU1M1loMGJrSjUwOXFJbU1VZ2pQNFhjU2Q4T3lJR1pnMytsQnlCRkg4SHNobnphSTUydFVJOUNFOVI3QnJKTEdnMzZ1Z0NHN3lDWVFwcjViN3BPOHdKYWpvMW5TazJkMUVya2RLQ3MzbXBndzZNeStIMjJxMFE4aSJ9
+- title: "ADA: Assistive robot learns to feed"
+  source: TECTALES
+  date: July 5, 2019
+  link: https://tectales.com/bionics-robotics/ada-assistive-robot-learns-to-feed.html
+- title: "A bite acquisition framework for robot-assisted feeding systems"
+  source: Tech Xplore
+  date: June 28, 2019
+  link: https://techxplore.com/news/2019-06-acquisition-framework-robot-assisted.html
+- title: "UW team develops AI-powered robotic arm to help people eat"
+  source: Puget Sound Business Journal
+  date: May 3, 2019
+  link: https://www.bizjournals.com/seattle/news/2019/05/03/university-of-washington-team-develops-robotic-arm.html
+- title: "US experts develop robot automatically feeds people"
+  source: Roya News
+  date: April 29, 2019
+  link: https://en.royanews.tv/news/17439/US_experts_develop_robot_autom
+- title: "Assistive robot learns to feed"
+  source: Phys.org
+  date: April 25, 2019
+  link: https://phys.org/news/2019-04-robot.html
+- title: "The robot being trained to feed humans"
+  source: Reuters
+  date: April 15, 2019
+  link: https://www.reuters.com/video/2019/04/15/the-robot-being-trained-to-feed-humans?videoId=538228980
+- title : "Assistive robot learns to feed"
+  source: NIH Newsroom
+  date: April 10, 2019
+  link: https://www.nibib.nih.gov/news-events/newsroom/assistive-robot-learns-feed
+- title: "Robot arm can feed people with mobility issues"
+  source: BBC News
+  date: April 4, 2019
+  link: https://www.bbc.com/news/av/technology-47723167/robot-arm-can-feed-people-with-mobility-issues
+- title: "Robot can feed people with disabilities"
+  source: BBC World News
+  date: April 3, 2019
+  link: https://www.bbc.co.uk/programmes/p075d438
+- title: "ADA: The Robot that Can Help Feed the Disabled"
+  source: BYUradio
+  date: March 27, 2019
+  link: https://www.byuradio.org/episode/00dd5352-f77a-4e1c-bf85-fb8fcd7c47ae/top-of-mind-with-julie-rose-nc-9th-courtroom-artist-sky-soldier-alcatraz-history?playhead=3709&autoplay=true
+- title: "This Autonomous Robot Arm Feeds People Who Can’t Feed Themselves"
+  source: Futurism
+  date: March 14, 2019
+  link: https://futurism.com/autonomous-robot-arm-feeds-people
+- title: "Intelligent robotic device helps feed people who would otherwise need assistance"
+  source: ATtoday
+  date: Match 13, 2019
+  link: http://attoday.co.uk/intelligent-robotic-device-helps-feed-people-who-would-otherwise-need-assistance/
+- title: "Eat up! This robot is built to feed dinner to people who can’t feed themselves"
+  source: Digital Trends
+  date: March 13, 2019
+  link: https://www.digitaltrends.com/cool-tech/robot-feeds-dinner-mobility-impaired-people/
+- title: "Robot Learns to Feed Folks Dinner"
+  source: Futurity
+  date: March 13, 2019
+  link: https://www.futurity.org/robots-food-disabilities-caregivers-2006242-2/
+- title: "Say Hello To This Robot That Can Feed You Dinner"
+  source: Wonderful Engineering
+  date: March 2019
+  link: https://wonderfulengineering.com/say-hello-to-this-robot-that-can-feed-you-dinner/
+- title: "Robots that feed people who can’t feed themselves are here"
+  source: Fastcompany
+  date: March 13, 2019
+  link: https://www.fastcompany.com/90318211/robots-that-feed-people-who-cant-feed-themselves-are-here
+- title: "Food-focused autonomous robot arm knows how to use the forks"
+  source: New Atlas
+  date: March 13, 2019
+  link: https://newatlas.com/autonomous-robot-arm-feeding/58844/
+- title: "How to train your robot (to feed you dinner)"
+  source: Science Daily
+  date: March 11, 2019
+  link: https://www.sciencedaily.com/releases/2019/03/190311101221.htm
+- title: "This New Robot Can Feed You Your Dinner"
+  source: Interesting Engineering
+  date: March 11, 2019
+  link: https://interestingengineering.com/this-new-robot-can-feed-you-your-dinner
+- title: "How to train your robot (to feed you dinner)"
+  source: UW News
+  date: March 11, 2019
+  link: https://www.washington.edu/news/2019/03/11/how-to-train-your-robot-to-feed-you-dinner/
+- title: "Autonomous Feeding System"
+  source: Lab Roots
+  date: March 11, 2019
+  link: https://www.labroots.com/trending/technology/14264/autonomous-feeding-system
+- title: "‘Feed me, Alexa.’ University of Washington team creates voice-controlled robot to help people eat"
   source: GeekWire
-  date: August 21, 2019
-  link: https://www.geekwire.com/2019/robotic-race-car-platform-univ-washington-designed-speed-research-around/
-- title: "Allen School releases MuSHR robotic race car platform to drive advances in AI research and education"
-  source: Allen School News
-  date: August 21, 2019
-  link: https://news.cs.washington.edu/2019/08/21/allen-school-releases-mushr-robotic-race-car-platform-to-drive-advances-in-ai-research-and-education/
+  date: March 9, 2019
+  link: https://www.geekwire.com/2019/feed-alexa-university-washington-team-creates-voice-controlled-robot-help-people-eat/

@@ -1,4 +1,4 @@
-{{ define "title" }}MuSHR: The UW Open Racecar Project{{ end}}
+{{ define "title" }}Robot Assisted Feeding{{ end}}
 {{ define "header_css" }}{{ end }}
 {{ define "body_classes" }}page-home{{ end }}
 {{ define "header_classes" }}header-transparent{{ end }}
@@ -18,27 +18,31 @@
 {{ define "main" }}
 <div class="intro">
   <div class="container">
-    <div class="row justify-content-start">
+     <div class="row justify-content-start">
       <div class="col-12 col-md-12 col-lg-6 order-2 order-lg-1">
-        {{ .Content }}
-        {{ partial "get-started.html" . }}
-      </div>
-      <div class="col-12 col-md-12 col-lg-6 order-1 order-lg-2 position-relative">
+        {{.Content}}
+      <!--<div class="col-12 col-md-12 col-lg-6 order-1 order-lg-2 position-relative">
         <img class="intro-image-flying rounded" src="{{ .Params.intro_image | relURL }}" />
+      </div>-->
+      </div>
+      <div class="col-lg-6 order-lg-2">
+        <div style="position:relative;padding-bottom:56.25%;">
+        <iframe width="100%" height="100%" style="width:100%;height:100%;position:absolute;left:0px;top:0px;" src="https://www.youtube.com/embed/t2eO4CD-0WY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="container pt-6 pb-6 pt-md-7 pb-md-12" id="mushr-vid">
+<!--<div class="container pt-6 pb-6 pt-md-7 pb-md-12" id="mushr-vid">
     <div class="row justify-content-center">
       <div class="col-12">
         <script src="https://fast.wistia.com/embed/medias/ziu9549is5.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:50.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_ziu9549is5 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/ziu9549is5/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
     </div>
     </div>
 </div>
-
-{{ $tutorials := where (where .Site.RegularPages "Type" "tutorials") ".Params.featured" true }}
+-->
+<!--{{ $tutorials := where (where .Site.RegularPages "Type" "tutorials") ".Params.featured" true }}
 {{if gt (len $tutorials) 0}}
 <div class="container pt-6 pb-md-12">
   <div class="row justify-content-start">
@@ -54,14 +58,14 @@
   </div>
 </div>
 {{end}}
-
-<!-- <div class="container pt-6 pb-6 pt-md-7 pb-md-12" id="mushr-vid">
+-->
+<!--<div class="container pt-6 pb-6 pt-md-7 pb-md-12" id="mushr-vid">
     <div class="row justify-content-center">
       <div class="col-12">
         <script src="https://fast.wistia.com/embed/medias/ziu9549is5.jsonp" async></script><script src="https://fast.wistia.com/assets/external/E-v1.js" async></script><div class="wistia_responsive_padding" style="padding:50.0% 0 0 0;position:relative;"><div class="wistia_responsive_wrapper" style="height:100%;left:0;position:absolute;top:0;width:100%;"><div class="wistia_embed wistia_async_ziu9549is5 videoFoam=true" style="height:100%;position:relative;width:100%"><div class="wistia_swatch" style="height:100%;left:0;opacity:0;overflow:hidden;position:absolute;top:0;transition:opacity 200ms;width:100%;"><img src="https://fast.wistia.com/embed/medias/ziu9549is5/swatch" style="filter:blur(5px);height:100%;object-fit:contain;width:100%;" alt="" aria-hidden="true" onload="this.parentNode.style.opacity=1;" /></div></div></div></div>
     </div>
     </div>
-</div> -->
+</div>
 <div class="strip strip-grey">
   <div class="container pt-6 pb-6 pt-md-12 pb-md-12">
     <div class="row justify-content-center">
@@ -81,9 +85,7 @@
     </div>
   </div>
 </div>
-{{ partial "teaching.html" . }}
-{{ partial "cite.html" }}
+-->
 {{ end }}
-
 {{ define "footer_js" }}
 {{ end }}
