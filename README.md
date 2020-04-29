@@ -1,4 +1,4 @@
-# robotfeeding-website
+# Robotfeeding-website
 
 The is the working repo for the robotfeeding website
 
